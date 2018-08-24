@@ -7,9 +7,21 @@ import { Navigator } from 'reactxp-navigation';
 
 import Patientdetails from './Patientdetails'
 import Userdetails from './Userdetails'
-let NavigationRouteId ={
+import CreatePolicy from './CreatePolicy'
+import Dashboard from './Dashboard'
+import ProviderHistory from './ProviderHistory'
+import Registerpage from './Registerpage'
+import ProviderDetails from './ProviderDetails'
+
+
+let NavigationRouteId = {
     Patientdetails: "Patientdetails",
     Userdetails: "Userdetails",
+    CreatePolicy: "CreatePolicy",
+    Dashboard: "Dashboard",
+    ProviderDetails: "ProviderDetails",
+    ProviderHistory: "ProviderHistory",
+    Registerpage: "Registerpage"
 };
 
 const styles = {
@@ -26,9 +38,14 @@ export default class App extends RX.Component {
         super(props);
         this._onNavigatorRef = this._onNavigatorRef.bind(this);
         this._renderScene = this._renderScene.bind(this);
-    
+
         this._onPressPatientdetails = this.__onPressPatientdetails.bind(this);
         this._onPressUserdetails = this.__onPressUserdetails.bind(this);
+        this._onPressCreatePolicy = this.__onPressCreatePolicy.bind(this);
+        this._onPressDashboard = this.__onPressDashboard.bind(this);
+        this._onPressProviderDetails = this.__onPressProviderDetails.bind(this);
+        this._onPressProviderHistory = this.__onPressProviderHistory.bind(this);
+        this._onPressRegisterpage = this.__onPressRegisterpage.bind(this);
 
 
 
@@ -36,7 +53,7 @@ export default class App extends RX.Component {
 
     componentDidMount() {
         this._navigator.immediatelyResetRouteStack([{
-            routeId: NavigationRouteId.Userdetails,
+            routeId: NavigationRouteId.Patientdetails,
             sceneConfigType: "Fade"
         }]);
     }
@@ -67,14 +84,70 @@ export default class App extends RX.Component {
             case NavigationRouteId.Userdetails:
                 return <Userdetails Userdetails={this.__onPressUserdetails} />
 
+            case NavigationRouteId.CreatePolicy:
+                return <CreatePolicy CreatePolicy={this.__onPressCreatePolicy} />
+
+
+            case NavigationRouteId.Dashboard:
+                return <Dashboard Dashboard={this.__onPressDashboard} />
+
+            case NavigationRouteId.ProviderDetails:
+                return <ProviderDetails ProviderDetails={this.__onPressProviderDetails} />
+
+            case NavigationRouteId.ProviderHistory:
+                return <ProviderHistory ProviderHistory={this.__onPressProviderHistory} />
+            case NavigationRouteId.Registerpage:
+                return <Registerpage Registerpage={this.__onPressRegisterpage} />
+
+
 
 
         }
 
         return null;
     }
+    __onPressRegisterpage() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    __onPressProviderHistory() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
 
-    __onPressCreatepolicy() {
+    __onPressProviderDetails() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    __onPressDashboard() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    __onPressCreatePolicy() {
         // this._navigator.pop();
         this._navigator.push({
             routeId: NavigationRouteId.ProviderDetails,

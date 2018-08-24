@@ -240,7 +240,7 @@ export default class Patientdetails extends RX.Component {
 
     onChangePost = () => {
         console.log("arjun")
-        return fetch('http://localhost:8082/submitClaim', {
+        return fetch('http://35.236.167.82:8082/submitClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -333,10 +333,11 @@ export default class Patientdetails extends RX.Component {
                     ]
                 }],
 
-                "TotalClaimedAmount": this.state.TotalClaimedAmount,
+                "claimAmount": this.state.claimAmount,
                 "status": this.state.status,
                 "HospitalName": this.state.HospitalName,
-                "submitID": ""
+                "submitID": "",
+                "policyId": this.state.policyId
             }
             ),
         }).then((result) => result.json()).then((responseJson) => {
@@ -483,9 +484,9 @@ export default class Patientdetails extends RX.Component {
         console.log(this.state.productdone, "productdone");
     }
     //-----------------------------------------------------------------------------------
-    onChangeTotalClaimedAmount = (value) => {
-        this.setState({ TotalClaimedAmount: value });
-        console.log(this.state.TotalClaimedAmount, "TotalClaimedAmount");
+    onChangeclaimAmount = (value) => {
+        this.setState({ claimAmount: value });
+        console.log(this.state.claimAmount, "claimAmount");
     }
     onChangestatus = (value) => {
         this.setState({ status: value });
@@ -495,7 +496,10 @@ export default class Patientdetails extends RX.Component {
         this.setState({ HospitalName: value });
         console.log(this.state.HospitalName, "HospitalName");
     }
-
+    onChangepolicyId = (value) => {
+        this.setState({ policyId: value });
+        console.log(this.state.policyId, "policyId");
+    }
     //-------------------------------------------------------------------------------------------
 
 
@@ -915,8 +919,8 @@ export default class Patientdetails extends RX.Component {
                                 <RX.TextInput
                                     style={styling.Form}
                                     placeholder="Enter your Claim amount"
-                                    value={this.state.TotalClaimedAmount}
-                                    onChangeText={this.onChangeTotalClaimedAmount}
+                                    value={this.state.claimAmount}
+                                    onChangeText={this.onChangeclaimAmount}
                                 // defaultValue={ this.state.inputValue }
                                 />
                                 <label for="inputPassword4" style={styling.siDeText}>status</label>
@@ -935,6 +939,15 @@ export default class Patientdetails extends RX.Component {
                                     placeholder=""
                                     value={this.state.HospitalName}
                                     onChangeText={this.onChangeHospitalName}
+                                // defaultValue={ this.state.inputValue }
+                                />
+                                <label for="inputPassword4" style={styling.siDeText}>PolicyID</label>
+
+                                <RX.TextInput
+                                    style={styling.Form}
+                                    placeholder=""
+                                    value={this.state.policyId}
+                                    onChangeText={this.onChangepolicyId}
                                 // defaultValue={ this.state.inputValue }
                                 />
                                 <RX.Button style={styles.but} onPress={() => this.onChangePost()} >
