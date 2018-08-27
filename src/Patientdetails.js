@@ -239,7 +239,9 @@ export default class Patientdetails extends RX.Component {
 
 
     onChangePost = () => {
-        console.log("arjun")
+        console.log("arjun");
+        var suggestion = 'test';
+            this.setState({ suggestion: suggestion })
         return fetch('http://35.236.167.82:8082/submitClaim', {
             method: 'POST',
             headers: {
@@ -340,8 +342,7 @@ export default class Patientdetails extends RX.Component {
                 "policyId": this.state.policyId
             }
             ),
-        }).then((result) => result.json()).then((responseJson) => {
-
+        }).then((result) => result.json()).then((responseJson) => {                    
             var res = responseJson.submitID;
             console.log("arjun------------>", res)
             swal("Your Submit ID:", res);
@@ -539,7 +540,7 @@ export default class Patientdetails extends RX.Component {
                             <form>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="inputPassword4" style={styling.siDeText}>NAME :</label>
+                                        <label for="inputPassword4" style={styling.siDeText}>NAME :{this.state.suggestion}</label>
 
 
 
