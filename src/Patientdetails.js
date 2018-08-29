@@ -240,7 +240,7 @@ export default class Patientdetails extends RX.Component {
 
     onChangePost = () => {
         console.log("arjun")
-        return fetch('http://35.236.167.82:8082/submitClaim', {
+        return fetch('http://localhost:8082/submitClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -343,8 +343,13 @@ export default class Patientdetails extends RX.Component {
         }).then((result) => result.json()).then((responseJson) => {
 
             var res = responseJson.submitID;
-            console.log("arjun------------>", res)
-            swal("Your Submit ID:", res);
+            var data = responseJson.rs[0].message
+            console.log("arjun------------>", res);
+            console.log("logesh------------>", data);
+            var val = res + "\n" + data
+
+
+            swal("Your Submit ID:", val);
 
             // var resJson1 = JSON.stringify(res)
             // console.log(resJson1)
@@ -941,7 +946,7 @@ export default class Patientdetails extends RX.Component {
                                     onChangeText={this.onChangeHospitalName}
                                 // defaultValue={ this.state.inputValue }
                                 />
-                                <label for="inputPassword4" style={styling.siDeText}>PolicyID</label>
+                                <label for="inputPassword4" style={styling.siDeText}>PolicyId</label>
 
                                 <RX.TextInput
                                     style={styling.Form}

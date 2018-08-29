@@ -35,14 +35,6 @@ const styles = {
         color: "white"
     }),
 
-    // button1Text: RX.Styles.createTextStyle({
-    //     fontSize: 14,
-    //     color: 'white',
-    //     justifyContent: 'center',
-    //     textAlign:'CENTER',
-    //     alignSelf:'center',
-    //     borderRadius: 8,
-    // }),
 
     navrqlogo: RX.Styles.createViewStyle({
         height: 20,
@@ -76,6 +68,11 @@ const styles = {
     sideText: RX.Styles.createTextStyle({
 
     }),
+    allHistorybtn: RX.Styles.createTextStyle({
+
+        marginLeft: 16
+
+    }),
 
 };
 
@@ -101,9 +98,9 @@ export default class Userdetails extends RX.Component {
     }
 
     onChangePost = () => {
-        console.log("hiiii")
+        console.log("welcome")
 
-        return fetch('http://35.236.167.82:8082/retrieveClaim', {
+        return fetch('http://localhost:8082/retrieveClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -117,36 +114,102 @@ export default class Userdetails extends RX.Component {
 
             }),
         }).then((result) => result.json()).then((responseJson) => {
-            var res = responseJson.result;
+            var res = responseJson.result[0].Records.HospitalName;
+            var res1 = responseJson.result[0].Records.patientData[0].PATEINT_DETAILS[0].NAME;
+            console.log(res1)
             var resJson1 = JSON.stringify(res)
             console.log(resJson1)
-            swal(resJson1)
+            var name = res1
+            this.setState({ name: name })
+
+            var AGE = responseJson.result[0].Records.patientData[0].PATEINT_DETAILS[1].AGE;
+            var AGE = AGE
+            this.setState({ AGE: AGE })
+
+            var DOA = responseJson.result[0].Records.patientData[0].PATEINT_DETAILS[2].DOA;
+            var DOA = DOA
+            this.setState({ DOA: DOA })
+
+            var REF_DOC = responseJson.result[0].Records.patientData[0].PATEINT_DETAILS[3].REF_DOC;
+            var REF_DOC = REF_DOC
+            this.setState({ REF_DOC: REF_DOC })
+
+            var IPD_No = responseJson.result[0].Records.patientData[0].PATEINT_DETAILS[4].IPD_No;
+            var IPD_No = IPD_No
+            this.setState({ IPD_No: IPD_No })
+
+            var MLC = responseJson.result[0].Records.patientData[0].PATEINT_DETAILS[5].MLC;
+            var MLC = MLC
+            this.setState({ MLC: MLC })
+
+            var SEX = responseJson.result[0].Records.patientData[0].PATEINT_DETAILS[6].SEX;
+            var SEX = SEX
+            this.setState({ SEX: SEX })
+
+            var doj = responseJson.result[0].Records.patientData[0].PATEINT_DETAILS[7].doj;
+            var doj = doj
+            this.setState({ doj: doj })
+
+            var DOD = responseJson.result[0].Records.patientData[0].PATEINT_DETAILS[8].DOD;
+            var DOD = DOD
+            this.setState({ DOD: DOD })
+
+            var DAIGONSIS = responseJson.result[0].Records.patientData[1].Treatment[0].DAIGONIS;
+            var DAIGONSIS = DAIGONSIS
+            this.setState({ DAIGONSIS: DAIGONSIS })
+
+            var Cheif_Complaints_On_Admission = responseJson.result[0].Records.patientData[1].Treatment[1].Cheif_Complaints_On_Admission;
+            var Cheif_Complaints_On_Admission = Cheif_Complaints_On_Admission
+            this.setState({ Cheif_Complaints_On_Admission: Cheif_Complaints_On_Admission })
+
+            var Past_History_with_Allergy = responseJson.result[0].Records.patientData[1].Treatment[2].Past_History_with_Allergy;
+            var Past_History_with_Allergy = Past_History_with_Allergy
+            this.setState({ Past_History_with_Allergy: Past_History_with_Allergy })
+
+            var Personal_History = responseJson.result[0].Records.patientData[1].Treatment[3].Personal_History;
+            var Personal_History = Personal_History
+            this.setState({ Personal_History: Personal_History })
+
+            var Family_History = responseJson.result[0].Records.patientData[1].Treatment[4].Family_History;
+            var Family_History = Family_History
+            this.setState({ Family_History: Family_History })
+
+            var Menstrual_History = responseJson.result[0].Records.patientData[1].Treatment[5].Menstrual_History;
+            var Menstrual_History = Menstrual_History
+            this.setState({ Menstrual_History: Menstrual_History })
+
+            var Obstretric_History = responseJson.result[0].Records.patientData[1].Treatment[6].Obstretric_History;
+            var Obstretric_History = Obstretric_History
+            this.setState({ Obstretric_History: Obstretric_History })
+
+            var Genral_Examination = responseJson.result[0].Records.patientData[1].Treatment[7].Genral_Examination;
+            var Genral_Examination = Genral_Examination
+            this.setState({ Genral_Examination: Genral_Examination })
+
+            var Systematic_Examination = responseJson.result[0].Records.patientData[1].Treatment[8].Systematic_Examination;
+            var Systematic_Examination = Systematic_Examination
+            this.setState({ Systematic_Examination: Systematic_Examination })
 
 
 
 
-            // this.probs(resJson1)
-            // this.props.__onPressUserdetails(resJson1)
-            // { resJson1 }
-            // { <div>{resJson1}</div> }
 
 
+
+
+
+            var singledata = resJson1 + "\n"
+            this.setState({ singledata: singledata })
+            // swal("User Details:", resJson1);
         })
-        // onChangePost().then(resJson1 => console.log(resJson1));
+
     }
 
-    // onchangedet = (resJson1) => {
-    //     // var data = this.refs("display") = resJson1
 
-    //     // this.refs("display").value = resJson1
-    //     // var resp = this.refs("id")
-    //     // var s = "data is:" + resp.resJson1;
-    //     console.log(data)
-    // }
     onChangeGet = () => {
         console.log("hiiii")
 
-        fetch('http://35.236.167.82:8082/RetrieveBulkPatientRecords', {
+        fetch('http://localhost:8082/RetrieveBulkPatientRecords', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -158,103 +221,66 @@ export default class Userdetails extends RX.Component {
         }).then((response) => response.json()).then((responseJson) => {
 
             var res = responseJson
-            var responseJson = JSON.stringify(res)
-            console.log("arjun------------>", responseJson)
-            swal("Your Submit ID:", responseJson);
+            console.log("Arjunan----->", res)
 
-            // var resJson1 = JSON.stringify(res)
-            // console.log(resJson1)
+
+            var responseJson = JSON.stringify(res)
+            console.log("logesh", responseJson)
+            var fulldata = res
+            console.log("logesh", fulldata)
+            // swal("List of Records:", responseJson);
+
+            var bulkdata = responseJson
+            this.setState({ bulkdata: bulkdata })
+
+
         })
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
+    // logesh {"message":[{"Key":"249","Record":{"created_at":"2018-08-27T07:56:46.374Z","policyID":"249","policys":{"policyID":"249","rules":["Ez8hl7yrf9tjlbzohv6"]}}},{"Key":"367","Record":{"Expenses":5000,"HospitalName":"Apollo","__v":0,"_id":"5b83c6c182874f4d51e315e9","created_at":"2018-08-27T09:39:13.591Z","message":"approved","patientData":[{"PATEINT_DETAILS":[{"NAME":"Saswat"},{"AGE":"23"},{"DOA":"2018-12-12"},{"REF_DOC":"Dr Kar"},{"IPD_No":"1827"},{"MLC":"23t7"},{"SEX":"Male"},{"DOD":"2018-12-13"}]},{"Treatment":[{"DAIGONSIS":"Done"},{"Cheif_Complaints_On_Admission":"Done"},{"Past_History_with_Allergy":"Done"},{"Personal_History":"Done"},{"Family_History":"Done"},{"Menstrual_History":"Done"},{"Obstretric_History":"Done"},{"Genral_Examination":"Done"},{"Systematic_Examination":"Done"}]},{"Package_details":[{"Investigations":"Done"},{"BaBys_Details":"Done"},{"Course_in_Hospital_And_condition":"Done"},{"Treatment_Given":"Done"},{"Treatment_Adviced":"Done"},{"Follow_Up_Visit":"Done"},{"Procedure_done":"Done"}]}],"previousHashes":[],"status":"Auto approved","submitID":"367"}},{"Key":"476","Record":{"AmountPayerWouldPay":"10000","AmountuserHavetopay":"30000","__v":0,"_id":"5b83c3d782874f4d51e315e7","message":"me","status":"Approved","submitID":"476"}},{"Key":"625","Record":{"created_at":"2018-08-27T07:28:21.586Z","policyID":"625","policys":{"policyID":"625","rules":["Ez8hl7yrf9tjlbynyg2"]}}},{"Key":"961","Record":{"created_at":"2018-08-27T06:34:15.114Z","policyID":"961","policys":{"policyID":"961","rules":["Ez8hl7yrf9tjlbwqdfd"]}}}]}
 
     componentDidMount() {
-        // this.onChangePost = () => {
-        //     console.log("hiiii")
+        (result) => {
+            this.setState({
+                responseJson
 
-        //     return fetch('http://35.236.167.82:8082/retrieveClaim', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Content-Type': 'application/json'
+            });
+            console.log(result)
 
-        //         },
-
-        //         body: JSON.stringify({
-
-        //             "userId": this.state.userHistoryDetails
-
-        //         }),
-        //     }).then((result) => result.json()).then((responseJson) => {
-        //         var response = responseJson.result
-        //         var res = responseJson.result[0].Records.TotalClaimedAmount
-        //         var res1 = responseJson.result[0].Records.HospitalName
-        //         var resJson1 = JSON.stringify(res)
-        //         var resJson2 = JSON.stringify(res1)
-        //         var resJson3 = JSON.stringify(response)
-        //         // Policyid =res[0].Records
-        //         // Policyid =res[0].Records.policyID
-        //         //  var record=resJson1.Records
-        //         // console.log(res[0].Records.policyID)
-        //         console.log(resJson3)
-
-        //         // console.log(resJson1)
-        //         // console.log(resJson2)
-
-        //         var patient = ["TotalClaim Amount:" + "" + resJson1, "\n",
-        //         "HospitalName:" + resJson2]
-        //         // //its right         // swal({
-        //         // //     title:"user details",
-        //         // //     text:
-        //         // //     "TotalClaimAmount:"+resJson1,"Hospital Name :":resJson2
-
-        //         // // })
-        //         swal({
-        //             title: "user details",
-        //             text: "" + patient
-
-        //         })
-
-
-        //     })
-
-        // }
-
-
+        }
     }
-    // onChangemethod = () => {
-    //     // var message = this.refs("display") = response;
-    //     // console.log("arjun------------->", message)
 
-    // }
     onChangeuserId = (value) => {
         this.setState({ userHistoryDetails: value });
+
         console.log("userId");
         console.log(this.state.userHistoryDetails, "userId");
     }
     userId1 = () => {
 
         this.setState({ userId: true })
-        this.setState({ allHistory: false })
+        this.setState({ bulkdata: false })
+        this.setState({ policyandrules: false })
 
     }
+    bulkdata = () => {
 
+        this.setState({ userId: false })
+        this.setState({ bulkdata: true })
+        this.setState({ policyandrules: false })
+
+    }
+    policyandrules = () => {
+
+        this.setState({ userId: true })
+        this.setState({ bulkdata: false })
+        this.setState({ policyandrules: true })
+    }
 
     render() {
         // resJson1 = this.props.navigatorRoute.resJson1
         return (
+
 
             <RX.ScrollView style={styles.scroll}>
                 <RX.View style={styles.navcontainer}>
@@ -263,7 +289,7 @@ export default class Userdetails extends RX.Component {
                         RAPID SETTLE
     </RX.Text>
                 </RX.View>
-
+                <RX.View>{res}</RX.View>
                 <RX.View>
 
                     <div class="container">
@@ -271,11 +297,24 @@ export default class Userdetails extends RX.Component {
                         <div class="row">
                             <div class="col-sm-3 col-md-2 sidebar" style={styles.sidenavbar}>
                                 <ul class="nav nav-sidebar">
-                                    <li class="active" onClick={() => this.userId1()} ><a href="#" style={{ color: "orange" }}>User History <span class="sr-only">(current)</span></a></li>
+                                    <li onClick={() => this.userId1()} ><a href="#" style={{ color: "orange" }}>User History <span class="sr-only">(current)</span></a></li>
+                                    <li onClick={() => this.bulkdata()} ><a href="#" style={{ color: "orange" }}>ALL History <span class="sr-only">(current)</span></a></li>
                                     {/* <RX.Button onClick={() => this.onChangeGet()} style={{ color: "orange" }}>All History</RX.Button> */}
-                                    <RX.Button style={{ color: "orange" }} onPress={() => (this.onChangeGet())} refs="id" >
+
+
+                                    {/* <RX.Button style={{ color: "orange" }} onClick={() => this.userId1()} style={styles.allHistorybtn} refs="id" >
+                                        {'User History'}
+                                    </RX.Button> */}
+
+
+
+                                    {/* onPress={() => (this.onChangeGet())} */}
+
+                                    {/* <RX.Button style={{ color: "orange" }} onClick={() => this.bulkdata()} style={styles.allHistorybtn} refs="id" >
                                         {'All History'}
-                                    </RX.Button>
+                                    </RX.Button> */}
+
+                                    {/* <li class="active" onPress={() => (this.onChangeGet())} refs="id"><a href="#" style={{ color: "orange" }}>All History</a></li> */}
                                 </ul>
                             </div>
 
@@ -284,93 +323,66 @@ export default class Userdetails extends RX.Component {
                                 <br></br>
                                 <div class="container">
                                     {this.state.userId ?
+
                                         <div class="col-xs-6 col-sm-3 placeholder">
+
                                             <div class="container" style={styles.userIddiv}>
-                                                <RX.Button style={styles.button1} onPress={() => (this.onChangePost())} refs="id" >
+                                                <RX.Button style={styles.button1} onPress={() => (this.onChangePost(), this.policyandrules())} refs="id" >
                                                     {'Submit'}
                                                 </RX.Button>
 
-                                                {/* {resJson1}
-
-                                                {console.log(resJson1)} */}
                                                 <label for="lgFormGroupInput" style={styles.sideText} class="col-sm-2 col-form-label col-form-label-lg">Enter User Identification Number:</label>
                                                 <div class="col-sm-10">
                                                     <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.userHistoryDetails} onChangeText={this.onChangeuserId} />
-                                                    {/* {console.log('Your input value is: ' + this.response)} */}
-                                                    {/* <div>
-                                                        {resJson3.map((item, index) => (
-                                                            <View >
-                                                                <Text>Hospital Name:{item.HospitalName}</Text>
-                                                                <Text>TotalClaimAmount : {item.TotalClaimedAmount}</Text>
-                                                            </View>
-                                                        ))
-                                                        }
-                                                    </div> */}
-                                                    {/* {resJson3.map((item, index) => (
-                                                        <RX.View>
-                                                            <RX.Text>HospitalName: {item.HospitalName}
-                                                            </RX.Text>
-                                                        </RX.View>
-                                                    ))
-                                                    } */}
 
 
-                                                    {/* <div>
-                                                        {/* <p ref="display" /> */}
-
-
-
-                                                    {/* <ul>
-                                                            {this.props.resJson1.map(item => (
-                                                                <li key={item.TotalClaimedAmount}>{item.HospitalName}</li>
-                                                            ))}
-                                                        </ul>
-
-                                                    </div> */} */}
-
-
-
-                                                    {/* <RX.View >
-                                                        <RX.Text style={{ fontSize: 20 }}>
-                                                            {/* <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.resJson3} /> */}
-                                                    {/* {this.state.resJson3}
-                                                        </RX.Text>
-                                                    </RX.View> */}
-
-
-
-
-
-
-
-
-
-
-                                                    {/* {console.log(resJson1)} */}
                                                 </div>
                                             </div>
+                                            <div>
+
+                                            </div>
+
                                         </div> : null}
 
-                                    {this.state.allHistory ?
-
+                                    {this.state.bulkdata ?
                                         <div class="col-xs-6 col-sm-3 placeholder">
-                                            <div class="container" style={styles.allHistorydiv}>
 
-
-                                                <label for="lgFormGroupInput" style={styles.sideText} class="col-sm-2 col-form-label col-form-label-lg">Enter Unique Identification Number</label>
-                                                <div class="col-sm-10">
-
-                                                    <input type="email" style={styles.InputSelectorCopy} id="lgFormGroupInput" placeholder="" />
-
-
+                                            <div class="container">
+                                                <div>
+                                                    <RX.Button onPress={() => (this.onChangeGet())} ><a href="#" style={{ color: "blue" }}>click here view Entier User Details :<br></br>{this.state.bulkdata} <span class="sr-only">(current)</span></a></RX.Button>
+                                                    {/* User Data:{this.state.bulkdata} */}
                                                 </div>
 
 
                                             </div>
-
-
-
                                         </div> : null}
+                                    {this.state.policyandrules ?
+                                        <div>
+                                            <form>
+                                                <h3>PATEINT_DETAILS</h3>
+                                                <label>Name :   {this.state.name} </label><br></br>
+                                                <label> AGE    : {this.state.AGE} </label><br></br>
+                                                <label> DOA    :  {this.state.DOA} </label><br></br>
+                                                <label> REF_DOC: {this.state.REF_DOC}  </label><br></br>
+                                                <label>IPD_No  : {this.state.IPD_No}  </label><br></br>
+                                                <label> MLC    :  {this.state.MLC}  </label><br></br>
+                                                <label> SEX    : {this.state.SEX}  </label><br></br>
+                                                <label> DOJ    :  {this.state.doj}  </label><br></br>
+                                                <h2>Treatment</h2>
+                                                <article>  <label>DAIGONSIS    :  {this.state.DAIGONSIS} <br></br></label></article>
+                                                <label> Cheif_Complaints_On_Admission:  {this.state.Cheif_Complaints_On_Admission}  </label>
+                                                <label> Past_History_with_Allergy    : {this.state.Past_History_with_Allergy} <br></br></label>
+                                                <label> Personal_History:  {this.state.Personal_History}  <br></br></label>
+                                                <label>Family_History  :  {this.state.Family_History}  <br></br></label>
+                                                <label> Menstrual_History    :  {this.state.Menstrual_History}  <br></br></label>
+                                                <label> Obstretric_History    :  {this.state.Obstretric_History}  <br></br></label>
+                                                <label> Genral_Examination    :  {this.state.Genral_Examination}  <br></br></label>
+                                                <label> Systematic_Examination    :  {this.state.Systematic_Examination}  <br></br></label>
+                                            </form>
+                                        </div> : null}
+
+
+
 
                                 </div>
                             </div>
@@ -379,13 +391,6 @@ export default class Userdetails extends RX.Component {
 
 
 
-                        {/* <div>
-                            <RX.view>
-                                <RX.Text>
-                                    {resJson1}
-                                </RX.Text>
-                            </RX.view>
-                        </div> */}
 
                     </div>
 
@@ -395,8 +400,5 @@ export default class Userdetails extends RX.Component {
 
         );
 
-    };
-    // React.render(
-    //     { resJson1 }
-    // )
-}   
+    }
+}

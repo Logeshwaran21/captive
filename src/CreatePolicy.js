@@ -150,7 +150,7 @@ export default class Createpolicy extends RX.Component {
         console.log("hitting")
         policy = this.state.policyID
 
-        return fetch('http://localhost:8082/createpolicy', {
+        return fetch('http://35.236.167.82:8082/createpolicy', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

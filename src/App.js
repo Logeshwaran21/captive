@@ -12,6 +12,7 @@ import Dashboard from './Dashboard'
 import ProviderHistory from './ProviderHistory'
 import Registerpage from './Registerpage'
 import ProviderDetails from './ProviderDetails'
+import TPA from './TPA'
 
 
 let NavigationRouteId = {
@@ -21,7 +22,8 @@ let NavigationRouteId = {
     Dashboard: "Dashboard",
     ProviderDetails: "ProviderDetails",
     ProviderHistory: "ProviderHistory",
-    Registerpage: "Registerpage"
+    Registerpage: "Registerpage",
+    TPA: "TPA"
 };
 
 const styles = {
@@ -46,14 +48,14 @@ export default class App extends RX.Component {
         this._onPressProviderDetails = this.__onPressProviderDetails.bind(this);
         this._onPressProviderHistory = this.__onPressProviderHistory.bind(this);
         this._onPressRegisterpage = this.__onPressRegisterpage.bind(this);
-
+        this._onPressTPA = this.__onPressTPA.bind(this);
 
 
     }
 
     componentDidMount() {
         this._navigator.immediatelyResetRouteStack([{
-            routeId: NavigationRouteId.Patientdetails,
+            routeId: NavigationRouteId.Userdetails,
             sceneConfigType: "Fade"
         }]);
     }
@@ -98,6 +100,8 @@ export default class App extends RX.Component {
                 return <ProviderHistory ProviderHistory={this.__onPressProviderHistory} />
             case NavigationRouteId.Registerpage:
                 return <Registerpage Registerpage={this.__onPressRegisterpage} />
+            case NavigationRouteId.TPA:
+                return <TPA TPA={this.__onPressTPA} />
 
 
 
@@ -105,6 +109,16 @@ export default class App extends RX.Component {
         }
 
         return null;
+    }
+    __onPressTPA() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
     }
     __onPressRegisterpage() {
         // this._navigator.pop();
