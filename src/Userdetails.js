@@ -35,14 +35,6 @@ const styles = {
         color: "white"
     }),
 
-    // button1Text: RX.Styles.createTextStyle({
-    //     fontSize: 14,
-    //     color: 'white',
-    //     justifyContent: 'center',
-    //     textAlign:'CENTER',
-    //     alignSelf:'center',
-    //     borderRadius: 8,
-    // }),
 
     navrqlogo: RX.Styles.createViewStyle({
         height: 20,
@@ -76,7 +68,27 @@ const styles = {
     sideText: RX.Styles.createTextStyle({
 
     }),
+    allHistorybtn: RX.Styles.createTextStyle({
 
+        marginLeft: 16
+
+    }),
+    policyrules: RX.Styles.createTextStyle({
+
+        marginLeft: 90,
+        width:500, 
+        height:900,
+        font:400,
+        marginTop:70
+    }),
+    divpolicyrules: RX.Styles.createTextStyle({
+
+       backgroundColor:"rgb(8, 37, 103)",
+       width:700,
+       height:300,
+       marginRight: 328,
+    marginTop: 123
+    }),
 };
 
 var resJson1
@@ -103,7 +115,7 @@ export default class Userdetails extends RX.Component {
     onChangePost = () => {
         console.log("hiiii")
 
-        return fetch('http://35.236.167.82:8082/retrieveClaim', {
+        return fetch('http://localhost:8082/retrieveClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -117,36 +129,27 @@ export default class Userdetails extends RX.Component {
 
             }),
         }).then((result) => result.json()).then((responseJson) => {
-            var res = responseJson.result;
+            var res = responseJson.result[0].Records.policyID
+            var rules = responseJson.result[0].Records.policys.rules
+            var rules = rules
+            this.setState({ rules: rules })
+            // var formula = responseJson.result[0].Records
+            // var formula = formula
+            // this.setState({ formula: formula })
             var resJson1 = JSON.stringify(res)
             console.log(resJson1)
-            swal(resJson1)
-
-
-
-
-            // this.probs(resJson1)
-            // this.props.__onPressUserdetails(resJson1)
-            // { resJson1 }
-            // { <div>{resJson1}</div> }
-
-
+            var data = resJson1
+            var userdata = data
+            this.setState({ userdata: userdata })
         })
-        // onChangePost().then(resJson1 => console.log(resJson1));
+
     }
 
-    // onchangedet = (resJson1) => {
-    //     // var data = this.refs("display") = resJson1
 
-    //     // this.refs("display").value = resJson1
-    //     // var resp = this.refs("id")
-    //     // var s = "data is:" + resp.resJson1;
-    //     console.log(data)
-    // }
     onChangeGet = () => {
-        console.log("hiiii")
+      
 
-        fetch('http://35.236.167.82:8082/RetrieveBulkPatientRecords', {
+        fetch('http://localhost:8082/RetrieveBulkPatientRecords', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -159,102 +162,57 @@ export default class Userdetails extends RX.Component {
 
             var res = responseJson
             var responseJson = JSON.stringify(res)
-            console.log("arjun------------>", responseJson)
-            swal("Your Submit ID:", responseJson);
+            console.log("logesh", responseJson)
+            // swal("List of Records:", responseJson);
+          
+            var bulkdata = responseJson
+            this.setState({ bulkdata: bulkdata })
 
-            // var resJson1 = JSON.stringify(res)
-            // console.log(resJson1)
+
         })
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     componentDidMount() {
-        // this.onChangePost = () => {
-        //     console.log("hiiii")
+        (result) => {
+            this.setState({
+                responseJson
 
-        //     return fetch('http://35.236.167.82:8082/retrieveClaim', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Content-Type': 'application/json'
+            });
+            console.log(result)
 
-        //         },
-
-        //         body: JSON.stringify({
-
-        //             "userId": this.state.userHistoryDetails
-
-        //         }),
-        //     }).then((result) => result.json()).then((responseJson) => {
-        //         var response = responseJson.result
-        //         var res = responseJson.result[0].Records.TotalClaimedAmount
-        //         var res1 = responseJson.result[0].Records.HospitalName
-        //         var resJson1 = JSON.stringify(res)
-        //         var resJson2 = JSON.stringify(res1)
-        //         var resJson3 = JSON.stringify(response)
-        //         // Policyid =res[0].Records
-        //         // Policyid =res[0].Records.policyID
-        //         //  var record=resJson1.Records
-        //         // console.log(res[0].Records.policyID)
-        //         console.log(resJson3)
-
-        //         // console.log(resJson1)
-        //         // console.log(resJson2)
-
-        //         var patient = ["TotalClaim Amount:" + "" + resJson1, "\n",
-        //         "HospitalName:" + resJson2]
-        //         // //its right         // swal({
-        //         // //     title:"user details",
-        //         // //     text:
-        //         // //     "TotalClaimAmount:"+resJson1,"Hospital Name :":resJson2
-
-        //         // // })
-        //         swal({
-        //             title: "user details",
-        //             text: "" + patient
-
-        //         })
-
-
-        //     })
-
-        // }
-
-
+        }
     }
-    // onChangemethod = () => {
-    //     // var message = this.refs("display") = response;
-    //     // console.log("arjun------------->", message)
 
-    // }
     onChangeuserId = (value) => {
         this.setState({ userHistoryDetails: value });
+
         console.log("userId");
         console.log(this.state.userHistoryDetails, "userId");
     }
     userId1 = () => {
 
         this.setState({ userId: true })
-        this.setState({ allHistory: false })
-
+        this.setState({ bulkdata: false })
+this.setState({ policyandrules: false })
     }
+    bulkdata = () => {
 
+        this.setState({ userId: false })
+        this.setState({ bulkdata: true })
+        this.setState({ policyandrules: false })
+    }
+    policyandrules = () => {
+
+        this.setState({ userId: true })
+        this.setState({ bulkdata: false })
+        this.setState({ policyandrules: true })
+    }
 
     render() {
         // resJson1 = this.props.navigatorRoute.resJson1
         return (
+
 
             <RX.ScrollView style={styles.scroll}>
                 <RX.View style={styles.navcontainer}>
@@ -263,7 +221,7 @@ export default class Userdetails extends RX.Component {
                         RAPID SETTLE
     </RX.Text>
                 </RX.View>
-
+                <RX.View>{res}</RX.View>
                 <RX.View>
 
                     <div class="container">
@@ -271,11 +229,9 @@ export default class Userdetails extends RX.Component {
                         <div class="row">
                             <div class="col-sm-3 col-md-2 sidebar" style={styles.sidenavbar}>
                                 <ul class="nav nav-sidebar">
-                                    <li class="active" onClick={() => this.userId1()} ><a href="#" style={{ color: "orange" }}>User History <span class="sr-only">(current)</span></a></li>
-                                    {/* <RX.Button onClick={() => this.onChangeGet()} style={{ color: "orange" }}>All History</RX.Button> */}
-                                    <RX.Button style={{ color: "orange" }} onPress={() => (this.onChangeGet())} refs="id" >
-                                        {'All History'}
-                                    </RX.Button>
+                                    <li onClick={() => this.userId1()} ><a href="#" style={{ color: "orange" }}>User History <span class="sr-only">(current)</span></a></li>
+                                    <li onClick={() => this.bulkdata()} ><a href="#" style={{ color: "orange" }}>All History <span class="sr-only">(current)</span></a></li>
+                                    
                                 </ul>
                             </div>
 
@@ -284,93 +240,56 @@ export default class Userdetails extends RX.Component {
                                 <br></br>
                                 <div class="container">
                                     {this.state.userId ?
+
                                         <div class="col-xs-6 col-sm-3 placeholder">
+
                                             <div class="container" style={styles.userIddiv}>
-                                                <RX.Button style={styles.button1} onPress={() => (this.onChangePost())} refs="id" >
+                                                <RX.Button style={styles.button1} onPress={() => (this.onChangePost(),this.policyandrules())} refs="id" >
                                                     {'Submit'}
                                                 </RX.Button>
 
-                                                {/* {resJson1}
-
-                                                {console.log(resJson1)} */}
                                                 <label for="lgFormGroupInput" style={styles.sideText} class="col-sm-2 col-form-label col-form-label-lg">Enter User Identification Number:</label>
                                                 <div class="col-sm-10">
                                                     <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.userHistoryDetails} onChangeText={this.onChangeuserId} />
-                                                    {/* {console.log('Your input value is: ' + this.response)} */}
-                                                    {/* <div>
-                                                        {resJson3.map((item, index) => (
-                                                            <View >
-                                                                <Text>Hospital Name:{item.HospitalName}</Text>
-                                                                <Text>TotalClaimAmount : {item.TotalClaimedAmount}</Text>
-                                                            </View>
-                                                        ))
-                                                        }
-                                                    </div> */}
-                                                    {/* {resJson3.map((item, index) => (
-                                                        <RX.View>
-                                                            <RX.Text>HospitalName: {item.HospitalName}
-                                                            </RX.Text>
-                                                        </RX.View>
-                                                    ))
-                                                    } */}
+                                                    <div>
+                                                       
+                                                    </div>
+                                                   
+                                                   
 
-
-                                                    {/* <div>
-                                                        {/* <p ref="display" /> */}
-
-
-
-                                                    {/* <ul>
-                                                            {this.props.resJson1.map(item => (
-                                                                <li key={item.TotalClaimedAmount}>{item.HospitalName}</li>
-                                                            ))}
-                                                        </ul>
-
-                                                    </div> */} */}
-
-
-
-                                                    {/* <RX.View >
-                                                        <RX.Text style={{ fontSize: 20 }}>
-                                                            {/* <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.resJson3} /> */}
-                                                    {/* {this.state.resJson3}
-                                                        </RX.Text>
-                                                    </RX.View> */}
-
-
-
-
-
-
-
-
-
-
-                                                    {/* {console.log(resJson1)} */}
                                                 </div>
+
                                             </div>
+                                            <br></br>
+                                            <br></br>
+                                           
                                         </div> : null}
 
-                                    {this.state.allHistory ?
-
+                                    {this.state.bulkdata ?
                                         <div class="col-xs-6 col-sm-3 placeholder">
-                                            <div class="container" style={styles.allHistorydiv}>
 
-
-                                                <label for="lgFormGroupInput" style={styles.sideText} class="col-sm-2 col-form-label col-form-label-lg">Enter Unique Identification Number</label>
-                                                <div class="col-sm-10">
-
-                                                    <input type="email" style={styles.InputSelectorCopy} id="lgFormGroupInput" placeholder="" />
-
-
+                                            <div class="container">
+                                                <div>
+                                                    <RX.Button onPress={() => (this.onChangeGet())} ><a style={{ color: "blue" }}><b>Click here view Entire User Details :</b><br></br><br></br>{this.state.bulkdata} <span class="sr-only">(current)</span></a></RX.Button>
+                                                   
                                                 </div>
 
 
                                             </div>
-
-
-
                                         </div> : null}
+
+{this.state.policyandrules ?
+ <div class ="container" style={styles.divpolicyrules}>
+                                            <div style={styles.policyrules}>
+                                            <ul class="list-group text-center">
+           <li class="list-group-item"><h4><b>PolicyID:</b></h4>{this.state.userdata} </li>
+            <li class="list-group-item"><h4><b>Rules:</b></h4>{this.state.rules} </li>
+           
+        </ul>
+                                             
+                                                    </div>
+                                            
+                                                    </div>: null}
 
                                 </div>
                             </div>
@@ -379,13 +298,6 @@ export default class Userdetails extends RX.Component {
 
 
 
-                        {/* <div>
-                            <RX.view>
-                                <RX.Text>
-                                    {resJson1}
-                                </RX.Text>
-                            </RX.view>
-                        </div> */}
 
                     </div>
 
@@ -395,8 +307,5 @@ export default class Userdetails extends RX.Component {
 
         );
 
-    };
-    // React.render(
-    //     { resJson1 }
-    // )
-}   
+    }
+}
