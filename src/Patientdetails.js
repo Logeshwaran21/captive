@@ -45,9 +45,28 @@ const styles = {
         padding: 12,
         borderRadius: 8,
         borderColor: 'rgb(8, 37, 103)',
-        color: 'white'
+        color: 'white',
+        justifyContent: 'center',
+        textAlign:'CENTER',
+        alignSelf:'center',
     }),
 
+    nxtbut: RX.Styles.createButtonStyle({
+        backgroundColor: 'rgb(8, 37, 103)',
+        borderWidth: 1,
+        width: 92,
+        height: 30,
+        justifyContent: 'center',
+        textAlign:'CENTER',
+        alignSelf:'center',
+        // margin: 200,
+        marginLeft: 524,
+        marginTop: -31,
+        padding: 12,
+        borderRadius: 8,
+        borderColor: 'rgb(8, 37, 103)',
+        color: 'white'
+    }),
     navrqlogo: RX.Styles.createViewStyle({
         height: 20,
         width: '30%',
@@ -249,104 +268,43 @@ export default class Patientdetails extends RX.Component {
             },
 
             body: JSON.stringify({
-                "patientData": [{
-                    "PATEINT_DETAILS": [{
-                        "NAME": this.state.name,
-                    }, {
-                        "AGE": this.state.age,
-                    },
-                    {
-                        "DOA": this.state.doa,
-                    },
-                    {
-                        "REF_DOC": this.state.refdoc,
-                    },
-                    {
-                        "IPD_No": this.state.ipdno,
-                    },
-                    {
-                        "MLC": this.state.mlc,
-                    },
-                    {
-                        "SEX": this.state.sex,
-                    },
-                    {
-                        "doj": this.state.doj
-                    },
-                    {
-                        "DOD": this.state.dod
-                    }
-                    ]
-                },
-
-                {
-                    "Treatment": [{
-                        "DAIGONIS": this.state.daigonis,
-                    },
-                    {
-                        "Cheif_Complaints_On_Admission": this.state.CheifComplaints,
-                    },
-                    {
-                        "Past_History_with_Allergy": this.state.PastHistorywithAllergy,
-                    },
-                    {
-                        "Personal_History": this.state.PersonalHistory,
-                    },
-                    {
-                        "Family_History": this.state.FamilyHistory,
-                    },
-                    {
-                        "Menstrual_History": this.state.MenstrualHistory,
-                    },
-                    {
-                        "Obstretric_History": this.state.ObstretricHistory,
-                    },
-                    {
-                        "Genral_Examination": this.state.GenralExamination,
-                    },
-                    {
-                        "Systematic_Examination": this.state.SystematicExamination
-                    }
-                    ]
-                }, {
-                    "Package_details": [{
-                        "Investigations": this.state.Investigations,
-                    },
-                    {
-                        "BaBys_Details": this.state.BabysDetails,
-                    },
-                    {
-                        "Course_in_Hospital_And_condition": this.state.coursehospitalcondition,
-                    },
-                    {
-                        "Treatment_Given": this.state.TreatmentGiven,
-                    },
-                    {
-                        "Treatment_Adviced": this.state.TreatmentAdviced,
-                    },
-                    {
-                        "Follow_Up_Visit": this.state.FollowUpVisit,
-                    },
-                    {
-                        "Procedure_done": this.state.productdone
-                    }
-                    ]
-                }],
-
-                "claimAmount": this.state.claimAmount,
-                "status": this.state.status,
+                "NAME": this.state.NAME,
+                "AGE": this.state.AGE,
+                "DOA": this.state.DOA,
+                "REF_DOC": this.state.REF_DOC,
+                "IPD_No": this.state.IPD_No,
+                "MLC": this.state.MLC,
+                "SEX": this.state.SEX,
+                "DOD": this.state.DOD,
+                "DAIGONIS": this.state.DAIGONIS,
+                "Cheif_Complaints_On_Admission": this.state.Cheif_Complaints_On_Admission,
+                "Past_History_with_Allergy": this.state.Past_History_with_Allergy,
+                "Personal_History": this.state.Personal_History,
+                "Family_History": this.state.Family_History,
+                "Menstrual_History": this.state.Menstrual_History,
+                "Obstretric_History": this.state.Obstretric_History,
+                "Genral_Examination": this.state.Genral_Examination,
+                "Systematic_Examination": this.state.Systematic_Examination,
+                "Investigations": this.state.Investigations,
+                "BaBys_Details": this.state.BaBys_Details,
+                "Course_in_Hospital_And_condition": this.state.Course_in_Hospital_And_condition,
+                "Treatment_Given": this.state.Treatment_Given,
+                "Treatment_Adviced": this.state.Treatment_Adviced,
+                "Follow_Up_Visit": this.state.Follow_Up_Visit,
+                "Procedure_done": this.state.Procedure_done,
                 "HospitalName": this.state.HospitalName,
                 "submitID": "",
+                "status": this.state.status,
+                "claimAmount": this.state.claimAmount,
                 "policyId": this.state.policyId
             }
             ),
         }).then((result) => result.json()).then((responseJson) => {
-
             var res = responseJson.submitID;
             var data = responseJson.rs[0].message
             console.log("arjun------------>", res);
             console.log("logesh------------>", data);
-            var val = res + "\n" + data
+            var val = "SubmitId: " + res + "\n" + "Message: " + data
 
 
             swal("Your Submit ID:", val);
@@ -360,10 +318,10 @@ export default class Patientdetails extends RX.Component {
         this.props.onNavigatePush(PatientDetail);
     }
 
-    // onChangename = (value) => {
+    // onChangeNAME = (value) => {
     //     console.log(value)
-    //     this.setState({name: value});
-    //     console.log(this.state.name,"name");
+    //     this.setState({NAME: value});
+    //     console.log(this.state.NAME,"NAME");
     // }
 
 
@@ -378,85 +336,85 @@ export default class Patientdetails extends RX.Component {
 
     //patient details---------------
 
-    onChangename = (value) => {
+    onChangeNAME = (value) => {
         console.log(value)
-        this.setState({ name: value });
-        console.log(this.state.name, "name");
+        this.setState({ NAME: value });
+        console.log(this.state.NAME, "NAME");
     }
 
     onChangeage = (value) => {
-        this.setState({ age: value });
-        console.log(this.state.age, "age");
+        this.setState({ AGE: value });
+        console.log(this.state.AGE, "AGE");
     }
-    onChangedoa = (value) => {
-        this.setState({ doa: value });
-        console.log(this.state.doa, "doa");
+    onChangeDOA = (value) => {
+        this.setState({ DOA: value });
+        console.log(this.state.DOA, "DOA");
     }
-    onChangerefdoc = (value) => {
-        this.setState({ refdoc: value });
-        console.log(this.state.refdoc, "REF DOC");
+    onChangeREF_DOC = (value) => {
+        this.setState({ REF_DOC: value });
+        console.log(this.state.REF_DOC, "REF DOC");
     }
-    onChangeipdno = (value) => {
-        this.setState({ ipdno: value });
-        console.log(this.state.ipdno, "ipdno");
+    onChangeIPD_No = (value) => {
+        this.setState({ IPD_No: value });
+        console.log(this.state.IPD_No, "IPD_No");
     }
-    onChangemlc = (value) => {
-        this.setState({ mlc: value });
-        console.log(this.state.mlc, "mlc");
+    onChangeMLC = (value) => {
+        this.setState({ MLC: value });
+        console.log(this.state.MLC, "MLC");
     }
-    onChangesex = (value) => {
-        this.setState({ sex: value });
-        console.log(this.state.sex, "sex");
+    onChangeSEX = (value) => {
+        this.setState({ SEX: value });
+        console.log(this.state.SEX, "SEX");
     }
-    onChangedoj = (value) => {
-        this.setState({ doj: value });
-        console.log(this.state.doj, "doj");
-    }
-    onChangedod = (value) => {
-        this.setState({ dod: value });
-        console.log(this.state.dod, "dod");
+    // onChangedoj = (value) => {
+    //     this.setState({ doj: value });
+    //     console.log(this.state.doj, "doj");
+    // }
+    onChangeDOD = (value) => {
+        this.setState({ DOD: value });
+        console.log(this.state.DOD, "DOD");
     }
     //----------------------------------------------------
     //Treatment-------------------------------------------
-    onChangedaigonis = (value) => {
-        this.setState({ daigonis: value });
-        console.log(this.state.daigonis, "daigonis");
+    onChangeDAIGONIS = (value) => {
+        this.setState({ DAIGONIS: value });
+        console.log(this.state.DAIGONIS, "DAIGONIS");
     }
 
-    onChangeCheifComplaints = (value) => {
-        this.setState({ CheifComplaints: value });
-        console.log(this.state.CheifComplaints, "CheifComplaints");
+    onChangeCheif_Complaints_On_Admission = (value) => {
+        this.setState({ Cheif_Complaints_On_Admission: value });
+        console.log(this.state.Cheif_Complaints_On_Admission, "Cheif_Complaints_On_Admission");
     }
 
-    onChangePastHistorywithAllergy = (value) => {
-        this.setState({ PastHistorywithAllergy: value });
-        console.log(this.state.PastHistorywithAllergy, "PastHistorywithAllergy");
+    onChangePast_History_with_Allergy = (value) => {
+        this.setState({ Past_History_with_Allergy: value });
+        console.log(this.state.Past_History_with_Allergy, "Past_History_with_Allergy");
     }
-    onChangedPersonalHistory = (value) => {
-        this.setState({ PersonalHistory: value });
-        console.log(this.state.PersonalHistory, "PersonalHistory");
-    }
-
-    onChangeFamilyHistory = (value) => {
-        this.setState({ FamilyHistory: value });
-        console.log(this.state.FamilyHistory, "FamilyHistory");
+    onChangedPersonal_History = (value) => {
+        this.setState({ Personal_History: value });
+        console.log(this.state.Personal_History, "Personal_History");
     }
 
-    onChangeMenstrualHistory = (value) => {
-        this.setState({ MenstrualHistory: value });
-        console.log(this.state.MenstrualHistory, "MenstrualHistory");
+    onChangeFamily_History = (value) => {
+        this.setState({ Family_History: value });
+        console.log(this.state.Family_History, "Family_History");
     }
-    onChangeObstretricHistory = (value) => {
-        this.setState({ ObstretricHistory: value });
-        console.log(this.state.ObstretricHistory, "ObstretricHistory");
+
+    onChangeMenstrual_History = (value) => {
+        this.setState({ Menstrual_History: value });
+        console.log(this.state.Menstrual_History, "Menstrual_History");
     }
-    onChangeGenralExamination = (value) => {
-        this.setState({ GenralExamination: value });
-        console.log(this.state.GenralExamination, "GenralExamination");
+    onChangeObstretric_History = (value) => {
+        this.setState({ Obstretric_History: value });
+        console.log(this.state.Obstretric_History, "Obstretric_History");
     }
-    onChangeSystematicExamination = (value) => {
-        this.setState({ SystematicExamination: value });
-        console.log(this.state.SystematicExamination, "SystematicExamination");
+    onChangeGenral_Examination = (value) => {
+        this.setState({ Genral_Examination: value });
+        console.log(this.state.Genral_Examination, "Genral_Examination");
+    }
+    onChangeSystematic_Examination = (value) => {
+        this.setState({ Systematic_Examination: value });
+        console.log(this.state.Systematic_Examination, "Systematic_Examination");
     }
     //----------------------------------------------------------------------------
     //package---------------------------------------------------------------------
@@ -464,29 +422,29 @@ export default class Patientdetails extends RX.Component {
         this.setState({ Investigations: value });
         console.log(this.state.Investigations, "Investigations");
     }
-    onChangeBabysDetails = (value) => {
-        this.setState({ BabysDetails: value });
-        console.log(this.state.BabysDetails, "BabysDetails");
+    onChangeBaBys_Details = (value) => {
+        this.setState({ BaBys_Details: value });
+        console.log(this.state.BaBys_Details, "BaBys_Details");
     }
-    onChangecoursehospitalcondition = (value) => {
-        this.setState({ coursehospitalcondition: value });
-        console.log(this.state.coursehospitalcondition, "coursehospitalcondition");
+    onChangeCourse_in_Hospital_And_condition = (value) => {
+        this.setState({ Course_in_Hospital_And_condition: value });
+        console.log(this.state.Course_in_Hospital_And_condition, "Course_in_Hospital_And_condition");
     }
-    onChangeTreatmentGiven = (value) => {
-        this.setState({ TreatmentGiven: value });
-        console.log(this.state.TreatmentGiven, "TreatmentGiven");
+    onChangeTreatment_Given = (value) => {
+        this.setState({ Treatment_Given: value });
+        console.log(this.state.Treatment_Given, "Treatment_Given");
     }
-    onChangeTreatmentAdviced = (value) => {
-        this.setState({ TreatmentAdviced: value });
-        console.log(this.state.TreatmentAdviced, "TreatmentAdviced");
+    onChangeTreatment_Adviced = (value) => {
+        this.setState({ Treatment_Adviced: value });
+        console.log(this.state.Treatment_Adviced, "Treatment_Adviced");
     }
-    onChangeFollowUpVisit = (value) => {
-        this.setState({ FollowUpVisit: value });
-        console.log(this.state.FollowUpVisit, "FollowUpVisit");
+    onChangeFollow_Up_Visit = (value) => {
+        this.setState({ Follow_Up_Visit: value });
+        console.log(this.state.Follow_Up_Visit, "Follow_Up_Visit");
     }
-    onChangeproductdone = (value) => {
-        this.setState({ productdone: value });
-        console.log(this.state.productdone, "productdone");
+    onChangeProcedure_done = (value) => {
+        this.setState({ Procedure_done: value });
+        console.log(this.state.Procedure_done, "Procedure_done");
     }
     //-----------------------------------------------------------------------------------
     onChangeclaimAmount = (value) => {
@@ -544,15 +502,15 @@ export default class Patientdetails extends RX.Component {
                             <form>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="inputPassword4" style={styling.siDeText}>NAME :</label>
+                                        <label for="inputPassword4" style={styling.siDeText}>NAME :{this.state.suggestion}</label>
 
 
 
                                         <RX.TextInput
                                             style={styling.Form}
                                             placeholder=""
-                                            value={this.state.name}
-                                            onChangeText={this.onChangename}
+                                            value={this.state.NAME}
+                                            onChangeText={this.onChangeNAME}
                                         // defaultValue={ this.state.inputValue }
                                         />
                                     </div>
@@ -567,7 +525,7 @@ export default class Patientdetails extends RX.Component {
                                         <RX.TextInput
                                             style={styling.Form}
                                             placeholder=""
-                                            value={this.state.age}
+                                            value={this.state.AGE}
                                             onChangeText={this.onChangeage}
                                         // defaultValue={ this.state.inputValue }
                                         />
@@ -579,8 +537,8 @@ export default class Patientdetails extends RX.Component {
                                         <RX.TextInput
                                             style={styling.Form}
                                             placeholder=""
-                                            value={this.state.doa}
-                                            onChangeText={this.onChangedoa}
+                                            value={this.state.DOA}
+                                            onChangeText={this.onChangeDOA}
                                         // defaultValue={ this.state.inputValue }
                                         />
                                     </div>
@@ -598,8 +556,8 @@ export default class Patientdetails extends RX.Component {
                                         <RX.TextInput
                                             style={styling.Form}
                                             placeholder=""
-                                            value={this.state.refdoc}
-                                            onChangeText={this.onChangerefdoc}
+                                            value={this.state.REF_DOC}
+                                            onChangeText={this.onChangeREF_DOC}
                                         // defaultValue={ this.state.inputValue }
                                         />
                                     </div>
@@ -611,8 +569,8 @@ export default class Patientdetails extends RX.Component {
                                         <RX.TextInput
                                             style={styling.Form}
                                             placeholder=""
-                                            value={this.state.ipdno}
-                                            onChangeText={this.onChangeipdno}
+                                            value={this.state.IPD_No}
+                                            onChangeText={this.onChangeIPD_No}
                                         // defaultValue={ this.state.inputValue }
                                         />
 
@@ -626,8 +584,8 @@ export default class Patientdetails extends RX.Component {
                                         <RX.TextInput
                                             style={styling.Form}
                                             placeholder=""
-                                            value={this.state.mlc}
-                                            onChangeText={this.onChangemlc}
+                                            value={this.state.MLC}
+                                            onChangeText={this.onChangeMLC}
                                         // defaultValue={ this.state.inputValue }
                                         />
 
@@ -642,8 +600,8 @@ export default class Patientdetails extends RX.Component {
                                         <RX.TextInput
                                             style={styling.Form}
                                             placeholder=""
-                                            value={this.state.sex}
-                                            onChangeText={this.onChangesex}
+                                            value={this.state.SEX}
+                                            onChangeText={this.onChangeSEX}
                                         // defaultValue={ this.state.inputValue }
                                         />
 
@@ -651,17 +609,8 @@ export default class Patientdetails extends RX.Component {
 
 
                                     <div class="form-group col-md-4">
-                                        <label for="inputPassword4" style={styling.siDeText}>DOJ</label>
 
 
-
-                                        <RX.TextInput
-                                            style={styling.Form}
-                                            placeholder=""
-                                            value={this.state.doj}
-                                            onChangeText={this.onChangedoj}
-                                        // defaultValue={ this.state.inputValue }
-                                        />
 
                                     </div>
                                     <div class="form-group col-md-4">
@@ -671,8 +620,8 @@ export default class Patientdetails extends RX.Component {
                                         <RX.TextInput
                                             style={styling.Form}
                                             placeholder=""
-                                            value={this.state.dod}
-                                            onChangeText={this.onChangedod}
+                                            value={this.state.DOD}
+                                            onChangeText={this.onChangeDOD}
                                         // defaultValue={ this.state.inputValue }
                                         />
 
@@ -696,14 +645,14 @@ export default class Patientdetails extends RX.Component {
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputPassword4" style={styling.siDeText}>DAIGONIS</label>
+                                                <label for="inputPassword4" style={styling.siDeText}>DAIGONSIS</label>
 
 
                                                 <RX.TextInput
                                                     style={styling.Form}
                                                     placeholder=" "
-                                                    value={this.state.daigonis}
-                                                    onChangeText={this.onChangedaigonis}
+                                                    value={this.state.DAIGONIS}
+                                                    onChangeText={this.onChangeDAIGONIS}
                                                 // defaultValue={ this.state.inputValue }
                                                 />
                                             </div>
@@ -712,8 +661,8 @@ export default class Patientdetails extends RX.Component {
                                                 <RX.TextInput
                                                     style={styling.Form}
                                                     placeholder=""
-                                                    value={this.state.CheifComplaints}
-                                                    onChangeText={this.onChangeCheifComplaints}
+                                                    value={this.state.Cheif_Complaints_On_Admission}
+                                                    onChangeText={this.onChangeCheif_Complaints_On_Admission}
                                                 // defaultValue={ this.state.inputValue }
                                                 />
                                             </div>
@@ -723,8 +672,8 @@ export default class Patientdetails extends RX.Component {
                                                 <RX.TextInput
                                                     style={styling.Form}
                                                     placeholder=" "
-                                                    value={this.state.PastHistorywithAllergy}
-                                                    onChangeText={this.onChangePastHistorywithAllergy}
+                                                    value={this.state.Past_History_with_Allergy}
+                                                    onChangeText={this.onChangePast_History_with_Allergy}
                                                 // defaultValue={ this.state.inputValue }
                                                 />
                                             </div>
@@ -739,8 +688,8 @@ export default class Patientdetails extends RX.Component {
                                                 <RX.TextInput
                                                     style={styling.Form}
                                                     placeholder=""
-                                                    value={this.state.PersonalHistory}
-                                                    onChangeText={this.onChangedPersonalHistory}
+                                                    value={this.state.Personal_History}
+                                                    onChangeText={this.onChangedPersonal_History}
                                                 // defaultValue={ this.state.inputValue }
                                                 />
                                             </div>
@@ -753,8 +702,8 @@ export default class Patientdetails extends RX.Component {
                                                 <RX.TextInput
                                                     style={styling.Form}
                                                     placeholder=""
-                                                    value={this.state.FamilyHistory}
-                                                    onChangeText={this.onChangeFamilyHistory}
+                                                    value={this.state.Family_History}
+                                                    onChangeText={this.onChangeFamily_History}
                                                 // defaultValue={ this.state.inputValue }
                                                 />
                                             </div>
@@ -768,8 +717,8 @@ export default class Patientdetails extends RX.Component {
                                             <RX.TextInput
                                                 style={styling.Form}
                                                 placeholder=""
-                                                value={this.state.MenstrualHistory}
-                                                onChangeText={this.onChangeMenstrualHistory}
+                                                value={this.state.Menstrual_History}
+                                                onChangeText={this.onChangeMenstrual_History}
                                             // defaultValue={ this.state.inputValue }
                                             />
 
@@ -780,8 +729,8 @@ export default class Patientdetails extends RX.Component {
                                             <RX.TextInput
                                                 style={styling.Form}
                                                 placeholder=""
-                                                value={this.state.ObstretricHistory}
-                                                onChangeText={this.onChangeObstretricHistory}
+                                                value={this.state.Obstretric_History}
+                                                onChangeText={this.onChangeObstretric_History}
                                             // defaultValue={ this.state.inputValue }
                                             />
 
@@ -792,8 +741,8 @@ export default class Patientdetails extends RX.Component {
                                             <RX.TextInput
                                                 style={styling.Form}
                                                 placeholder=""
-                                                value={this.state.GenralExamination}
-                                                onChangeText={this.onChangeGenralExamination}
+                                                value={this.state.Genral_Examination}
+                                                onChangeText={this.onChangeGenral_Examination}
                                             // defaultValue={ this.state.inputValue }
                                             />
 
@@ -804,8 +753,8 @@ export default class Patientdetails extends RX.Component {
                                             <RX.TextInput
                                                 style={styling.Form}
                                                 placeholder=""
-                                                value={this.state.SystematicExamination}
-                                                onChangeText={this.onChangeSystematicExamination}
+                                                value={this.state.Systematic_Examination}
+                                                onChangeText={this.onChangeSystematic_Examination}
                                             // defaultValue={ this.state.inputValue }
                                             />
 
@@ -839,8 +788,8 @@ export default class Patientdetails extends RX.Component {
                                                 <RX.TextInput
                                                     style={styling.Form}
                                                     placeholder=" "
-                                                    value={this.state.BabysDetails}
-                                                    onChangeText={this.onChangeBabysDetails}
+                                                    value={this.state.BaBys_Details}
+                                                    onChangeText={this.onChangeBaBys_Details}
                                                 // defaultValue={ this.state.inputValue }
                                                 />
 
@@ -851,8 +800,8 @@ export default class Patientdetails extends RX.Component {
                                                 <RX.TextInput
                                                     style={styling.Form}
                                                     placeholder=""
-                                                    value={this.state.coursehospitalcondition}
-                                                    onChangeText={this.onChangecoursehospitalcondition}
+                                                    value={this.state.Course_in_Hospital_And_condition}
+                                                    onChangeText={this.onChangeCourse_in_Hospital_And_condition}
                                                 // defaultValue={ this.state.inputValue }
                                                 />
 
@@ -868,8 +817,8 @@ export default class Patientdetails extends RX.Component {
                                                     <RX.TextInput
                                                         style={styling.Form}
                                                         placeholder=""
-                                                        value={this.state.TreatmentGiven}
-                                                        onChangeText={this.onChangeTreatmentGiven}
+                                                        value={this.state.Treatment_Given}
+                                                        onChangeText={this.onChangeTreatment_Given}
                                                     // defaultValue={ this.state.inputValue }
                                                     />
                                                 </div>
@@ -880,8 +829,8 @@ export default class Patientdetails extends RX.Component {
                                                     <RX.TextInput
                                                         style={styling.Form}
                                                         placeholder=""
-                                                        value={this.state.TreatmentAdviced}
-                                                        onChangeText={this.onChangeTreatmentAdviced}
+                                                        value={this.state.Treatment_Adviced}
+                                                        onChangeText={this.onChangeTreatment_Adviced}
                                                     // defaultValue={ this.state.inputValue }
                                                     />
                                                 </div>
@@ -894,8 +843,8 @@ export default class Patientdetails extends RX.Component {
                                             <RX.TextInput
                                                 style={styling.Form}
                                                 placeholder=""
-                                                value={this.state.FollowUpVisit}
-                                                onChangeText={this.onChangeFollowUpVisit}
+                                                value={this.state.Follow_Up_Visit}
+                                                onChangeText={this.onChangeFollow_Up_Visit}
                                             // defaultValue={ this.state.inputValue }
                                             />
 
@@ -906,8 +855,8 @@ export default class Patientdetails extends RX.Component {
                                             <RX.TextInput
                                                 style={styling.Form}
                                                 placeholder=""
-                                                value={this.state.productdone}
-                                                onChangeText={this.onChangeproductdone}
+                                                value={this.state.Procedure_done}
+                                                onChangeText={this.onChangeProcedure_done}
                                             // defaultValue={ this.state.inputValue }
                                             />
 
@@ -955,10 +904,26 @@ export default class Patientdetails extends RX.Component {
                                     onChangeText={this.onChangepolicyId}
                                 // defaultValue={ this.state.inputValue }
                                 />
-                                <RX.Button style={styles.but} onPress={() => this.onChangePost()} >
+                                <RX.Button style={styles.but} onPress={() => this.onChangePost()}>
                                     {'Submit'}
 
                                 </RX.Button>
+                               
+                                <RX.Button style={styles.nxtbut}   onPress={this.props.onNavigatePatientdetails }>
+                                    {'Next'}
+
+                                </RX.Button>
+                                {/* <RX.Button
+                    style={ [styles.button1] }
+                   
+                    onPress={this.props.onNavigatePatientdetails }
+                >
+
+                
+                    <RX.Text style={ [styles.button1Text] }>
+                        { 'Next' }
+                    </RX.Text>
+                </RX.Button> */}
                             </div>
                         </div>
                     </RX.View>

@@ -14,6 +14,8 @@ import Userdetails from './Userdetails'
 import CreatePolicy from './CreatePolicy'
 import Patientdetails from './Patientdetails'
 import TPA from './TPA'
+import History from './History'
+
 
 let NavigationRouteId = {
     
@@ -24,7 +26,8 @@ let NavigationRouteId = {
     Userdetails:"Userdetails",
     CreatePolicy:"CreatePolicy",
     Patientdetails:"Patientdetails",
-    TPA:"TPA"
+    TPA:"TPA",
+    History:"History"
 };
 
 const styles = {
@@ -50,11 +53,14 @@ export default class App extends RX.Component {
         this._onPressCreatePolicy = this._onPressCreatePolicy.bind(this);
         this._onPressPatientdetails = this._onPressPatientdetails.bind(this);
         this._onPressTPA = this._onPressTPA.bind(this);
+        this._onPressHistory = this._onPressHistory.bind(this);
+
+
     }
 
     componentDidMount() {
         this._navigator.immediatelyResetRouteStack([{
-            routeId: NavigationRouteId.Userdetails,
+            routeId: NavigationRouteId.CreatePolicy,
             sceneConfigType: "Fade"
         }]);
     }
@@ -104,6 +110,9 @@ export default class App extends RX.Component {
 
                 case NavigationRouteId.TPA:
                 return <TPA onNavigateTPA={ this._onPressTPA }/>
+
+                case NavigationRouteId.History:
+                return <History onNavigateHistory={ this._onPressHistory }/>
 
         }
 
@@ -175,7 +184,7 @@ export default class App extends RX.Component {
     _onPressCreatePolicy(token) {
         console.log("token",token)
         this._navigator.push({
-            routeId: NavigationRouteId.Dashboard,
+            routeId: NavigationRouteId.Patientdetails,
             // sceneConfigType: "Fade",
             token:token,
             customSceneConfig: {
@@ -187,7 +196,7 @@ export default class App extends RX.Component {
     _onPressPatientdetails(token) {
         console.log("token",token)
         this._navigator.push({
-            routeId: NavigationRouteId.Dashboard1,
+            routeId: NavigationRouteId.Userdetails,
             token:token,
             customSceneConfig: {
                 hideShadow: true
@@ -196,6 +205,17 @@ export default class App extends RX.Component {
     }
 
     _onPressTPA(token) {
+        console.log("token",token)
+        this._navigator.push({
+            routeId: NavigationRouteId.Dashboard1,
+            token:token,
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+
+    _onPressHistory(token) {
         console.log("token",token)
         this._navigator.push({
             routeId: NavigationRouteId.Dashboard1,

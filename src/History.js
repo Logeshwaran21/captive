@@ -1,4 +1,3 @@
-
 import React from 'react';
 import RX from 'reactxp';
 import {Nav,NavItem,NavDropdown,MenuItem,Grid,Row,Col,Form,FormGroup,ControlLabel,FormControl,label,Visible,Checkbox,lg,xs} from 'react-bootstrap';
@@ -56,7 +55,7 @@ const styles = {
         textAlign:'CENTER',
         alignSelf:'center',
         borderRadius: 8,
-        font:'rgb(8, 37, 103)',
+        font:'rgb(8, 37, 103)'
     }),
 
     navrqlogo:RX.Styles.createViewStyle({
@@ -148,11 +147,11 @@ const styles = {
     }),
 
     submitbutton: RX.Styles.createButtonStyle({
-        backgroundColor: 'rgb(8, 37, 103)',
+        backgroundColor: 'white',
         borderWidth:1,
-        width:147,
+        width:110,
        height:5,
-        marginLeft:346,
+        marginLeft:478,
         marginBottom:-23, 
         marginTop:-25,
         padding: 12,
@@ -176,7 +175,7 @@ const styles = {
         width: 192,
     height: 240,
         borderRadius: 8,
-        borderStyle: 'black',
+        borderColor: 'rgb(8, 37, 103)',
         marginTop: 19
     }),  
     
@@ -186,23 +185,7 @@ const styles = {
         marginTop:-123,
         backgroundColor:'white'
         
-           }),  
-           nxtbut: RX.Styles.createButtonStyle({
-            backgroundColor: 'rgb(8, 37, 103)',
-            borderWidth: 1,
-            width: 92,
-            height: 30,
-            justifyContent: 'center',
-            textAlign:'CENTER',
-            alignSelf:'center',
-            // margin: 200,
-            marginLeft: 352,
-            marginTop: -31,
-            padding: 12,
-            borderRadius: 8,
-            borderColor: 'rgb(8, 37, 103)',
-            color: 'white'
-        }),  
+           }),    
 
 };
 
@@ -227,82 +210,78 @@ export default class CreatePolicy extends RX.Component{
         });
     }
 
-    onChangePost = () => {
-        policy=this.state.policyID
+
+    // onChangevalidatetpa = () => {
+        
 
         
-        console.log("hiiiiii")
-                  return  fetch('http://localhost:8082/createpolicy', {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
+        
+    //               return  fetch('http://localhost:8082/validateExpression', {
+    //                     method: 'POST',
+    //                     headers: {
+    //                         'Accept': 'application/json',
+    //                         'Content-Type': 'application/json'
                             
-                                               },
+    //                                            },
                         
-                        body: JSON.stringify({
+    //                     body: JSON.stringify({
    
-                        "policyID":this.state.policyID,
-                        "rules":[this.state.rules]
-                        // params:[
-                        //     "claimAmount",
-                        //       "maxclim"
-                        //   ]
+    //                     // "expression":this.state.expression,
+    //                     // "params":[this.state.CLAIMAMOUNT,
+    //                     //     this.state.DIAGNOSIS
+    //                     // ],
+    //                     // "value":""
+                       
                                     
-                                }),
-                                }).then((response) => response.json()).then((responseJson) => {
+    //                             }),
+    //                             }).then((response) => response.json()).then((responseJson) => {
                                    
-                                    var res = responseJson;
-                                    var responseJson = JSON.stringify(res)
+    //                                 var res = responseJson;
+    //                                 var responseJson = JSON.stringify(res)
                                      
-                                    swal("Policy created succesfully",responseJson)
-                                    console.log("response",responseJson)
+    //                                 swal("Validated succesfully",responseJson)
+    //                                 console.log("response",responseJson)
     
-                                }).catch(function() {
-                                    console.log("error");
-                                });
+    //                             }).catch(function() {
+    //                                 console.log("error");
+    //                             });
      
-                               }
+    //                            }
 
 
-    onChangePost2 = () => {
-        
-
-        
-         return  fetch('http://localhost:8082/validateExpression', {
-                                        method: 'POST',
-                                        headers: {
-                                            'Accept': 'application/json',
-                                            'Content-Type': 'application/json'
-                                            
-                                                               },
-                                        
-                                        body: JSON.stringify({
-                                            //  "policyID":this.state.policyID,
-                                    //     "policyId":this.state.policyId,
-                                    //     "params":[
-                                    //       "claimAmount",
-                                    //         "maxclim"
-                                    //     ],
-                                    //     "value":[
-                                    //       this.state.claimamount,
-                                    //     this.state.maxclaim
-                                    //   ]
-                                    
-                                    "expression":this.state.expression
-                                                }),
-                                                }).then((response) => response.json()).then((responseJson) => {
-                                                   
-                                                    var res = responseJson;
-                                                    var responseJson1 = JSON.stringify(res)
-                                                     
-                                                    swal("Validated succesfully",responseJson1)
-                                                    console.log("validate",responseJson1)
-                    
-                                                }).catch(function() {
-                                                    console.log("error");
-                                                });
-                                         
+               onChangesubmittpa = () => {
+                               
+                                
+                                console.log("hiiiiii")
+                                          return  fetch('http://localhost:8082/createpolicy', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Accept': 'application/json',
+                                                    'Content-Type': 'application/json'
+                                                    
+                                                                       },
+                                                
+                                                body: JSON.stringify({
+                           
+                                                "policyID":this.state.policyID,
+                                                "rules":[this.state.expression]
+                                                // params:[
+                                                //     "claimAmount",
+                                                //       "maxclim"
+                                                //   ]
+                                                            
+                                                        }),
+                                                        }).then((response) => response.json()).then((responseJson) => {
+                                                           
+                                                            var res = responseJson;
+                                                            console.log("response",res)
+                                                            var responseJson = JSON.stringify(res)
+                                                             var result = responseJson
+                                                            swal("Policy created succesfully",result)
+                                                            console.log("response",result)
+                            
+                                                        })
+                             
                                                        }
                             
     
@@ -316,8 +295,7 @@ export default class CreatePolicy extends RX.Component{
                           
               
                                      
-                     
-                        onChangepolicyId = (value) => {
+                           onChangepolicyId = (value) => {
                             this.setState({ policyID: value });
                             console.log(this.state.policyID,"policyID");
                         }
@@ -337,6 +315,11 @@ export default class CreatePolicy extends RX.Component{
                             this.setState({ maxclaim: value });
                             console.log(this.state.maxclaim,"maxclaim");
                         }
+                        onChangeexpression = (value) => {
+                            this.setState({ expression: value });
+                            console.log(this.state.expression,"expression");
+                        }
+
     
     policyIds=()=>{
      
@@ -391,7 +374,7 @@ export default class CreatePolicy extends RX.Component{
          <div >
          <label for="lgFormGroupInput"  style={styles.policyId} class="col-sm-2 col-form-label col-form-label-lg">Policy ID:</label>
         
-         <RX.TextInput type="email"  style={styles.policyIdTextBox} value={this.state.policyID} onChangeText={this.onChangepolicyId} id="lgFormGroupInput" placeholder=""/>
+         <RX.TextInput type="email"  style={styles.policyIdTextBox} value={this.state.val} onChangeText={this.onChangepolicyId} id="lgFormGroupInput" placeholder=""/>
       </div>
       <br></br>
       <div >
@@ -399,43 +382,38 @@ export default class CreatePolicy extends RX.Component{
         
          <RX.TextInput type="email"  style={styles.policyIdTextBox} id="lgFormGroupInput" placeholder=""/>
       </div>
-      <br></br>	
+      <br></br>
       
-      <div class="well well-sm well-primary" style={ styles.useit }>
+      <div class="container" style={ styles.useit }>
       <h4><b>Use these values only</b></h4>
-  <li>ClaimAmount</li>
-  <li>MaxClaim</li>
+  <li>Claim Amount</li>
+  <li>Maxclaim</li>
   <li>Diagnosis</li>
   <li>Discharge</li>
-  <li>TotalClaim</li>
-  <li>AmountPaid</li>
-  <li>Suminsured</li>
-  <li>ValidateAmount</li>
+  <li>Total claim</li>
+  <li>Amount Paid</li>
+  <li>Sum insured</li>
+  <li>Validate amount</li>
   </div>
       <div style={styles.rulesdiv}>
       <h4><b>Rules:</b></h4>
       <div style={styles.policyId} >
       <label for="lgFormGroupInput"  style={styles.policyId} class="col-sm-2 col-form-label col-form-label-lg">TPA:</label>
         
-         <RX.TextInput type="email" value={this.state.rules} value={this.state.expression} style={styles.rulestextbox} onChangeText={this.onChangerules} id="lgFormGroupInput" placeholder=""/>
+         <RX.TextInput type="email" value={this.state.expression} style={styles.rulestextbox} onChangevalidate={this.onChangeexpression} id="lgFormGroupInput" placeholder=""/>
       </div>
       <br></br>
-      {/* <RX.Button style={ [styles.validatebutton] } onPress={()=> this.onChangePost2()} value={this.state.expression}>
+      <RX.Button style={ [styles.validatebutton] } onPress={()=> this.onChangevalidatetpa()}>
       <RX.Text style={ [styles.button1Text] }>
                              { 'Validate' }
                          </RX.Text>
-                     </RX.Button> */}
+                     </RX.Button>
                      <br></br>
-                     <RX.Button style={ [styles.submitbutton] } onPress={()=> this.onChangePost()} >
-      <RX.Text style={ [styles.button1Text] } style={{color:"white"}}>    
-       { 'Validate & Submit' }
+                     <RX.Button style={ [styles.submitbutton] } onPress={()=> this.onChangesubmittpa()}>
+      <RX.Text style={ [styles.button1Text] } style={{color:"rgb(8, 37, 103)"}}>
+                             { 'Submit' }
                          </RX.Text>
                      </RX.Button>
-                     {/* <RX.Button style={ [styles.submitbutton] } onPress={()=> this.onChangePost()} >
-      <RX.Text style={ [styles.button1Text] } style={{color:"white"}}>
-                             { 'Validate & Submit' }
-                         </RX.Text>
-                     </RX.Button> */}
       <br></br>  <br></br>
       <div >
       <label for="lgFormGroupInput"  style={styles.policyId} class="col-sm-2 col-form-label col-form-label-lg">Auto Approval:</label>
@@ -443,15 +421,15 @@ export default class CreatePolicy extends RX.Component{
          <RX.TextInput type="email"  style={styles.rulestextbox} id="lgFormGroupInput" placeholder=""/>
       </div>
       <br></br>
-      {/* <RX.Button style={ [styles.validatebutton] } onPress={()=> this.onChangePost2()}>
+      <RX.Button style={ [styles.validatebutton] } onPress={()=> this.onChangePost()}>
       <RX.Text style={ [styles.button1Text] }>
                              { 'Validate' }
                          </RX.Text>
-                     </RX.Button> */}
+                     </RX.Button>
                      <br></br>
                      <RX.Button style={ [styles.submitbutton] } onPress={()=> this.onChangePost()}>
-      <RX.Text style={ [styles.button1Text] } style={{color:"white"}}>
-                             { 'Validate & Submit' }
+      <RX.Text style={ [styles.button1Text] } style={{color:"rgb(8, 37, 103)"}}>
+                             { 'Submit' }
                          </RX.Text>
                      </RX.Button>
       <br></br>  <br></br>
@@ -480,11 +458,6 @@ export default class CreatePolicy extends RX.Component{
                 </div>
       
 <br></br>
-
-                <RX.Button style={styles.nxtbut}   onPress={this.props.onNavigateCreatePolicy }>
-                                    {'Next'}
-
-                                </RX.Button>
 </div>
  </div>
               
