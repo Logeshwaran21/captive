@@ -14,260 +14,260 @@ module.exports = {
     navcontainer: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'#082567',
-        height:50,
-        padding:5
+        backgroundColor: '#082567',
+        height: 50,
+        padding: 5
     }),
-    navrqlogo:RX.Styles.createViewStyle({
+    navrqlogo: RX.Styles.createViewStyle({
         height: 20,
-        width:'30%',
-         marginTop:'5',
-         marginBottom:-20,
-         marginRight:1200
+        width: '30%',
+        marginTop: '5',
+        marginBottom: -20,
+        marginRight: 1200
     }),
     navwelcome: RX.Styles.createTextStyle({
         fontSize: 15,
-        marginRight:1050,
+        marginRight: 1050,
         color: 'white',
-        marginTop:'5'
+        marginTop: '5'
     }),
     pageAlign: RX.Styles.createScrollViewStyle({
         backgroundColor: '#ffffff',
-        justifyContent:'center',
+        justifyContent: 'center',
 
     }),
-    BUTTON41 :RX.Styles.createViewStyle({
+    BUTTON41: RX.Styles.createViewStyle({
         display: 'block',
         width: '10%',
         height: 41,
         justifyContent: 'center',
-       alignItems: 'center',
+        alignItems: 'center',
         // padding: 6px 12px;
-         fontSize: 20,
-       // line: 1.42857143;
-       color: "White",
-       backgroundColor: "#2ecc71",
-       borderWidth:1,
-       borderColor:"#ccc",
-       borderRadius: 4,
-       marginLeft:750,
-       marginTop:83,
-       padding:5
- 
+        fontSize: 20,
+        // line: 1.42857143;
+        color: "White",
+        backgroundColor: "#2ecc71",
+        borderWidth: 1,
+        borderColor: "#ccc",
+        borderRadius: 4,
+        marginLeft: 750,
+        marginTop: 83,
+        padding: 5
+
     }),
-    sideText1:RX.Styles.createTextStyle({
+    sideText1: RX.Styles.createTextStyle({
         fontSize: 20,
         color: 'white',
-        fontWeight:'bold',
-        marginBottom:-120,
-        backgroundColor:'#1a153b',
+        fontWeight: 'bold',
+        marginBottom: -120,
+        backgroundColor: '#1a153b',
         width: '14%',
-         height: 41,
-         justifyContent: 'center',
+        height: 41,
+        justifyContent: 'center',
         alignItems: 'center',
-        marginLeft:-750,
-        marginTop:-42,
-        padding:5,
-        
- 
+        marginLeft: -750,
+        marginTop: -42,
+        padding: 5,
+
+
     }),
     welcome: RX.Styles.createScrollViewStyle({
         top: -50,
         fontSize: 25,
         color: 'white',
-        textAlign:'center',
-     margintop:95
+        textAlign: 'center',
+        margintop: 95
 
     }),
     container: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'#1a153b',
-        height:80,
-        padding:-10,
+        backgroundColor: '#1a153b',
+        height: 80,
+        padding: -10,
     }),
-  jumbotron:RX.Styles.createViewStyle({
-       boxshadow:'pink',
+    jumbotron: RX.Styles.createViewStyle({
+        boxshadow: 'pink',
         margintop: 20,
-         paddingleft: -20
-  }),
+        paddingleft: -20
+    }),
     flute: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'left',
-        backgroundColor:'#f5f5f3',
-        padding:5
+        backgroundColor: '#f5f5f3',
+        padding: 5
     }),
     head: RX.Styles.createScrollViewStyle({
         fontSize: 20,
         color: '#3b3751',
-        textAlign:'center',
-        alignSelf:'center',
-        justifyContent:'center',
-        textTransform:'capitalize'
+        textAlign: 'center',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        textTransform: 'capitalize'
     }),
     sideHead: RX.Styles.createScrollViewStyle({
         fontSize: 18,
         color: '#232229',
-        textTransform:'capitalize',
-        marginTop:19
+        textTransform: 'capitalize',
+        marginTop: 19
     }),
     sideHeadxs: RX.Styles.createScrollViewStyle({
         fontSize: 10,
         color: '#232229',
-        textTransform:'capitalize',
-        marginTop:19
+        textTransform: 'capitalize',
+        marginTop: 19
     }),
     quotes: RX.Styles.createScrollViewStyle({
         fontSize: 15,
         color: '#ff0000',
-        textTransform:'capitalize',
-        marginTop:32,
-        height:41,
-        width:169,
-        padding:4
+        textTransform: 'capitalize',
+        marginTop: 32,
+        height: 41,
+        width: 169,
+        padding: 4
     }),
     quotesxs: RX.Styles.createScrollViewStyle({
         fontSize: 10,
         color: '#ff0000',
-        textTransform:'capitalize',
-        marginTop:32,
-        height:41,
-        width:169,
-        padding:4
+        textTransform: 'capitalize',
+        marginTop: 32,
+        height: 41,
+        width: 169,
+        padding: 4
     }),
     valid: RX.Styles.createScrollViewStyle({
         fontSize: 15,
         color: '#f8ba01',
-        textTransform:'capitalize',
-        marginTop:32,
-        height:41,
-        width:169,
-        padding:4,
-        marginLeft:71
+        textTransform: 'capitalize',
+        marginTop: 32,
+        height: 41,
+        width: 169,
+        padding: 4,
+        marginLeft: 71
     }),
     quoted: RX.Styles.createScrollViewStyle({
         fontSize: 15,
         color: '#101010',
-        textTransform:'capitalize',
-        backgroundColor:"#c7c7c7",
-        marginTop:41,
-        height:41,
-        width:169,
-        padding:4,
-        marginLeft:92
+        textTransform: 'capitalize',
+        backgroundColor: "#c7c7c7",
+        marginTop: 41,
+        height: 41,
+        width: 169,
+        padding: 4,
+        marginLeft: 92
     }),
     subQuotes: RX.Styles.createScrollViewStyle({
         fontSize: 15,
         color: '#101010',
-        textTransform:'capitalize',
-        backgroundColor:"#c7c7c7",
-        marginTop:41,
-        height:41,
-        width:169
+        textTransform: 'capitalize',
+        backgroundColor: "#c7c7c7",
+        marginTop: 41,
+        height: 41,
+        width: 169
 
     }),
     ncb: RX.Styles.createScrollViewStyle({
         fontSize: 15,
         color: '#101010',
-        textTransform:'capitalize',
-        backgroundColor:"#c7c7c7",
-        marginTop:41,
-        alignItems:'left',
-        height:41,
-        padding:4
+        textTransform: 'capitalize',
+        backgroundColor: "#c7c7c7",
+        marginTop: 41,
+        alignItems: 'left',
+        height: 41,
+        padding: 4
     }),
     subNcb: RX.Styles.createScrollViewStyle({
         fontSize: 15,
         color: '#101010',
-        textTransform:'capitalize',
-        backgroundColor:"#c7c7c7",
-        marginTop:41,
-        alignItems:'left',
-        height:41
+        textTransform: 'capitalize',
+        backgroundColor: "#c7c7c7",
+        marginTop: 41,
+        alignItems: 'left',
+        height: 41
     }),
     tryHead: RX.Styles.createScrollViewStyle({
         fontSize: 15,
         color: '#3b3a47',
-        textTransform:'capitalize'
+        textTransform: 'capitalize'
     }),
     tryHeadxs: RX.Styles.createScrollViewStyle({
         fontSize: 15,
         color: '#3b3a47',
-        textTransform:'capitalize'
+        textTransform: 'capitalize'
     }),
     clientHead: RX.Styles.createScrollViewStyle({
         fontSize: 20,
         color: '#413a6f',
-        textTransform:'capitalize'
+        textTransform: 'capitalize'
     }),
     CliEntHead: RX.Styles.createScrollViewStyle({
         fontSize: 16,
         color: 'Black',
-        textTransform:'capitalize',
-        marginLeft:36,
-        marginTop:-19
+        textTransform: 'capitalize',
+        marginLeft: 36,
+        marginTop: -19
     }),
     clientHeadts: RX.Styles.createScrollViewStyle({
         fontSize: 15,
         color: '#000000',
-        textTransform:'capitalize'
+        textTransform: 'capitalize'
     }),
     clientHeadQuotes: RX.Styles.createScrollViewStyle({
         fontSize: 20,
         color: '#000000',
-        textTransform:'capitalize'
+        textTransform: 'capitalize'
     }),
     clientHeadxs: RX.Styles.createScrollViewStyle({
         fontSize: 15,
         color: '#413a6f',
-        textTransform:'capitalize'
+        textTransform: 'capitalize'
     }),
     clientDate: RX.Styles.createScrollViewStyle({
         fontSize: 10,
         color: '#85848c',
-        textTransform:'capitalize'
+        textTransform: 'capitalize'
     }),
     client: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'left',
-        backgroundColor:'#ffffff',
-        padding:5,
-        flex:1,
-        flexDirection:'row',
-        borderBottomWidth:2,
-        borderColor:"#ff0000"
+        backgroundColor: '#ffffff',
+        padding: 5,
+        flex: 1,
+        flexDirection: 'row',
+        borderBottomWidth: 2,
+        borderColor: "#ff0000"
     }),
     clientLeft: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'left',
-        backgroundColor:'#ffffff',
-        padding:5,
-        flex:1,
-        flexDirection:'row',
-        borderLeftWidth:2,
-        borderColor:"#ff0000"
+        backgroundColor: '#ffffff',
+        padding: 5,
+        flex: 1,
+        flexDirection: 'row',
+        borderLeftWidth: 2,
+        borderColor: "#ff0000"
     }),
     expired: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'left',
-        backgroundColor:'#ffffff',
-        padding:5,
-        flex:1,
-        flexDirection:'row',
-        borderBottomWidth:2,
-        borderColor:"#f8ba01"
+        backgroundColor: '#ffffff',
+        padding: 5,
+        flex: 1,
+        flexDirection: 'row',
+        borderBottomWidth: 2,
+        borderColor: "#f8ba01"
     }),
     btn: RX.Styles.createViewStyle({
         justifyContent: 'left',
         alignItems: 'left',
-        backgroundColor:'#ffffff',
-        padding:5,
-        flex:1,
-        flexDirection:'row'
+        backgroundColor: '#ffffff',
+        padding: 5,
+        flex: 1,
+        flexDirection: 'row'
     }),
     nextBtn: RX.Styles.createViewStyle({
-        marginTop:15,
-        marginLeft:62
+        marginTop: 15,
+        marginLeft: 62
     }),
     titleText: RX.Styles.createTextStyle({
         fontSize: 16,
@@ -309,35 +309,35 @@ module.exports = {
         marginHorizontal: 12,
         color: 'white'
     }),
-    sideText:RX.Styles.createTextStyle({
+    sideText: RX.Styles.createTextStyle({
         fontSize: 16,
         color: 'black',
-        fontWeight:'bold',
+        fontWeight: 'bold',
 
     }),
-    siDeText:RX.Styles.createTextStyle({
+    siDeText: RX.Styles.createTextStyle({
         fontSize: 16,
         color: 'Black',
-        fontWeight:'bold',
-        textAlign:'center',
-        justifyContent:'center'
+        fontWeight: 'bold',
+        textAlign: 'center',
+        justifyContent: 'center'
 
     }),
-    SIDETEXT:RX.Styles.createTextStyle({
+    SIDETEXT: RX.Styles.createTextStyle({
         fontSize: 16,
         color: 'BLUE',
-        fontWeight:'bold',
-        marginLeft:18
+        fontWeight: 'bold',
+        marginLeft: 18
 
     }),
-    SIdeText:RX.Styles.createTextStyle({
+    SIdeText: RX.Styles.createTextStyle({
         fontSize: 16,
         color: 'black',
-        fontWeight:'bold',
-        marginLeft:-50
+        fontWeight: 'bold',
+        marginLeft: -50
 
     }),
-    sideMar:RX.Styles.createTextStyle({
+    sideMar: RX.Styles.createTextStyle({
         marginTop: 10
     }),
     buybuttonText: RX.Styles.createTextStyle({
@@ -352,73 +352,73 @@ module.exports = {
         fontSize: 14,
         alignSelf: 'stretch',
         backgroundColor: 'transparent',
-        borderWidth:1 ,
-        borderRightWidth:0,
-        borderTopWidth:0,
-        borderLeftWidth:0,
-        borderStyle:'solid',
-        borderColor:'#ccc'
+        borderWidth: 1,
+        borderRightWidth: 0,
+        borderTopWidth: 0,
+        borderLeftWidth: 0,
+        borderStyle: 'solid',
+        borderColor: '#ccc'
     }),
     image: RX.Styles.createViewStyle({
         height: 45,
         width: 100,
-        backgroundColor:'#FFFFFF',
-        marginTop:10
+        backgroundColor: '#FFFFFF',
+        marginTop: 10
     }),
     JUKE: RX.Styles.createViewStyle({
         height: 63,
         width: 99,
-        backgroundColor:'#FFFFFF',
-        marginTop:-1
+        backgroundColor: '#FFFFFF',
+        marginTop: -1
     }),
     quoteImage: RX.Styles.createViewStyle({
         height: 45,
         width: 100,
-        backgroundColor:'#FFFFFF',
-        marginTop:19
+        backgroundColor: '#FFFFFF',
+        marginTop: 19
     }),
     flute: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'left',
-        backgroundColor:'#f5f5f3',
-        padding:5
+        backgroundColor: '#f5f5f3',
+        padding: 5
     }),
     head: RX.Styles.createScrollViewStyle({
         fontSize: 30,
         color: '#3b3751',
-        textTransform:'capitalize'
+        textTransform: 'capitalize'
     }),
     assitance: RX.Styles.createTextStyle({
         fontSize: 20,
         color: '#1a1828',
-        textTransform:'capitalize',
+        textTransform: 'capitalize',
     }),
     assitanceMob: RX.Styles.createTextStyle({
         fontSize: 15,
         color: '#1a1828',
-        textTransform:'capitalize',
+        textTransform: 'capitalize',
     }),
     assitanceBor: RX.Styles.createTextStyle({
-        borderBottomWidth:'1',
-        borderColor:'#cccccc'
+        borderBottomWidth: '1',
+        borderColor: '#cccccc'
     }),
     check: RX.Styles.createViewStyle({
-       marginTop:5
+        marginTop: 5
     }),
     contain: RX.Styles.createViewStyle({
-        backgroundColor:'#white',
+        backgroundColor: '#white',
     }),
-    Text:RX.Styles.createTextStyle({
-        fontSize:15,
-        color:'#000000'
+    Text: RX.Styles.createTextStyle({
+        fontSize: 15,
+        color: '#000000'
     }),
-    TExt:RX.Styles.createTextStyle({
-        fontSize:15,
-        color:'#000000',
-        marginTop:10
+    TExt: RX.Styles.createTextStyle({
+        fontSize: 15,
+        color: '#000000',
+        marginTop: 10
     }),
     Self: RX.Styles.createViewStyle({
-        backgroundColor:'#FF6347'
+        backgroundColor: '#FF6347'
 
     }),
     button1Hover: RX.Styles.createButtonStyle({
@@ -433,238 +433,238 @@ module.exports = {
         fontSize: 14,
         color: 'White',
         justifyContent: 'center',
-        margingright:50
+        margingright: 50
     }),
-    Form:RX.Styles.createViewStyle({
+    Form: RX.Styles.createViewStyle({
         display: 'block',
-         width: '80%',
-         height: 34,
-         // padding: 6px 12px;
-          fontSize: 14,
+        width: '80%',
+        height: 34,
+        // padding: 6px 12px;
+        fontSize: 14,
         // line: 1.42857143;
         color: "#555",
         backgroundColor: "white",
-        borderWidth:1,
-        borderColor:"#ccc",
+        borderWidth: 1,
+        borderColor: "#ccc",
         borderRadius: 4
     }),
-    Form10:RX.Styles.createViewStyle({
+    Form10: RX.Styles.createViewStyle({
         display: 'block',
-         width: '54%',
-         height: 34,
-         textAlign:"justify",
-         // padding: 6px 12px;
-          fontSize: 18,
+        width: '54%',
+        height: 34,
+        textAlign: "justify",
+        // padding: 6px 12px;
+        fontSize: 18,
         //   color:'#060505',
-        fontColor:"white",
-        marginLeft:72,
-          backgroundColor:"#9d9d9d",
-          
- 
+        fontColor: "white",
+        marginLeft: 72,
+        backgroundColor: "#9d9d9d",
+
+
         // line: 1.42857143;
-      marginBottom:138,
-        
-        borderWidth:1,
-        borderColor:"#9d9d9d",
+        marginBottom: 138,
+
+        borderWidth: 1,
+        borderColor: "#9d9d9d",
         borderRadius: 4
     }),
-    FOrm:RX.Styles.createViewStyle({
+    FOrm: RX.Styles.createViewStyle({
         display: 'block',
-         width: '80%',
-         height: 34,
-         // padding: 6px 12px;
-          fontSize: 14,
+        width: '80%',
+        height: 34,
+        // padding: 6px 12px;
+        fontSize: 14,
         // line: 1.42857143;
         color: "#555",
         backgroundColor: "#fff",
-        borderWidth:1,
-        borderColor:"#ccc",
+        borderWidth: 1,
+        borderColor: "#ccc",
         borderRadius: 4,
-        marginLeft:-53
+        marginLeft: -53
     }),
-    button:RX.Styles.createViewStyle({
+    button: RX.Styles.createViewStyle({
         display: 'block',
-         width: '14%',
-         height: 41,
-         justifyContent: 'center',
+        width: '14%',
+        height: 41,
+        justifyContent: 'center',
         alignItems: 'center',
-         // padding: 6px 12px;
-          fontSize: 20,
+        // padding: 6px 12px;
+        fontSize: 20,
         // line: 1.42857143;
         color: "White",
         backgroundColor: "blue",
-        borderWidth:1,
-        borderColor:"#ccc",
+        borderWidth: 1,
+        borderColor: "#ccc",
         borderRadius: 4,
-        marginLeft:392,
-        marginTop:30,
-        padding:5
- 
+        marginLeft: 392,
+        marginTop: 30,
+        padding: 5
+
     }),
-    BUTTON4 :RX.Styles.createViewStyle({
+    BUTTON4: RX.Styles.createViewStyle({
         display: 'block',
-         width: '14%',
-         height: 41,
-         justifyContent: 'center',
+        width: '14%',
+        height: 41,
+        justifyContent: 'center',
         alignItems: 'center',
-         // padding: 6px 12px;
-          fontSize: 20,
+        // padding: 6px 12px;
+        fontSize: 20,
         // line: 1.42857143;
         color: "White",
         backgroundColor: "blue",
-        borderWidth:1,
-        borderColor:"#ccc",
+        borderWidth: 1,
+        borderColor: "#ccc",
         borderRadius: 4,
-        marginLeft:589,
-        marginTop:30,
-        padding:5
- 
+        marginLeft: 589,
+        marginTop: 30,
+        padding: 5
+
     }),
-    BUTTON5 :RX.Styles.createViewStyle({
+    BUTTON5: RX.Styles.createViewStyle({
         display: 'block',
-         width: '14%',
-         height: 41,
-         justifyContent: 'center',
+        width: '14%',
+        height: 41,
+        justifyContent: 'center',
         alignItems: 'center',
-         // padding: 6px 12px;
-          fontSize: 20,
+        // padding: 6px 12px;
+        fontSize: 20,
         // line: 1.42857143;
         color: "White",
         backgroundColor: "blue",
-        borderWidth:1,
-        borderColor:"#ccc",
+        borderWidth: 1,
+        borderColor: "#ccc",
         borderRadius: 4,
-        marginLeft:450,
-        marginTop:30,
-        padding:5
- 
+        marginLeft: 450,
+        marginTop: 30,
+        padding: 5
+
     }),
-    BUTTON6 :RX.Styles.createViewStyle({
+    BUTTON6: RX.Styles.createViewStyle({
         display: 'block',
-         width: '14%',
-         height: 41,
-         justifyContent: 'center',
+        width: '14%',
+        height: 41,
+        justifyContent: 'center',
         alignItems: 'center',
-         // padding: 6px 12px;
-          fontSize: 20,
+        // padding: 6px 12px;
+        fontSize: 20,
         // line: 1.42857143;
         color: "White",
         backgroundColor: "blue",
-        borderWidth:1,
-        borderColor:"#ccc",
+        borderWidth: 1,
+        borderColor: "#ccc",
         borderRadius: 4,
-        marginLeft:455,
-        marginTop:-133,
-        padding:5
- 
+        marginLeft: 455,
+        marginTop: -133,
+        padding: 5
+
     }),
-    BUTTON7 :RX.Styles.createViewStyle({
+    BUTTON7: RX.Styles.createViewStyle({
         display: 'block',
-         width: '14%',
-         height: 41,
-         justifyContent: 'center',
+        width: '14%',
+        height: 41,
+        justifyContent: 'center',
         alignItems: 'center',
-         // padding: 6px 12px;
-          fontSize: 20,
+        // padding: 6px 12px;
+        fontSize: 20,
         // line: 1.42857143;
         color: "White",
         backgroundColor: "blue",
-        borderWidth:1,
-        borderColor:"#ccc",
+        borderWidth: 1,
+        borderColor: "#ccc",
         borderRadius: 4,
-        marginLeft:444,
-        marginTop:-8,
-        padding:5
- 
+        marginLeft: 444,
+        marginTop: -8,
+        padding: 5
+
     }),
-    BUTTON13:RX.Styles.createViewStyle({
+    BUTTON13: RX.Styles.createViewStyle({
         display: 'block',
-         width: '14%',
-         height: 41,
-         justifyContent: 'center',
+        width: '14%',
+        height: 41,
+        justifyContent: 'center',
         alignItems: 'center',
-         // padding: 6px 12px;
-          fontSize: 20,
+        // padding: 6px 12px;
+        fontSize: 20,
         // line: 1.42857143;
         color: "White",
         backgroundColor: "blue",
-        borderWidth:1,
-        borderColor:"#ccc",
+        borderWidth: 1,
+        borderColor: "#ccc",
         borderRadius: 4,
-        marginLeft:593,
-        marginTop:14,
-        padding:5
- 
+        marginLeft: 593,
+        marginTop: 14,
+        padding: 5
+
     }),
-    nextbutton:RX.Styles.createViewStyle({
+    nextbutton: RX.Styles.createViewStyle({
         display: 'block',
-         width: '50%',
-         height: 34,
-         justifyContent: 'center',
+        width: '50%',
+        height: 34,
+        justifyContent: 'center',
         alignItems: 'center',
-         // padding: 6px 12px;
-          fontSize: 20,
+        // padding: 6px 12px;
+        fontSize: 20,
         // line: 1.42857143;
         color: "White",
         backgroundColor: "blue",
-        borderWidth:1,
-        borderColor:"#ccc",
+        borderWidth: 1,
+        borderColor: "#ccc",
         borderRadius: 4,
-        marginLeft:221,
-        marginTop:20
+        marginLeft: 221,
+        marginTop: 20
     }),
-    Tab:RX.Styles.createViewStyle({
+    Tab: RX.Styles.createViewStyle({
         backgroundColor: "#f8ad46",
-        borderWidth:1,
-        borderColor:"#ccc",
+        borderWidth: 1,
+        borderColor: "#ccc",
         borderRadius: 4,
-        color:"#FFF"
+        color: "#FFF"
     }),
-    customBtn:RX.Styles.createViewStyle({
+    customBtn: RX.Styles.createViewStyle({
         color: "#fff",
         backgroundColor: "#ff606b",
         borderColor: "#ff606b",
-        borderWidth:1,
-        padding:10,
+        borderWidth: 1,
+        padding: 10,
         borderRadius: 4
     }),
-    marTop:RX.Styles.createViewStyle({
-      marginTop:20,
+    marTop: RX.Styles.createViewStyle({
+        marginTop: 20,
     }),
-    marTOP:RX.Styles.createViewStyle({
-        marginTop:20,
-        marginLeft:250,
-      }),
-    marTop40:RX.Styles.createViewStyle({
-        marginTop:40,
+    marTOP: RX.Styles.createViewStyle({
+        marginTop: 20,
+        marginLeft: 250,
     }),
-    marTopxs:RX.Styles.createViewStyle({
-        marginTop:58,
-        color:'#fa774d'
+    marTop40: RX.Styles.createViewStyle({
+        marginTop: 40,
     }),
-    marTopcs:RX.Styles.createViewStyle({
-        marginTop:20,
-        textAlign:'right'
+    marTopxs: RX.Styles.createViewStyle({
+        marginTop: 58,
+        color: '#fa774d'
     }),
-    btnMaxWidth:RX.Styles.createViewStyle({
-        width:"100%"
+    marTopcs: RX.Styles.createViewStyle({
+        marginTop: 20,
+        textAlign: 'right'
     }),
-    marTop10:RX.Styles.createViewStyle({
-        marginTop:10
+    btnMaxWidth: RX.Styles.createViewStyle({
+        width: "100%"
     }),
-    mobFont:RX.Styles.createViewStyle({
-        color:"#000000",
-        padding:'5'
+    marTop10: RX.Styles.createViewStyle({
+        marginTop: 10
     }),
-    marTop17:RX.Styles.createViewStyle({
-        marginTop:17
+    mobFont: RX.Styles.createViewStyle({
+        color: "#000000",
+        padding: '5'
     }),
-    cmpBack:RX.Styles.createViewStyle({
+    marTop17: RX.Styles.createViewStyle({
+        marginTop: 17
+    }),
+    cmpBack: RX.Styles.createViewStyle({
         backgroundColor: "#ffffff",
     }),
     clientBor: RX.Styles.createViewStyle({
-        borderBottomWidth:1,
-        borderColor:"#cccccc"
+        borderBottomWidth: 1,
+        borderColor: "#cccccc"
     }),
 }
 

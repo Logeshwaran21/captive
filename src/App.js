@@ -13,6 +13,9 @@ import ProviderHistory from './ProviderHistory'
 import Registerpage from './Registerpage'
 import ProviderDetails from './ProviderDetails'
 import TPA from './TPA'
+import Historydetails from './Historydetails'
+import Userdet from './Userdet'
+import All from './All'
 
 
 let NavigationRouteId = {
@@ -23,7 +26,10 @@ let NavigationRouteId = {
     ProviderDetails: "ProviderDetails",
     ProviderHistory: "ProviderHistory",
     Registerpage: "Registerpage",
-    TPA: "TPA"
+    TPA: "TPA",
+    Historydetails: "Historydetails",
+    Userdet: "Userdet",
+    All: "All"
 };
 
 const styles = {
@@ -49,13 +55,17 @@ export default class App extends RX.Component {
         this._onPressProviderHistory = this.__onPressProviderHistory.bind(this);
         this._onPressRegisterpage = this.__onPressRegisterpage.bind(this);
         this._onPressTPA = this.__onPressTPA.bind(this);
+        this._onPressHistorydetails = this.__onPressHistorydetails.bind(this);
+        this._onPressUserdet = this.__onPressUserdet.bind(this);
+        this._onPressAll = this.__onPressAll.bind(this);
+
 
 
     }
 
     componentDidMount() {
         this._navigator.immediatelyResetRouteStack([{
-            routeId: NavigationRouteId.Userdetails,
+            routeId: NavigationRouteId.CreatePolicy,
             sceneConfigType: "Fade"
         }]);
     }
@@ -103,13 +113,61 @@ export default class App extends RX.Component {
             case NavigationRouteId.TPA:
                 return <TPA TPA={this.__onPressTPA} />
 
+            case NavigationRouteId.Historydetails:
+                return <Historydetails Historydetails={this.__onPressHistorydetails} />
 
+            case NavigationRouteId.Userdet:
+                return <Userdet Userdet={this.__onPressUserdet} />
+
+            case NavigationRouteId.All:
+                return <All All={this.__onPressAll} />
 
 
         }
 
         return null;
     }
+    __onPressAll() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    __onPressUserdet() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    __onPressHistorydetails() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    __onPressTPA() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+
     __onPressTPA() {
         // this._navigator.pop();
         this._navigator.push({

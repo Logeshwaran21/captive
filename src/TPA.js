@@ -84,7 +84,7 @@ var res
 var Policyid
 var responseJson
 var bulkdata
-export default class RetriveBulkRecords extends RX.Component {
+export default class TPA extends RX.Component {
     constructor(props) {
         super(props);
         this.state = {

@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import styling from './AppStyles'
 import RX from 'reactxp';
 
 import { Nav, NavItem, NavDropdown, MenuItem, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, label, Visible, Checkbox, lg, xs } from 'react-bootstrap';
