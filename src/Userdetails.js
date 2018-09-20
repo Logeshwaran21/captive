@@ -137,9 +137,47 @@ export default class Userdetails extends RX.Component {
                 }
             ]
         });
+        // input box iteration handle submit
+        this.state = { values: [] };
+        // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    onChangePost2 = () => {
 
+
+
+        console.log("hiiiiii")
+        return fetch('http://localhost:8082/createpolicy', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+
+            },
+
+            body: JSON.stringify({
+
+                "policyID": this.state.policyID,
+                "rules": [this.state.rules]
+                // params:[
+                //     "claimAmount",
+                //       "maxclim"
+                //   ]
+
+            }),
+        }).then((response) => response.json()).then((responseJson) => {
+
+            var res = responseJson;
+            var responseJson1 = JSON.stringify(res)
+
+            swal("Policy created succesfully", responseJson1)
+            console.log("response", responseJson1)
+
+        }).catch(function () {
+            console.log("error");
+        });
+
+    }
     onChangePost1 = () => {
         console.log("welcome")
 
@@ -370,17 +408,29 @@ export default class Userdetails extends RX.Component {
     }
 
     onChangeuserId = (value) => {
-        this.setState({ userHistoryDetails: value });
-
-        console.log("userId");
-        console.log(this.state.userHistoryDetails, "userId");
+        this.setState({ rules: value });
+        // var a = new Array(this.state.rules);
+        // var s = a.join("");
+        console.log(this.state.rules, "rules------>");
+    }
+    onChangepolicId = (value) => {
+        this.setState({ policyID: value });
+        console.log(this.state.policyID, "policyID");
     }
     onChangeuserId1 = (value) => {
         this.setState({ userHistoryDetails1: value });
 
         console.log("userId");
-        console.log(this.state.userHistoryDetails1, "userId");
+        console.log(this.state.userHistoryDetails1, "userId---->");
     }
+
+    onChangepolicyID = (value) => {
+        this.setState({ policyID: value });
+        console.log(this.state.policyID, "policyID");
+    }
+
+
+
 
     userId = () => {
 
@@ -423,9 +473,64 @@ export default class Userdetails extends RX.Component {
         this.setState({ policyandrules: false })
         this.setState({ policyandrules1: true })
     }
+    // iteration input click function start
+    createUI() {
+        return this.state.values.map((el, i) =>
+            <div key={i}>
+                <input type="text" value={el || ''} onChange={this.handleChange.bind(this, i)} />
+                <input type='button' value='remove' onClick={this.removeClick.bind(this, i)} />
+            </div>
+        )
+    }
 
+    handleChange(i, event) {
+        let values = [...this.state.values];
+        values[i] = event.target.value;
+        this.setState({ values });
+    }
+
+    addClick() {
+        this.setState(prevState => ({ values: [...prevState.values, ''] }))
+    }
+
+    removeClick(i) {
+        let values = [...this.state.values];
+        values.splice(i, 1);
+        this.setState({ values });
+    }
+
+    // handleSubmit(event) {
+    //     alert('A name was submitted: ' + this.state.values.join(', '));
+    //     event.preventDefault();
+    // }
+    // // iteration input click function end
+    // const listItems = this.props.responseJson.map((item) => {
+    //     return (
+    //         <li key={item.NAME}>
+
+    //         </li>
+    //     );
+    // });
+    createUI1() {
+        let response = this.state.responseJson.message;
+        return response.map((userData) => {
+            console.log(userData.NAME);
+        });
+    }
+    handleChange(i, event) {
+        let values = [...this.state.values];
+        values[i] = event.target.value;
+        this.setState({ values });
+    }
     render() {
         // resJson1 = this.props.navigatorRoute.resJson1
+        // var length = responseJson
+        // for (var i = 0; i < length; i++) {
+        //     var obj = localdata[i];
+
+        //     console.log(obj.NAME);
+        // }
+
         return (
 
 
@@ -464,15 +569,38 @@ export default class Userdetails extends RX.Component {
                                                     {'Submit'}
                                                 </RX.Button>
 
-                                                <label for="lgFormGroupInput" style={styles.sideText} class="col-sm-2 col-form-label col-form-label-lg">Enter User Identification Number:</label>
+                                                <label for="lgFormGroupInput" style={styles.sideText} class="col-sm-2 col-form-label col-form-label-lg">policy id</label>
                                                 <div class="col-sm-10">
-                                                    <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.userHistoryDetails} onChangeText={this.onChangeuserId} />
+                                                    {/* <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.policyID} onChangeText={() => { this.onChangeuserId, this.onChangepolicId }} /> */}
+                                                    {/* <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.policyID} onChangeText={() => { this.onChangeuserId, this.onChangepolicId }} /> */}
+                                                    <RX.TextInput
+                                                        // style={styling.Form}
+                                                        placeholder=""
+                                                        value={this.state.policyID}
+                                                        onChangeText={this.onChangepolicyID}
+                                                    // defaultValue={ this.state.inputValue }
+                                                    />
+                                                </div>
+                                                <label for="lgFormGroupInput" style={styles.sideText}>Rules</label>
+
+                                                <div>
+                                                    <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.rules} onChangeText={this.onChangeuserId} />
 
 
                                                 </div>
+                                                {/* form include start */}
+                                                <form>
+                                                    {this.createUI()}
+                                                    <input type='button' value='add more' onClick={this.addClick.bind(this)} />
+                                                    {/* <input type="submit" value="Submit" /> */}
+                                                </form>
+                                                {/* form include end */}
                                             </div>
                                             <div>
-
+                                                {/* <input onclick={this.onChangePost2} type="submit" value="Submit" /> */}
+                                                <RX.Button style={styles.button1} onPress={this.onChangePost2} refs="id" >
+                                                    {'Submit'}
+                                                </RX.Button>
                                             </div>
 
                                         </div> : null}
@@ -503,19 +631,22 @@ export default class Userdetails extends RX.Component {
 
                                         </div> : null}
 
-
+                                    {/* ---------------------- Retrieve bulk data start-------------------------------------- */}
                                     {this.state.bulkdata ?
                                         <div class="col-xs-6 col-sm-3 placeholder">
 
                                             <div class="container">
                                                 <div>
-                                                    <RX.Button onPress={() => (this.onChangeGet())} ><a style={{ color: "blue" }}><b>Click here view Entire User Details :</b><br></br><br></br>{this.state.bulkdata} <span class="sr-only">(current)</span></a></RX.Button>
+                                                    <RX.Button onPress={() => (this.onChangeGet(), this.createUI1())} ><a style={{ color: "blue" }}><b>Click here view Entire User Details :</b><br></br><br></br>{this.state.bulkdata} <span class="sr-only">(current)</span></a></RX.Button>
 
                                                 </div>
-
+                                                <ul>
+                                                    {/* {listItems} */}
+                                                </ul>
 
                                             </div>
                                         </div> : null}
+                                    {/* --------------------------------------------Retrieve bulk records end---------------------------------------- */}
 
                                     {this.state.policyandrules ?
 

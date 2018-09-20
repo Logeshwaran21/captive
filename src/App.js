@@ -16,6 +16,8 @@ import TPA from './TPA'
 import Historydetails from './Historydetails'
 import Userdet from './Userdet'
 import All from './All'
+import History from './History'
+
 
 
 let NavigationRouteId = {
@@ -29,7 +31,8 @@ let NavigationRouteId = {
     TPA: "TPA",
     Historydetails: "Historydetails",
     Userdet: "Userdet",
-    All: "All"
+    All: "All",
+    History: "History"
 };
 
 const styles = {
@@ -58,6 +61,7 @@ export default class App extends RX.Component {
         this._onPressHistorydetails = this.__onPressHistorydetails.bind(this);
         this._onPressUserdet = this.__onPressUserdet.bind(this);
         this._onPressAll = this.__onPressAll.bind(this);
+        this._onPressHistory = this.__onPressHistory.bind(this);
 
 
 
@@ -65,7 +69,7 @@ export default class App extends RX.Component {
 
     componentDidMount() {
         this._navigator.immediatelyResetRouteStack([{
-            routeId: NavigationRouteId.CreatePolicy,
+            routeId: NavigationRouteId.History,
             sceneConfigType: "Fade"
         }]);
     }
@@ -122,10 +126,23 @@ export default class App extends RX.Component {
             case NavigationRouteId.All:
                 return <All All={this.__onPressAll} />
 
+            case NavigationRouteId.History:
+                return <History History={this.__onPressHistory} />
+
 
         }
 
         return null;
+    }
+    __onPressHistory() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
     }
     __onPressAll() {
         // this._navigator.pop();

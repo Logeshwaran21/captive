@@ -2,7 +2,7 @@ import React from 'react';
 import RX from 'reactxp';
 import { Nav, NavItem, NavDropdown, MenuItem, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, label, Visible, Checkbox, lg, xs } from 'react-bootstrap';
 import styling from './AppStyles';
-import ReactDOM from 'react-dom';
+
 
 /*const {
 Welcome
@@ -230,7 +230,7 @@ export default class CreatePolicy extends RX.Component {
     }
 
     onChangePost = () => {
-        policy = this.state.policyID
+
 
 
         console.log("hiiiiii")
@@ -245,7 +245,7 @@ export default class CreatePolicy extends RX.Component {
             body: JSON.stringify({
 
                 "policyID": this.state.policyID,
-                "rules": [this.state.rules]
+                "rules": [this.state.values]
                 // params:[
                 //     "claimAmount",
                 //       "maxclim"
@@ -353,7 +353,37 @@ export default class CreatePolicy extends RX.Component {
 
     }
 
+    // iteration input click function start
+    createUI() {
+        return this.state.values.map((el, i) =>
+            <div key={i}>
+                <input type="text" value={el || ''} onChange={this.handleChange.bind(this, i)} />
+                <input type='button' value='remove' onClick={this.removeClick.bind(this, i)} />
+            </div>
+        )
+    }
 
+    handleChange(i, event) {
+        let values = [...this.state.values];
+        values[i] = event.target.value;
+        this.setState({ values });
+    }
+
+    addClick() {
+        this.setState(prevState => ({ values: [...prevState.values, ''] }))
+    }
+
+    removeClick(i) {
+        let values = [...this.state.values];
+        values.splice(i, 1);
+        this.setState({ values });
+    }
+
+    handleSubmit(event) {
+        alert('A name was submitted: ' + this.state.values.join(', '));
+        event.preventDefault();
+    }
+    // iteration input click function end
 
     render() {
         return (
@@ -394,6 +424,15 @@ export default class CreatePolicy extends RX.Component {
                                                     <label for="lgFormGroupInput" style={styles.policyId} class="col-sm-2 col-form-label col-form-label-lg">Policy ID:</label>
 
                                                     <RX.TextInput type="email" style={styles.policyIdTextBox} value={this.state.policyID} onChangeText={this.onChangepolicyId} id="lgFormGroupInput" placeholder="" />
+                                                </div>
+                                                <div>
+                                                    {/* form include start */}
+                                                    <form onSubmit={this.handleSubmit}>
+                                                        {this.createUI()}
+                                                        <input type='button' value='add more' onClick={() => { this.addClick.bind(this), this.onChangePost() }} />
+                                                        <input type="submit" value="Submit" />
+                                                    </form>
+                                                    {/* form include end */}
                                                 </div>
                                                 <br></br>
                                                 <div >
@@ -488,6 +527,7 @@ export default class CreatePolicy extends RX.Component {
 
                                                 </RX.Button>
                                             </div>
+
                                         </div>
 
 
@@ -618,50 +658,3 @@ export default class CreatePolicy extends RX.Component {
 
     }
 }
-<div id="container"></div>
-class DocumentInput extends React.Component {
-    render() {
-        return <input
-            type="file"
-            name={`document-${this.props.index}-document`}
-        />;
-    }
-}
-
-class DocumentsFieldSet extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            documents: []
-        }
-
-        this.add = this.add.bind(this);
-    }
-
-    add() {
-        const documents = this.state.documents.concat(DocumentInput);
-        this.setState({ documents });
-    }
-
-    render() {
-        const documents = this.state.documents.map((Element, index) => {
-            return <Element key={index} index={index} />
-        });
-
-        return <div>
-            <button onClick={this.add}>Add</button>
-
-            <div className="inputs">
-                {documents}
-            </div>
-        </div>
-
-    }
-}
-
-ReactDOM.render(
-    <DocumentsFieldSet />,
-    document.getElementById('container')
-);
-

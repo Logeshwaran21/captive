@@ -3,6 +3,7 @@ import React from 'react';
 import RX from 'reactxp';
 import styling from './AppStyles';
 import { Nav, NavItem, NavDropdown, MenuItem, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, label, Visible, Checkbox, lg, xs } from 'react-bootstrap';
+// import DatePicker from 'react-native-datepicker'
 
 const styles = {
     scroll: RX.Styles.createScrollViewStyle({
@@ -531,7 +532,7 @@ export default class Patientdetails extends RX.Component {
                                         />
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="inputPassword4" style={styling.siDeText}>DOA</label>
+                                        {/* <label for="inputPassword4" style={styling.siDeText}>DOA</label>
 
 
                                         <RX.TextInput
@@ -540,7 +541,31 @@ export default class Patientdetails extends RX.Component {
                                             value={this.state.DOA}
                                             onChangeText={this.onChangeDOA}
                                         // defaultValue={ this.state.inputValue }
-                                        />
+                                        /> */}
+                                        {/* <DatePicker
+                                            style={{ width: 200 }}
+                                            date={this.state.date}
+                                            mode="date"
+                                            placeholder="select date"
+                                            format="YYYY-MM-DD"
+                                            minDate="2016-05-01"
+                                            maxDate="2016-06-01"
+                                            confirmBtnText="Confirm"
+                                            cancelBtnText="Cancel"
+                                            customStyles={{
+                                                dateIcon: {
+                                                    position: 'absolute',
+                                                    left: 0,
+                                                    top: 4,
+                                                    marginLeft: 0
+                                                },
+                                                dateInput: {
+                                                    marginLeft: 36
+                                                }
+                                                // ... You can check the source to find the other keys.
+                                            }}
+                                            onDateChange={(date) => { this.setState({ date: date }) }}
+                                        /> */}
                                     </div>
                                 </div>
                             </form>
