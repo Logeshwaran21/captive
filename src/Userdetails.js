@@ -138,8 +138,13 @@ export default class Userdetails extends RX.Component {
             ]
         });
         // input box iteration handle submit
+<<<<<<< HEAD
         this.state = { values: [] };
         // this.handleSubmit = this.handleSubmit.bind(this);
+=======
+        this.state = {values: []};
+        this.handleSubmit = this.handleSubmit.bind(this);
+>>>>>>> 24f2f2a40c0b1db312c569ec4a6d2f214e18c394
     }
 
     onChangePost2 = () => {
@@ -474,6 +479,7 @@ export default class Userdetails extends RX.Component {
         this.setState({ policyandrules1: true })
     }
     // iteration input click function start
+<<<<<<< HEAD
     createUI() {
         return this.state.values.map((el, i) =>
             <div key={i}>
@@ -488,6 +494,38 @@ export default class Userdetails extends RX.Component {
         values[i] = event.target.value;
         this.setState({ values });
     }
+=======
+    createUI(){
+        return this.state.values.map((el, i) => 
+            <div key={i}>
+               <input type="text" value={el||''} onChange={this.handleChange.bind(this, i)} />
+               <input type='button' value='remove' onClick={this.removeClick.bind(this, i)}/>
+            </div>          
+        )
+     }
+     
+     handleChange(i, event) {
+        let values = [...this.state.values];
+        values[i] = event.target.value;
+        this.setState({ values });
+     }
+     
+     addClick(){
+       this.setState(prevState => ({ values: [...prevState.values, '']}))
+     }
+     
+     removeClick(i){
+        let values = [...this.state.values];
+        values.splice(i,1);
+        this.setState({ values });
+     }
+     
+     handleSubmit(event) {
+       alert('A name was submitted: ' + this.state.values.join(', '));
+       event.preventDefault();
+     }
+     // iteration input click function end
+>>>>>>> 24f2f2a40c0b1db312c569ec4a6d2f214e18c394
 
     addClick() {
         this.setState(prevState => ({ values: [...prevState.values, ''] }))
@@ -588,11 +626,19 @@ export default class Userdetails extends RX.Component {
 
 
                                                 </div>
+<<<<<<< HEAD
                                                 {/* form include start */}
                                                 <form>
                                                     {this.createUI()}
                                                     <input type='button' value='add more' onClick={this.addClick.bind(this)} />
                                                     {/* <input type="submit" value="Submit" /> */}
+=======
+                                                 {/* form include start */}
+                                                 <form onSubmit={this.handleSubmit}>
+                                                {this.createUI()}        
+                                                <input type='button' value='add more' onClick={this.addClick.bind(this)}/>
+                                                <input type="submit" value="Submit" />
+>>>>>>> 24f2f2a40c0b1db312c569ec4a6d2f214e18c394
                                                 </form>
                                                 {/* form include end */}
                                             </div>
