@@ -31,10 +31,6 @@ const styles = {
         marginTop: '5'
     }),
 
-
-
-
-
     navrqlogo: RX.Styles.createViewStyle({
         height: 20,
         width: '30%',
@@ -165,9 +161,9 @@ const styles = {
 
 };
 
+var namefun
 
-
-export default class status extends RX.Component {
+export default class History extends RX.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -280,6 +276,7 @@ export default class status extends RX.Component {
             var res = result.patients
             // var result = JSON.stringify(res)
             console.log("StatusSettlement======>", res)
+            this.setState({ res: res })
 
             //============================Bulk Name start=============================================           
             let lengthname = res.length;
@@ -289,15 +286,61 @@ export default class status extends RX.Component {
             this.setState({ bulknamevalue: bulknamevalue })
 
 
-            const bulkusername = bulknamevalue.map(bname => {
-                // console.log(tst.name);
+            // const bulkusername = bulknamevalue.map(bname => {
+            //     // console.log(tst.name);
 
-                return val = bname.patientData.NAME + "\n"
+            //     return val = bname.patientData.NAME + "\n"
 
-            });
-            console.log("Bulk User NAme--------->", bulkusername)
-            this.setState({ bulkusername: bulkusername })
+            // });
+            // this, setstate({bulkusername: bulkusername })
+            // {
+            //     this.state.res.map((listValue, index) => {
+            //         return (
+            //             <tr key={index}>
+            //                 <td>{listValue.submitID}</td>
+            //                 <td>{listValue.status}</td>
+            //             </tr>
+            //         );
+            //     })
+            // }
 
+            // {
+            //     const bulkusername = bulknamevalue.map(bname, index => {
+            //         console.log(bname.submitID);
+
+            //         return (
+            //             <tr key={index}>
+            //                 <td>{bname.submitID}</td>
+            //                 <td>{bname.status}</td>
+            //             </tr>
+            //         );
+            //     })
+            // }
+            // this.setState({ bulkusername: bulkusername })
+
+            // $(function () {
+            //     $.each(bulknamevalue, function (i, item) {
+            //         //${bulklist[i]}
+            //         var $tr = $('<tr>').append(
+            //             $('<td>').text(item.submitID),
+            //             $('<td>').text(item.status),
+            //             $('<td>').text(item.message)
+            //         ); //.appendTo('#records_table');
+            //         console.log($tr.wrap('<p>').html());
+            //     });
+            // });
+            // $('#bulknamevalue tr').each(function (row, tr) {
+            //     TableData = TableData
+            //         + $(tr).find('td:eq(0)').text() + ' '  // Task No.
+            //         + $(tr).find('td:eq(1)').text() + ' '  // Date
+            //         + $(tr).find('td:eq(2)').text() + ' '  // Description
+            //         + $(tr).find('td:eq(3)').text() + ' '  // Task
+            //         + '\n';
+            // });
+            console.log("output============>")
+
+            // console.log("Bulk User NAme--------->", bulkusername)
+            // this.setState({ bulkusername: bulkusername })
 
 
             //============================Bulk Name END=============================================  
@@ -415,6 +458,19 @@ export default class status extends RX.Component {
 
 
     }
+    loopfunction() {
+        {
+            this.state.res.map((listValue, index) => {
+                return (
+                    <tr key={index}>
+                        <td>{listValue.submitID}</td>
+                        <td>{listValue.status}</td>
+                    </tr>
+                );
+            })
+        }
+        { console.log("hellodude") }
+    }
     allFunction() {
         this.setState({ all: true })
         this.setState({ autoApproval: false })
@@ -430,8 +486,40 @@ export default class status extends RX.Component {
         this.setState({ autoApproval: false })
         this.setState({ tpaApproval: true })
     }
+    //============working for reference Start==============
+    namefun = () => ({
+        render: function () {
+            var names = this.state.bulknamevalue;
+            console.log("HEY=======>")
+            return (
+                <ul>
+                    {names.map(function (bname, index) {
+                        return <tr key={index}>
+                            <td>{bname.submitID}</td>
+                            <td>{bname.status}</td>
+                            {/* {console.log("hellodude")} */}
+                        </tr>;
+                    })}
+                </ul>
 
+            )
+            // console.log("hellodude")
+        }
+
+    });
+    createUI() {
+        return this.state.res.map((bname, i) =>
+            <div><tr key={i}>
+                <td>{bname.submitID}</td>
+                <td>{bname.status}</td>
+                {/* {console.log("hellodude")} */}
+            </tr>;
+            </div>
+        )
+    }
+    //===========working reference END==================
     render() {
+
         return (
             <RX.ScrollView style={styles.scroll}>
                 <RX.View style={styles.navcontainer}>
@@ -529,25 +617,41 @@ export default class status extends RX.Component {
 
                                     <div class="container">
                                         <div class="row">
+
+                                            <a onClick={() => this.createUI()}>click here view details
+
+</a>
                                             <table class="table table-bordered">
 
+                                                <thead>
+                                                    <tr>
+                                                        <th style={styles.nametabel}>Name</th>
+                                                        <th style={styles.tabel1}>Approved status</th>
+                                                        <th style={styles.tabel2}>Patient submit ID</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {/* {this.state.bulknamevalue.map(function (object, i) {
+                                                        return <ObjectRow obj={object.status} key={i} />;
+                                                    })}
+                                                    {console.log("jajajajaj")} */}
+                                                    {this.state.bulkusername}
+                                                </tbody>
 
-                                                <tr>
-                                                    <th style={styles.nametabel}>Name</th>
-                                                    <th style={styles.tabel1}>Approved status</th>
-                                                    <th style={styles.tabel2}>Patient submit ID</th>
-                                                </tr>
+
+                                                {/* {this.state.bulkusername} */}
                                                 {/* <div style={styles.tabel1}> */}
-                                                {this.state.bulknamevalue.map((listValue, index) => {
-                                                    return (
-                                                        <tr key={index}>
-                                                            <td>{listValue.submitID}</td>
-                                                            <td>{listValue.status}</td>
-                                                        </tr>
-                                                    );
-                                                })
-                                                }
-
+                                                {/* $(function() {
+                                                    $.each(bulknamevalue, function (i, item) {
+                                                        var $tr = $('<tr>').append(
+                                                            $('<td>').text(item.submitID),
+                                                            $('<td>').text(item.status),
+                                                            $('<td>').text(item.message)
+                                                        ); //.appendTo('#records_table');
+                                                        console.log($tr.wrap('<p>').html());
+                                                    })
+                                                }); */}
+                                                {/* {this.state.bulkusername} */}
                                                 {/* <tr>
                                                     <td>{this.state.bulkusername}</td>
                                                     <td>{this.state.bulklist}</td>

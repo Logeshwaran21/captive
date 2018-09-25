@@ -13,10 +13,12 @@ import ProviderHistory from './ProviderHistory'
 import Registerpage from './Registerpage'
 import ProviderDetails from './ProviderDetails'
 import TPA from './TPA'
-import Historydetails from './Historydetails'
+
 import Userdet from './Userdet'
 import All from './All'
 import History from './History'
+import Table from './Table'
+import Statussettlement from './Statussettlement'
 
 
 
@@ -29,10 +31,11 @@ let NavigationRouteId = {
     ProviderHistory: "ProviderHistory",
     Registerpage: "Registerpage",
     TPA: "TPA",
-    Historydetails: "Historydetails",
     Userdet: "Userdet",
     All: "All",
-    History: "History"
+    History: "History",
+    Table: "Table",
+    Statussettlement: "Statussettlement"
 };
 
 const styles = {
@@ -50,18 +53,20 @@ export default class App extends RX.Component {
         this._onNavigatorRef = this._onNavigatorRef.bind(this);
         this._renderScene = this._renderScene.bind(this);
 
-        this._onPressPatientdetails = this.__onPressPatientdetails.bind(this);
-        this._onPressUserdetails = this.__onPressUserdetails.bind(this);
-        this._onPressCreatePolicy = this.__onPressCreatePolicy.bind(this);
-        this._onPressDashboard = this.__onPressDashboard.bind(this);
-        this._onPressProviderDetails = this.__onPressProviderDetails.bind(this);
-        this._onPressProviderHistory = this.__onPressProviderHistory.bind(this);
-        this._onPressRegisterpage = this.__onPressRegisterpage.bind(this);
-        this._onPressTPA = this.__onPressTPA.bind(this);
-        this._onPressHistorydetails = this.__onPressHistorydetails.bind(this);
-        this._onPressUserdet = this.__onPressUserdet.bind(this);
-        this._onPressAll = this.__onPressAll.bind(this);
-        this._onPressHistory = this.__onPressHistory.bind(this);
+        this._onPressPatientdetails = this._onPressPatientdetails.bind(this);
+        this._onPressUserdetails = this._onPressUserdetails.bind(this);
+        this._onPressCreatePolicy = this._onPressCreatePolicy.bind(this);
+        this._onPressDashboard = this._onPressDashboard.bind(this);
+        this._onPressProviderDetails = this._onPressProviderDetails.bind(this);
+        this._onPressProviderHistory = this._onPressProviderHistory.bind(this);
+        this._onPressRegisterpage = this._onPressRegisterpage.bind(this);
+        this._onPressTPA = this._onPressTPA.bind(this);
+        this._onPressUserdet = this._onPressUserdet.bind(this);
+        this._onPressAll = this._onPressAll.bind(this);
+        this._onPressHistory = this._onPressHistory.bind(this);
+        this._onPressTable = this._onPressTable.bind(this);
+        this._onPressStatussettlement = this._onPressStatussettlement.bind(this);
+
 
 
 
@@ -69,7 +74,7 @@ export default class App extends RX.Component {
 
     componentDidMount() {
         this._navigator.immediatelyResetRouteStack([{
-            routeId: NavigationRouteId.History,
+            routeId: NavigationRouteId.Statussettlement,
             sceneConfigType: "Fade"
         }]);
     }
@@ -95,46 +100,97 @@ export default class App extends RX.Component {
         var user = { name: "test" }
         switch (navigatorRoute.routeId) {
             case NavigationRouteId.Patientdetails:
-                return <Patientdetails onNavigatePatientdetails={this.__onPressPatientdetails} />
+                return <Patientdetails onNavigatePatientdetails={this._onPressPatientdetails} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.Userdetails:
-                return <Userdetails Userdetails={this.__onPressUserdetails} />
+                return <Userdetails onNavigateUserdetails={this._onPressUserdetails} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.CreatePolicy:
-                return <CreatePolicy CreatePolicy={this.__onPressCreatePolicy} />
+                return <CreatePolicy onNavigateCreatePolicy={this._onPressCreatePolicy} navigatorRoute={navigatorRoute} />
 
 
             case NavigationRouteId.Dashboard:
-                return <Dashboard Dashboard={this.__onPressDashboard} />
+                return <Dashboard Dashboard={this._onPressDashboard} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.ProviderDetails:
-                return <ProviderDetails ProviderDetails={this.__onPressProviderDetails} />
+                return <ProviderDetails onNavigateProviderDetails={this._onPressProviderDetails} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.ProviderHistory:
-                return <ProviderHistory ProviderHistory={this.__onPressProviderHistory} />
+                return <ProviderHistory ProviderHistory={this._onPressProviderHistory} navigatorRoute={navigatorRoute} />
             case NavigationRouteId.Registerpage:
-                return <Registerpage Registerpage={this.__onPressRegisterpage} />
+                return <Registerpage onNavigateRegisterpage={this._onPressRegisterpage} navigatorRoute={navigatorRoute} />
             case NavigationRouteId.TPA:
-                return <TPA TPA={this.__onPressTPA} />
-
-            case NavigationRouteId.Historydetails:
-                return <Historydetails Historydetails={this.__onPressHistorydetails} />
+                return <TPA onNavigateTPA={this._onPressTPA} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.Userdet:
-                return <Userdet Userdet={this.__onPressUserdet} />
+                return <Userdet onNavigateUserdet={this._onPressUserdet} navigatorRoute={navigatorRoute} />
 
             case NavigationRouteId.All:
-                return <All All={this.__onPressAll} />
+                return <All onNavigateAll={this._onPressAll} />
 
             case NavigationRouteId.History:
-                return <History History={this.__onPressHistory} />
+                return <History onNavigateHistory={this._onPressHistory} navigatorRoute={navigatorRoute} />
+
+            case NavigationRouteId.Table:
+                return <Table onNavigateTable={this._onPressTable} navigatorRoute={navigatorRoute} />
+
+            case NavigationRouteId.Statussettlement:
+                return <Statussettlement onNavigateStatussettlement={this._onPressStatussettlement} navigatorRoute={navigatorRoute} />
 
 
         }
 
         return null;
     }
-    __onPressHistory() {
+    // _onPressStatussettlement(res) {
+    //     // this._navigator.pop();
+    //     console.log("Appres:", res)
+    //     this._navigator.push({
+    //         routeId: NavigationRouteId.Table,
+
+    //         // sceneConfigType: "FloatFromRight",
+    //         res: res,
+    //         customSceneConfig: {
+    //             hideShadow: true
+    //         },
+
+
+    //     });
+    // }
+    _onPressStatussettlement(bulkdata) {
+        // this._navigator.pop();
+        console.log("Appbulkdata:", bulkdata)
+        this._navigator.push({
+            routeId: NavigationRouteId.Table,
+
+            // sceneConfigType: "FloatFromRight",
+            bulkdata: bulkdata,
+            customSceneConfig: {
+                hideShadow: true
+            },
+
+
+        });
+    }
+    _onPressTable(result) {
+        // this._navigator.pop();
+        console.log("result:", result)
+        this._navigator.push({
+            routeId: NavigationRouteId.History,
+            result: result
+        });
+    }
+    _onPressHistory(result) {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.All,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    _onPressAll() {
         // this._navigator.pop();
         this._navigator.push({
             routeId: NavigationRouteId.ProviderDetails,
@@ -144,37 +200,7 @@ export default class App extends RX.Component {
             }
         });
     }
-    __onPressAll() {
-        // this._navigator.pop();
-        this._navigator.push({
-            routeId: NavigationRouteId.ProviderDetails,
-            sceneConfigType: "FloatFromRight",
-            customSceneConfig: {
-                hideShadow: true
-            }
-        });
-    }
-    __onPressUserdet() {
-        // this._navigator.pop();
-        this._navigator.push({
-            routeId: NavigationRouteId.ProviderDetails,
-            sceneConfigType: "FloatFromRight",
-            customSceneConfig: {
-                hideShadow: true
-            }
-        });
-    }
-    __onPressHistorydetails() {
-        // this._navigator.pop();
-        this._navigator.push({
-            routeId: NavigationRouteId.ProviderDetails,
-            sceneConfigType: "FloatFromRight",
-            customSceneConfig: {
-                hideShadow: true
-            }
-        });
-    }
-    __onPressTPA() {
+    _onPressUserdet() {
         // this._navigator.pop();
         this._navigator.push({
             routeId: NavigationRouteId.ProviderDetails,
@@ -185,27 +211,7 @@ export default class App extends RX.Component {
         });
     }
 
-    __onPressTPA() {
-        // this._navigator.pop();
-        this._navigator.push({
-            routeId: NavigationRouteId.ProviderDetails,
-            sceneConfigType: "FloatFromRight",
-            customSceneConfig: {
-                hideShadow: true
-            }
-        });
-    }
-    __onPressRegisterpage() {
-        // this._navigator.pop();
-        this._navigator.push({
-            routeId: NavigationRouteId.ProviderDetails,
-            sceneConfigType: "FloatFromRight",
-            customSceneConfig: {
-                hideShadow: true
-            }
-        });
-    }
-    __onPressProviderHistory() {
+    _onPressTPA() {
         // this._navigator.pop();
         this._navigator.push({
             routeId: NavigationRouteId.ProviderDetails,
@@ -216,7 +222,7 @@ export default class App extends RX.Component {
         });
     }
 
-    __onPressProviderDetails() {
+    _onPressTPA() {
         // this._navigator.pop();
         this._navigator.push({
             routeId: NavigationRouteId.ProviderDetails,
@@ -226,7 +232,7 @@ export default class App extends RX.Component {
             }
         });
     }
-    __onPressDashboard() {
+    _onPressRegisterpage() {
         // this._navigator.pop();
         this._navigator.push({
             routeId: NavigationRouteId.ProviderDetails,
@@ -236,7 +242,7 @@ export default class App extends RX.Component {
             }
         });
     }
-    __onPressCreatePolicy() {
+    _onPressProviderHistory() {
         // this._navigator.pop();
         this._navigator.push({
             routeId: NavigationRouteId.ProviderDetails,
@@ -246,7 +252,38 @@ export default class App extends RX.Component {
             }
         });
     }
-    __onPressUserdetails(resJson1) {
+
+    _onPressProviderDetails() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    _onPressDashboard() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    _onPressCreatePolicy() {
+        // this._navigator.pop();
+        this._navigator.push({
+            routeId: NavigationRouteId.ProviderDetails,
+            sceneConfigType: "FloatFromRight",
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    _onPressUserdetails(resJson1) {
         console.log("responseMessage", resJson1)
         // this._navigator.pop();
         this._navigator.push({
@@ -256,7 +293,7 @@ export default class App extends RX.Component {
     }
 
 
-    __onPressPatientdetails() {
+    _onPressPatientdetails() {
         // this._navigator.pop();
         this._navigator.push({
             routeId: NavigationRouteId.ProviderDetails,

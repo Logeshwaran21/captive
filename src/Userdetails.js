@@ -110,11 +110,11 @@ const styles = {
 
     heading: RX.Styles.createTextStyle({
         marginLeft: 276,
-
+      
     }),
     policyheading: RX.Styles.createTextStyle({
         marginLeft: 335,
-
+      
     }),
 };
 
@@ -137,52 +137,9 @@ export default class Userdetails extends RX.Component {
                 }
             ]
         });
-        // input box iteration handle submit
-<<<<<<< HEAD
-        this.state = { values: [] };
-        // this.handleSubmit = this.handleSubmit.bind(this);
-=======
-        this.state = {values: []};
-        this.handleSubmit = this.handleSubmit.bind(this);
->>>>>>> 24f2f2a40c0b1db312c569ec4a6d2f214e18c394
     }
 
-    onChangePost2 = () => {
 
-
-
-        console.log("hiiiiii")
-        return fetch('http://localhost:8082/createpolicy', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-
-            },
-
-            body: JSON.stringify({
-
-                "policyID": this.state.policyID,
-                "rules": [this.state.rules]
-                // params:[
-                //     "claimAmount",
-                //       "maxclim"
-                //   ]
-
-            }),
-        }).then((response) => response.json()).then((responseJson) => {
-
-            var res = responseJson;
-            var responseJson1 = JSON.stringify(res)
-
-            swal("Policy created succesfully", responseJson1)
-            console.log("response", responseJson1)
-
-        }).catch(function () {
-            console.log("error");
-        });
-
-    }
     onChangePost1 = () => {
         console.log("welcome")
 
@@ -358,7 +315,7 @@ export default class Userdetails extends RX.Component {
             var rules = responseJson.result[0].Records.policys.rules
             var rules = rules
             this.setState({ rules: rules })
-
+           
             var resJson1 = JSON.stringify(res)
             console.log(resJson1)
             var data = resJson1
@@ -413,29 +370,17 @@ export default class Userdetails extends RX.Component {
     }
 
     onChangeuserId = (value) => {
-        this.setState({ rules: value });
-        // var a = new Array(this.state.rules);
-        // var s = a.join("");
-        console.log(this.state.rules, "rules------>");
-    }
-    onChangepolicId = (value) => {
-        this.setState({ policyID: value });
-        console.log(this.state.policyID, "policyID");
+        this.setState({ userHistoryDetails: value });
+
+        console.log("userId");
+        console.log(this.state.userHistoryDetails, "userId");
     }
     onChangeuserId1 = (value) => {
         this.setState({ userHistoryDetails1: value });
 
         console.log("userId");
-        console.log(this.state.userHistoryDetails1, "userId---->");
+        console.log(this.state.userHistoryDetails1, "userId");
     }
-
-    onChangepolicyID = (value) => {
-        this.setState({ policyID: value });
-        console.log(this.state.policyID, "policyID");
-    }
-
-
-
 
     userId = () => {
 
@@ -478,97 +423,9 @@ export default class Userdetails extends RX.Component {
         this.setState({ policyandrules: false })
         this.setState({ policyandrules1: true })
     }
-    // iteration input click function start
-<<<<<<< HEAD
-    createUI() {
-        return this.state.values.map((el, i) =>
-            <div key={i}>
-                <input type="text" value={el || ''} onChange={this.handleChange.bind(this, i)} />
-                <input type='button' value='remove' onClick={this.removeClick.bind(this, i)} />
-            </div>
-        )
-    }
 
-    handleChange(i, event) {
-        let values = [...this.state.values];
-        values[i] = event.target.value;
-        this.setState({ values });
-    }
-=======
-    createUI(){
-        return this.state.values.map((el, i) => 
-            <div key={i}>
-               <input type="text" value={el||''} onChange={this.handleChange.bind(this, i)} />
-               <input type='button' value='remove' onClick={this.removeClick.bind(this, i)}/>
-            </div>          
-        )
-     }
-     
-     handleChange(i, event) {
-        let values = [...this.state.values];
-        values[i] = event.target.value;
-        this.setState({ values });
-     }
-     
-     addClick(){
-       this.setState(prevState => ({ values: [...prevState.values, '']}))
-     }
-     
-     removeClick(i){
-        let values = [...this.state.values];
-        values.splice(i,1);
-        this.setState({ values });
-     }
-     
-     handleSubmit(event) {
-       alert('A name was submitted: ' + this.state.values.join(', '));
-       event.preventDefault();
-     }
-     // iteration input click function end
->>>>>>> 24f2f2a40c0b1db312c569ec4a6d2f214e18c394
-
-    addClick() {
-        this.setState(prevState => ({ values: [...prevState.values, ''] }))
-    }
-
-    removeClick(i) {
-        let values = [...this.state.values];
-        values.splice(i, 1);
-        this.setState({ values });
-    }
-
-    // handleSubmit(event) {
-    //     alert('A name was submitted: ' + this.state.values.join(', '));
-    //     event.preventDefault();
-    // }
-    // // iteration input click function end
-    // const listItems = this.props.responseJson.map((item) => {
-    //     return (
-    //         <li key={item.NAME}>
-
-    //         </li>
-    //     );
-    // });
-    createUI1() {
-        let response = this.state.responseJson.message;
-        return response.map((userData) => {
-            console.log(userData.NAME);
-        });
-    }
-    handleChange(i, event) {
-        let values = [...this.state.values];
-        values[i] = event.target.value;
-        this.setState({ values });
-    }
     render() {
         // resJson1 = this.props.navigatorRoute.resJson1
-        // var length = responseJson
-        // for (var i = 0; i < length; i++) {
-        //     var obj = localdata[i];
-
-        //     console.log(obj.NAME);
-        // }
-
         return (
 
 
@@ -607,46 +464,15 @@ export default class Userdetails extends RX.Component {
                                                     {'Submit'}
                                                 </RX.Button>
 
-                                                <label for="lgFormGroupInput" style={styles.sideText} class="col-sm-2 col-form-label col-form-label-lg">policy id</label>
+                                                <label for="lgFormGroupInput" style={styles.sideText} class="col-sm-2 col-form-label col-form-label-lg">Enter User Identification Number:</label>
                                                 <div class="col-sm-10">
-                                                    {/* <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.policyID} onChangeText={() => { this.onChangeuserId, this.onChangepolicId }} /> */}
-                                                    {/* <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.policyID} onChangeText={() => { this.onChangeuserId, this.onChangepolicId }} /> */}
-                                                    <RX.TextInput
-                                                        // style={styling.Form}
-                                                        placeholder=""
-                                                        value={this.state.policyID}
-                                                        onChangeText={this.onChangepolicyID}
-                                                    // defaultValue={ this.state.inputValue }
-                                                    />
-                                                </div>
-                                                <label for="lgFormGroupInput" style={styles.sideText}>Rules</label>
-
-                                                <div>
-                                                    <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.rules} onChangeText={this.onChangeuserId} />
+                                                    <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.userHistoryDetails} onChangeText={this.onChangeuserId} />
 
 
                                                 </div>
-<<<<<<< HEAD
-                                                {/* form include start */}
-                                                <form>
-                                                    {this.createUI()}
-                                                    <input type='button' value='add more' onClick={this.addClick.bind(this)} />
-                                                    {/* <input type="submit" value="Submit" /> */}
-=======
-                                                 {/* form include start */}
-                                                 <form onSubmit={this.handleSubmit}>
-                                                {this.createUI()}        
-                                                <input type='button' value='add more' onClick={this.addClick.bind(this)}/>
-                                                <input type="submit" value="Submit" />
->>>>>>> 24f2f2a40c0b1db312c569ec4a6d2f214e18c394
-                                                </form>
-                                                {/* form include end */}
                                             </div>
                                             <div>
-                                                {/* <input onclick={this.onChangePost2} type="submit" value="Submit" /> */}
-                                                <RX.Button style={styles.button1} onPress={this.onChangePost2} refs="id" >
-                                                    {'Submit'}
-                                                </RX.Button>
+
                                             </div>
 
                                         </div> : null}
@@ -677,31 +503,28 @@ export default class Userdetails extends RX.Component {
 
                                         </div> : null}
 
-                                    {/* ---------------------- Retrieve bulk data start-------------------------------------- */}
+
                                     {this.state.bulkdata ?
                                         <div class="col-xs-6 col-sm-3 placeholder">
 
                                             <div class="container">
                                                 <div>
-                                                    <RX.Button onPress={() => (this.onChangeGet(), this.createUI1())} ><a style={{ color: "blue" }}><b>Click here view Entire User Details :</b><br></br><br></br>{this.state.bulkdata} <span class="sr-only">(current)</span></a></RX.Button>
+                                                    <RX.Button onPress={() => (this.onChangeGet())} ><a style={{ color: "blue" }}><b>Click here view Entire User Details :</b><br></br><br></br>{this.state.bulkdata} <span class="sr-only">(current)</span></a></RX.Button>
 
                                                 </div>
-                                                <ul>
-                                                    {/* {listItems} */}
-                                                </ul>
+
 
                                             </div>
                                         </div> : null}
-                                    {/* --------------------------------------------Retrieve bulk records end---------------------------------------- */}
 
                                     {this.state.policyandrules ?
-
+                                    
                                         <div class="container" style={styles.divpolicyrules}>
-                                            <div style={styles.policyheading}>
-                                                <h3><b><u>User Policy Details:</u></b></h3>
-                                            </div>
+                                        <div style={styles.policyheading}>
+                                      <h3><b><u>User Policy Details:</u></b></h3>
+                                      </div>
                                             <div style={styles.policyrules}>
-
+                                           
                                                 <ul class="list-group text-center">
                                                     <li class="list-group-item"><h4><b>PolicyID:</b></h4>{this.state.userdata} </li>
                                                     <li class="list-group-item"><h4><b>Rules:</b></h4>{this.state.rules} </li>
@@ -713,53 +536,53 @@ export default class Userdetails extends RX.Component {
                                         </div> : null}
 
                                     {this.state.policyandrules1 ?
-
+                                    
                                         <div style={styles.details}>
-                                            <br></br>
-                                            <div style={styles.heading}>
-                                                <h2><u>Discharge Summary Report:</u></h2>
-                                            </div>
-                                            <br></br>
+                                        <br></br>
+                                        <div style={styles.heading}>
+                                    <h2><u>Discharge Summary Report:</u></h2>
+                                    </div>
+                                    <br></br>
                                             <form>
-
-                                                <div class="container">
-                                                    <h3 style={{ marginTop: 23 }} >PATIENT DETAILS</h3>
-                                                    <label>Name :   {this.state.name} </label><br></br>
-                                                    <label> AGE    : {this.state.AGE} </label><br></br>
-                                                    <label> DOA    :  {this.state.DOA} </label><br></br>
-                                                    <label> REF_DOC: {this.state.REF_DOC}  </label><br></br>
-                                                    <label>IPD_No  : {this.state.IPD_No}  </label><br></br>
-                                                    <label> MLC    :  {this.state.MLC}  </label><br></br>
-                                                    <label> SEX    : {this.state.SEX}  </label><br></br>
-                                                    {/* <label> NomineName    :  {this.state.NomineName}  </label><br></br> */}
-                                                </div>
-                                                <div class="container" style={styles.treat}>
-                                                    <h3 style={{ marginTop: 56 }} >TREATMENT</h3>
-                                                    <label>DAIGONSIS    :  {this.state.DAIGONSIS}</label> <br></br>
-                                                    <label> Cheif_Complaints_On_Admission:  {this.state.Cheif_Complaints_On_Admission}  </label> <br></br>
-                                                    <label> Past_History_with_Allergy    : {this.state.Past_History_with_Allergy} </label> <br></br>
-                                                    <label> Personal_History:  {this.state.Personal_History}  </label> <br></br>
-                                                    <label>Family_History  :  {this.state.Family_History}  </label> <br></br>
-                                                    <label> Menstrual_History    :  {this.state.Menstrual_History}  </label> <br></br>
-                                                    <label> Obstretric_History    :  {this.state.Obstretric_History}  </label> <br></br>
-                                                    <label> Genral_Examination    :  {this.state.Genral_Examination}  </label> <br></br>
-                                                    <label> Systematic_Examination    :  {this.state.Systematic_Examination}  </label> <br></br>
-                                                </div>
-                                                <div class="container" style={styles.pack}>
-                                                    <h3 style={{ marginTop: 23 }} >PACKAGE DETAILS</h3>
-                                                    <label> Investigations    :  {this.state.Investigations}  </label> <br></br>
-                                                    <label> BaBys_Details    :  {this.state.BaBys_Details}  </label> <br></br>
-                                                    <label> Course_in_Hospital_And_condition    :  {this.state.Course_in_Hospital_And_condition}  </label> <br></br>
-                                                    <label> Treatment_Given    :  {this.state.Treatment_Given}  </label> <br></br>
-                                                    <label> Follow_Up_Visit    :  {this.state.Follow_Up_Visit}  </label> <br></br>
-                                                    <label> policyId    :  {this.state.policyId}  </label> <br></br>
-                                                    <label> HospitalName    :  {this.state.HospitalName}  </label> <br></br>
-                                                    <label> status    :  {this.state.status}  </label> <br></br>
-                                                    <label> claimAmount    :  {this.state.claimAmount}  </label> <br></br>
-                                                </div>
+                                               
+                                                    <div class="container">
+                                                        <h3 style={{ marginTop: 23 }} >PATIENT DETAILS</h3>
+                                                        <label>Name :   {this.state.name} </label><br></br>
+                                                        <label> AGE    : {this.state.AGE} </label><br></br>
+                                                        <label> DOA    :  {this.state.DOA} </label><br></br>
+                                                        <label> REF_DOC: {this.state.REF_DOC}  </label><br></br>
+                                                        <label>IPD_No  : {this.state.IPD_No}  </label><br></br>
+                                                        <label> MLC    :  {this.state.MLC}  </label><br></br>
+                                                        <label> SEX    : {this.state.SEX}  </label><br></br>
+                                                        {/* <label> NomineName    :  {this.state.NomineName}  </label><br></br> */}
+                                                    </div>
+                                                    <div class="container" style={styles.treat}>
+                                                        <h3 style={{ marginTop: 56 }} >TREATMENT</h3>
+                                                        <label>DAIGONSIS    :  {this.state.DAIGONSIS}</label> <br></br>
+                                                        <label> Cheif_Complaints_On_Admission:  {this.state.Cheif_Complaints_On_Admission}  </label> <br></br>
+                                                        <label> Past_History_with_Allergy    : {this.state.Past_History_with_Allergy} </label> <br></br>
+                                                        <label> Personal_History:  {this.state.Personal_History}  </label> <br></br>
+                                                        <label>Family_History  :  {this.state.Family_History}  </label> <br></br>
+                                                        <label> Menstrual_History    :  {this.state.Menstrual_History}  </label> <br></br>
+                                                        <label> Obstretric_History    :  {this.state.Obstretric_History}  </label> <br></br>
+                                                        <label> Genral_Examination    :  {this.state.Genral_Examination}  </label> <br></br>
+                                                        <label> Systematic_Examination    :  {this.state.Systematic_Examination}  </label> <br></br>
+                                                    </div>
+                                                    <div class="container" style={styles.pack}>
+                                                        <h3 style={{ marginTop: 23 }} >PACKAGE DETAILS</h3>
+                                                        <label> Investigations    :  {this.state.Investigations}  </label> <br></br>
+                                                        <label> BaBys_Details    :  {this.state.BaBys_Details}  </label> <br></br>
+                                                        <label> Course_in_Hospital_And_condition    :  {this.state.Course_in_Hospital_And_condition}  </label> <br></br>
+                                                        <label> Treatment_Given    :  {this.state.Treatment_Given}  </label> <br></br>
+                                                        <label> Follow_Up_Visit    :  {this.state.Follow_Up_Visit}  </label> <br></br>
+                                                        <label> policyId    :  {this.state.policyId}  </label> <br></br>
+                                                        <label> HospitalName    :  {this.state.HospitalName}  </label> <br></br>
+                                                        <label> status    :  {this.state.status}  </label> <br></br>
+                                                        <label> claimAmount    :  {this.state.claimAmount}  </label> <br></br>
+                                                    </div>
                                                 <div>
-                                                    <b>Claim Status:</b>{this.state.tpastatus}
-                                                </div>
+                                                   <b>Claim Status:</b>{this.state.tpastatus}
+                                                    </div>
                                             </form>
                                         </div> : null}
 
