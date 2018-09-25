@@ -15,7 +15,7 @@ import CreatePolicy from './CreatePolicy'
 import Patientdetails from './Patientdetails'
 import TPA from './TPA'
 import History from './History'
-
+import StatusSettlement from './StatusSettlement'
 
 let NavigationRouteId = {
     
@@ -27,7 +27,8 @@ let NavigationRouteId = {
     CreatePolicy:"CreatePolicy",
     Patientdetails:"Patientdetails",
     TPA:"TPA",
-    History:"History"
+    History:"History",
+    StatusSettlement:"StatusSettlement"
 };
 
 const styles = {
@@ -54,8 +55,9 @@ export default class App extends RX.Component {
         this._onPressPatientdetails = this._onPressPatientdetails.bind(this);
         this._onPressTPA = this._onPressTPA.bind(this);
         this._onPressHistory = this._onPressHistory.bind(this);
-
-
+        this._onPressStatusSettlement = this._onPressStatusSettlement.bind(this);
+        this._onPressCreatePolicyRBD = this._onPressCreatePolicyRBD.bind(this);
+       
     }
 
     componentDidMount() {
@@ -87,32 +89,35 @@ export default class App extends RX.Component {
         switch (navigatorRoute.routeId) {
             
             case NavigationRouteId.RegisterPage:
-                return <RegisterPage onNavigateFifth={ this._onPressFifth }/>;
+                return <RegisterPage onNavigateFifth={ this._onPressFifth } navigatorRoute={navigatorRoute}/>;
 
               
                 case NavigationRouteId.ProviderDetails:
-                return <ProviderDetails onNavigateProviderDetails={ this._onPressProviderDetails }/> 
+                return <ProviderDetails onNavigateProviderDetails={ this._onPressProviderDetails } navigatorRoute={navigatorRoute}/> 
 
                 case NavigationRouteId.ProviderHistory:
-                return <ProviderHistory onNavigateProviderHistory={ this._onPressProviderHistory }/>
+                return <ProviderHistory onNavigateProviderHistory={ this._onPressProviderHistory } navigatorRoute={navigatorRoute}/>
 
                 case NavigationRouteId.Dashboard1:
-                return <Dashboard onNavigateDashboard={ this._onPressDashboard }/> 
+                return <Dashboard onNavigateDashboard={ this._onPressDashboard } navigatorRoute={navigatorRoute}/> 
 
                 case NavigationRouteId.Userdetails:
-                return <Userdetails onNavigateUserdetails={ this._onPressUserdetails }/> 
+                return <Userdetails onNavigateUserdetails={ this._onPressUserdetails } navigatorRoute={navigatorRoute}/> 
 
                 case NavigationRouteId.CreatePolicy:
-                return <CreatePolicy onNavigateCreatePolicy={ this._onPressCreatePolicy }/> 
+                return <CreatePolicy onNavigateCreatePolicy={ this._onPressCreatePolicy} onNavigateCreatePolicyRBD={ this._onPressCreatePolicyRBD}  navigatorRoute={navigatorRoute}/> 
 
                 case NavigationRouteId.Patientdetails:
-                return <Patientdetails onNavigatePatientdetails={ this._onPressPatientdetails }/>
+                return <Patientdetails onNavigatePatientdetails={ this._onPressPatientdetails } navigatorRoute={navigatorRoute}/>
 
                 case NavigationRouteId.TPA:
-                return <TPA onNavigateTPA={ this._onPressTPA }/>
+                return <TPA onNavigateTPA={ this._onPressTPA } navigatorRoute={navigatorRoute}/>
 
                 case NavigationRouteId.History:
-                return <History onNavigateHistory={ this._onPressHistory }/>
+                return <History onNavigateHistory={ this._onPressHistory } navigatorRoute={navigatorRoute}/>
+
+                case NavigationRouteId.StatusSettlement:
+                return <StatusSettlement onNavigateStatusSettlement={ this._onPressStatusSettlement } navigatorRoute={navigatorRoute}/>
 
         }
 
@@ -181,17 +186,39 @@ export default class App extends RX.Component {
         });
     }
 
-    _onPressCreatePolicy(token) {
-        console.log("token",token)
+    _onPressCreatePolicy(res) {
+        console.log("res",res)
         this._navigator.push({
-            routeId: NavigationRouteId.Patientdetails,
+            routeId: NavigationRouteId.History,
             // sceneConfigType: "Fade",
-            token:token,
+            res:res,
             customSceneConfig: {
                 hideShadow: true
             }
         });
     }
+    _onPressCreatePolicyRBD(bulkdata) {
+        console.log("APP bulkdata",bulkdata)
+        this._navigator.push({
+            routeId: NavigationRouteId.StatusSettlement,
+            // sceneConfigType: "Fade",
+            bulkdata:bulkdata,
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+    // _onPressAutoApproval(res) {
+    //     console.log("res",res)
+    //     this._navigator.push({
+    //         routeId: NavigationRouteId.StatusSettlement,
+    //         // sceneConfigType: "Fade",
+    //         res:res,
+    //         customSceneConfig: {
+    //             hideShadow: true
+    //         }
+    //     });
+    // }
 
     _onPressPatientdetails(token) {
         console.log("token",token)
@@ -218,7 +245,18 @@ export default class App extends RX.Component {
     _onPressHistory(token) {
         console.log("token",token)
         this._navigator.push({
-            routeId: NavigationRouteId.Dashboard1,
+            routeId: NavigationRouteId.CreatePolicy,
+            token:token,
+            customSceneConfig: {
+                hideShadow: true
+            }
+        });
+    }
+
+    _onPressStatusSettlement(token) {
+        console.log("token",token)
+        this._navigator.push({
+            routeId: NavigationRouteId.CreatePolicy,
             token:token,
             customSceneConfig: {
                 hideShadow: true

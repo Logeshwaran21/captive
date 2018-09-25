@@ -28,12 +28,12 @@ const styles = {
         width: 72,
         height: 5,
         marginLeft: 1035,
+        marginTop:-34,
         marginBottom: -23,
         padding: 12,
         borderRadius: 8,
         borderColor: 'rgb(8, 37, 103)',
         color: "white",
-        marginTop:-40,
         textAlign:"center"
     }),
     pack: RX.Styles.createButtonStyle({
@@ -126,36 +126,37 @@ var Policyid
 var responseJson
 var result
 var products
-export default class Table extends RX.Component {
+export default class CreatePolicy extends RX.Component {
     constructor(props) {
         super(props);
-        tparesult = this.props.navigatorRoute.res
-        console.log("Props console:", tparesult)
-        //this.setstate({ products: tparesult })
+        propsresult = this.props.navigatorRoute.bulkdata
+        console.log("Props console:", propsresult)
+        var allressult=propsresult
+        console.log("sample",allressult)
+        //this.setstate({ products: propsresult })
         this.state = {
             // products: [{ id: 1, title: 'Etherum', body: '123' }, { id: 2, title: 'Hyperledger', body: '123' },
             // { id: 3, title: 'Blockchain', body: '123' }, { id: 4, title: 'composer', body: '123' }]
-            tparesult: tparesult
+            propsresult: propsresult
 
         };
 
-        console.log("state console:", tparesult)
+        console.log("state console:", propsresult)
 
     }
 
     renderProducts() {
         console.log("hello")
-        return this.state.tparesult.map(tpaApproval => {
+        return this.state.propsresult.map(autoApproval => {
             return (
-                <tr key={tpaApproval.submitID}>
-                    <td>{tpaApproval.submitID}</td>
-                    <td>{tpaApproval.patientData.NAME}</td>
-                    <td>{tpaApproval.patientData.AGE}</td>
-                    <td>{tpaApproval.patientData.SEX}</td>
-                    <td>{tpaApproval.patientData.REF_DOC}</td>
-                    <td>{tpaApproval.claimAmount}</td>
-                    <td>{tpaApproval.status}</td>
-                  
+                <tr key={autoApproval.submitID}>
+                 <td>{autoApproval.Record.submitID}</td>
+                    <td>{autoApproval.Record.patientData.NAME}</td>
+                    <td>{autoApproval.Record.patientData.AGE}</td>
+                    <td>{autoApproval.Record.patientData.SEX}</td>
+                    <td>{autoApproval.Record.patientData.REF_DOC}</td>
+                    <td>{autoApproval.Record.patientData.claimAmount}</td>
+                    <td>{autoApproval.Record.status}</td>
                 </tr>
             );
         })
@@ -199,14 +200,14 @@ export default class Table extends RX.Component {
                     <RX.Button
                     style={ [styles.button1] }
                    
-                    onPress={this.props.onNavigateHistory}
+                    onPress={this.props.onNavigateStatusSettlement}
                 >Home</RX.Button>
                 </div>
                 <RX.View>
                     <div className="container">
+                       
                         <br />
                         <br />
-                      
                         <table className="table">
                             <thead>
                                 <tr>
