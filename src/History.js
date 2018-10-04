@@ -1,18 +1,11 @@
 import React from 'react';
 import RX from 'reactxp';
-<<<<<<< HEAD
 import { Nav, View, NavItem, NavDropdown, MenuItem, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, label, Visible, Checkbox, lg, xs } from 'react-bootstrap';
+
+
 /*const {
 Welcome
 } = TodoStyles;*/
-=======
-import { Nav, NavItem, NavDropdown, MenuItem, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, label, Visible, Checkbox, lg, xs } from 'react-bootstrap';
-/*const {
-Welcome
-} = TodoStyles;*/
-
-
->>>>>>> d173e8cd17751ae74db1e4e625d2301d07436c63
 const styles = {
     scroll: RX.Styles.createScrollViewStyle({
         alignSelf: 'stretch',
@@ -31,7 +24,6 @@ const styles = {
         color: 'white',
         marginTop: '5'
     }),
-<<<<<<< HEAD
     button1: RX.Styles.createButtonStyle({
         backgroundColor: 'rgb(8, 37, 103)',
         borderWidth: 1,
@@ -43,8 +35,8 @@ const styles = {
         borderRadius: 8,
         borderColor: 'rgb(8, 37, 103)',
         color: "white",
-        marginTop:-40,
-        textAlign:"center"
+        marginTop: -40,
+        textAlign: "center"
     }),
     pack: RX.Styles.createButtonStyle({
         marginLeft: 654,
@@ -54,18 +46,19 @@ const styles = {
         marginLeft: 335,
         marginTop: -276
     }),
+    inputtable: RX.Styles.createTextStyle({
 
+        width: 119
 
+    }),
+    table: RX.Styles.createTextStyle({
 
-=======
-    searchinput: RX.Styles.createTextStyle({
-        fontSize: 15,
-        marginRight: 10,
-        color: 'white',
-        marginTop: '5'
+        marginLeft: -15
+
     }),
 
->>>>>>> d173e8cd17751ae74db1e4e625d2301d07436c63
+
+
     navrqlogo: RX.Styles.createViewStyle({
         height: 20,
         width: '30%',
@@ -76,12 +69,7 @@ const styles = {
 
     sidenavbar: RX.Styles.createTextStyle({
         fontSize: 15,
-<<<<<<< HEAD
         marginLeft: -70,
-=======
-        marginLeft: -79,
-        marginTop: 0,
->>>>>>> d173e8cd17751ae74db1e4e625d2301d07436c63
         color: 'white',
         // marginTop:-56,
         width: 200,
@@ -89,7 +77,6 @@ const styles = {
         backgroundColor: '#242536'
     }),
 
-<<<<<<< HEAD
     dashboard: RX.Styles.createTextStyle({
         fontSize: 15,
         marginRight: 1150,
@@ -143,6 +130,24 @@ const styles = {
         marginLeft: 335,
 
     }),
+    InputSelectorCopy: RX.Styles.createTextStyle({
+
+        borderWidth: 1,
+    }),
+    Form: RX.Styles.createViewStyle({
+        display: 'block',
+        width: 434,
+        height: 32,
+        // padding: 6px 12px;
+        fontSize: 14,
+        // line: 1.42857143;
+        // color: "white",
+        // backgroundColor: "#fff",
+        // borderWidth: 1,
+        // borderColor: "#ccc",
+        // borderRadius: 4,
+        marginLeft: 55
+    }),
 };
 
 var resJson1
@@ -151,13 +156,22 @@ var Policyid
 var responseJson
 var result
 var products
-export default class Table extends RX.Component {
+var filterdata
+let re
+let FilteredList
+let List
+var filterdata
+var updatedList1
+export default class History extends RX.Component {
     constructor(props) {
         super(props);
         tparesult = this.props.navigatorRoute.res
         console.log("Props console:", tparesult)
         //this.setstate({ products: tparesult })
         this.state = {
+            search: '',
+            initialItems: tparesult,
+            items: [],
             // products: [{ id: 1, title: 'Etherum', body: '123' }, { id: 2, title: 'Hyperledger', body: '123' },
             // { id: 3, title: 'Blockchain', body: '123' }, { id: 4, title: 'composer', body: '123' }]
             tparesult: tparesult
@@ -168,562 +182,286 @@ export default class Table extends RX.Component {
 
     }
 
-    renderProducts() {
-        console.log("hello")
-        return this.state.tparesult.map(tpaApproval => {
-            return (
-                <tr key={tpaApproval.submitID}>
-                    <td>{tpaApproval.submitID}</td>
-                    <td>{tpaApproval.patientData.NAME}</td>
-                    <td>{tpaApproval.patientData.AGE}</td>
-                    <td>{tpaApproval.patientData.SEX}</td>
-                    <td>{tpaApproval.patientData.REF_DOC}</td>
-                    <td>{tpaApproval.claimAmount}</td>
-                    <td>{tpaApproval.status}</td>
-                  
-                </tr>
-            );
-        })
-    }
-    //   renderProducts() {
-    //     return this.state.products.map(product => {
-    //       return (
-    //         <tr key={product.id}>
-    //           <td>{product.id}</td>
-    //           <td>{product.title}</td>
-    //           <td>{product.body}</td>
-    //         </tr>
-    //       );
-    //     })
-    //   }
 
 
-
-    componentDidMount() {
-=======
-
-
-    rapidsettle: RX.Styles.createTextStyle({
-
-        width: 1191,
-        height: 160,
-        marginLeft: -147
-    }),
-    dcform: RX.Styles.createButtonStyle({
-        marginLeft: 341,
-        display: 'block',
-        width: '38%',
-        height: 34,
-        marginTop: 21,
-        // padding: 6px 12px;
-        fontSize: 14,
-        // line: 1.42857143;
-        color: "#555",
-        backgroundColor: "#fff",
-        borderWidth: 1,
-        borderColor: "#ccc",
-        borderRadius: 4,
-
-    }),
-    but: RX.Styles.createButtonStyle({
-        backgroundColor: 'rgb(8, 37, 103)',
-        borderWidth: 1,
-        width: 66,
-        height: 30,
-        // margin: 200,
-        marginLeft: 810,
-        marginTop: -31,
-        padding: 12,
-        borderRadius: 8,
-        borderColor: 'rgb(8, 37, 103)',
-        color: 'white',
-        justifyContent: 'center',
-        textAlign: 'CENTER',
-        alignSelf: 'center',
-    }),
-    Autoapprovalstyle: RX.Styles.createButtonStyle({
-        marginLeft: 64,
-        marginTop: 40
-    }),
-    all: RX.Styles.createButtonStyle({
-        marginLeft: 271,
-        marginTop: 40
-    }),
-    TPAapprovalstyle: RX.Styles.createButtonStyle({
-        marginLeft: 72,
-        marginTop: 40
-    }),
-    jumbotron: RX.Styles.createViewStyle({
-        borderWidth: 1,
-        borderRadius: 8,
-        backgroundColor: '#82eec6c7',
-        justifyContent: 'center',
-        textAlign: 'CENTER',
-        alignSelf: 'center',
-        marginLeft: 169,
-        marginTop: 0
-    }),
-    tabel1: RX.Styles.createViewStyle({
-        borderWidth: 1,
-        borderRadius: 8,
-        width: 24
-        // backgroundColor: '#82eec6c7',
-        // justifyContent: 'center',
-        // textAlign: 'CENTER',
-        // alignSelf: 'center',
-        // marginLeft: 169,
-        // marginTop: -467
-    }),
-    tabel1: RX.Styles.createViewStyle({
-        borderWidth: 1,
-        borderRadius: 8,
-        width: 96
-        // backgroundColor: '#82eec6c7',
-        // justifyContent: 'center',
-        // textAlign: 'CENTER',
-        // alignSelf: 'center',
-        // marginLeft: 169,
-        // marginTop: -467
-    }),
-    nametabel: RX.Styles.createViewStyle({
-        borderWidth: 1,
-        borderRadius: 8,
-        width: 30
-        // backgroundColor: '#82eec6c7',
-        // justifyContent: 'center',
-        // textAlign: 'CENTER',
-        // alignSelf: 'center',
-        // marginLeft: 169,
-        // marginTop: -467
-    }),
-    tabel2: RX.Styles.createViewStyle({
-        borderWidth: 1,
-        borderRadius: 8,
-        width: 20
-        // backgroundColor: '#82eec6c7',
-        // justifyContent: 'center',
-        // textAlign: 'CENTER',
-        // alignSelf: 'center',
-        // marginLeft: 169,
-        // marginTop: -467
-    }),
+    // updatesearch(event) {
+    //     // console.log(value)
+    //     // var stable=this.state.search;
+    //     // console.log("Update function console",stable)
+    //     this.setState({ search: event.target.value });
+    //     // console.log(this.state.search, "search")
+    // }
+    // function for filtering given input
 
 
-
-};
-
-var namefun
-
-export default class History extends RX.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        };
-        this._translationValue = RX.Animated.createValue(-100);
-        this._animatedStyle = RX.Styles.createAnimatedTextStyle({
-            transform: [
-                {
-                    translateY: this._translationValue
-                }
-            ]
+    //============================SubmitID Filter Start================================
+    filterListSubId = (event) => {
+        var updatedList = this.state.initialItems;
+        console.log("Filter subid console", updatedList)
+        updatedList1 = updatedList.filter(function (item) {
+            return item.submitID.toLowerCase().search(
+                event.target.value.toLowerCase()) !== -1;
         });
+        this.setState({ items: updatedList1 });
+
+        console.log("filter submit updated list", updatedList1)
+
     }
-    onChangeGetRBPR = () => {
-        console.log("Going to Retrievebulk records")
 
-        fetch('http://localhost:8082/RetrieveBulkPatientRecords', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+    //=============================SubmitID filter End========================================
 
-            }
+    //=========================Name Filter Start===========================
+    filterList = (event) => {
+        var updatedList = this.state.initialItems;
+        console.log("filterconsole", updatedList)
+        updatedList1 = updatedList.filter(function (item) {
+            return item.patientData.NAME.toLowerCase().search(
+                event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({ items: updatedList1 });
+
+        console.log("updated list", updatedList1)
+
+    }
+    //=============================Name Filter End==============================
+
+    //=========================AGE Filter Start===========================
+    filterListAge = (event) => {
+        var updatedList = this.state.initialItems;
+        console.log("filterconsole", updatedList)
+        updatedList1 = updatedList.filter(function (item) {
+            return item.patientData.AGE.toLowerCase().search(
+                event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({ items: updatedList1 });
+
+        console.log("updated list", updatedList1)
+
+    }
+    //=============================AGE Filter End==============================
+
+    //=========================SEX Filter Start===========================
+    filterListGender = (event) => {
+        var updatedList = this.state.initialItems;
+        console.log("filterconsole", updatedList)
+        updatedList1 = updatedList.filter(function (item) {
+            return item.patientData.SEX.toLowerCase().search(
+                event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({ items: updatedList1 });
+
+        console.log("updated list", updatedList1)
+
+    }
+    //=============================SEX Filter End==============================
+
+    //=========================Reference Doctor Filter Start===========================
+    filterListRefDoc = (event) => {
+        var updatedList = this.state.initialItems;
+        console.log("filterconsole", updatedList)
+        updatedList1 = updatedList.filter(function (item) {
+            return item.patientData.REF_DOC.toLowerCase().search(
+                event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({ items: updatedList1 });
+
+        console.log("updated list", updatedList1)
+
+    }
+    //=============================Reference Doctor Filter End==============================
+
+    //=========================claimAmount Filter Start===========================
+    filterListClaimAmount = (event) => {
+        var updatedList = this.state.initialItems;
+        console.log("filterconsole", updatedList)
+        updatedList1 = updatedList.filter(function (item) {
+            return item.patientData.claimAmount.toLowerCase().search(
+                event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({ items: updatedList1 });
+
+        console.log("updated list", updatedList1)
+
+    }
+    //=============================claimAmount Filter End==============================
 
 
-        }).then((response) => response.json()).then((responseJson) => {
+    //=========================status Filter Start===========================
+    filterListStatus = (event) => {
+        var updatedList = this.state.initialItems;
+        console.log("filterconsole", updatedList)
+        updatedList1 = updatedList.filter(function (item) {
+            return item.status.toLowerCase().search(
+                event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({ items: updatedList1 });
 
-            var res = responseJson
-            // var responseJson = JSON.stringify(res)
-            console.log("Retrieve bulk Records======>", res)
-            // swal("List of Records:", responseJson);
+        console.log("updated list", updatedList1)
+
+    }
+    //=============================status Filter End==============================
+
+    // initial funtion for loading data
+    componentWillMount() {
+        this.setState({ items: this.state.initialItems })
+
+    }
 
 
-            var bulkdata = res.message
 
-            //===========================Retrieve Bulk name start====================
-            console.log("Hellooooo===>", bulkdata)
-            var retrievebulkname;
-            var Rbulkname = bulkdata.map(Rbname => {
-                return retrievebulkname = Rbname.Record.patientData.NAME + " " + "\n"
-                console.log("Rbulkname===>", retrievebulkname)
-            })
+    //========================Mapping table Start============================
+    renderProducts() {
 
-            console.log("hellobulkname======>", Rbulkname)
-            this.setState({ Rbulkname: Rbulkname })
-            //===========================Retrieve Bulk name end====================
+        console.log("hello")
+        // var ldata = this.state.items
+        //   console.log("renderproducts console", ldata)
+        return this.state.items.map(items => {
 
-            //===========================Retrieve Bulk AGE start====================
-            console.log("Hellooooo===>", bulkdata)
-            var retrievebulkAGE;
-            var RbulkAGE = bulkdata.map(RbAGE => {
-                return retrievebulkAGE = RbAGE.Record.patientData.AGE + " " + "\n"
-                console.log("RbulkAGE===>", retrievebulkAGE)
-            })
+            //console.log("Map console", items)
+            return (
 
-            console.log("hellobulkAGE======>", RbulkAGE)
-            this.setState({ RbulkAGE: RbulkAGE })
-            //===========================Retrieve Bulk AGE end====================
+                <tr key={items.submitID}>
+                    <td>{items.submitID}</td>
+                    <td>{items.patientData.NAME}</td>
+                    <td>{items.patientData.AGE}</td>
+                    <td>{items.patientData.SEX}</td>
+                    <td>{items.patientData.REF_DOC}</td>
+                    <td>{items.claimAmount}</td>
+                    <td>{items.status}</td>
 
-            //===========================Retrieve Bulk Gender start====================
-            console.log("Hellooooo===>", bulkdata)
-            var retrievebulkGender;
-            var RbulkGender = bulkdata.map(RbGender => {
-                return retrievebulkGender = RbGender.Record.patientData.SEX + " " + "\n"
-                console.log("RbulkGender===>", retrievebulkGender)
-            })
 
-            console.log("hellobulkGender======>", RbulkGender)
-            this.setState({ RbulkGender: RbulkGender })
-            //===========================Retrieve Bulk Gender end====================
+                </tr>
 
-            //=========================== Retrieve Bulk status start====================
-            var bulkstatusdata
-            var Rbulkstatus = bulkdata.map(bstatus => {
-                return bulkstatusdata = bstatus.Record.status + " " + "\n"
-                console.log("Retrieve bulk status", bulkstatusdata)
-            })
-            console.log("rbulkstatusrecord", Rbulkstatus)
-            this.setState({ Rbulkstatus: Rbulkstatus })
-            //=========================== Retrieve Bulk status end====================
 
-            //=========================== Retrieve Bulk submitID start====================
-            var bulksubmitIDdata
-            var RbulksubmitID = bulkdata.map(bsubmitID => {
-                return bulksubmitIDdata = bsubmitID.Record.submitID + " " + "\n"
-                console.log("Retrieve bulk submitID", bulksubmitIDdata)
-            })
-            console.log("rbulksubmitIDrecord", RbulksubmitID)
-            this.setState({ RbulksubmitID: RbulksubmitID })
-            //=========================== Retrieve Bulk submitID end====================
+            );
+            // this.filterList()
+
+
         })
 
     }
+    //============================================Maping Table End================================
 
-    onChangeGet5 = () => {
-        console.log("akash")
-
-        fetch('http://localhost:8082/StatusSettlement', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-
-            }
-
-
-        }).then((result) => result.json()).then((result) => {
-            console.log("Bulk Data =======>", result)
-            var res = result.patients
-            // var result = JSON.stringify(res)
-            console.log("StatusSettlement======>", res)
-            this.setState({ res: res })
-
-            //============================Bulk Name start=============================================           
-            let lengthname = res.length;
-            console.log("Namelength========>", lengthname);
-            var bulknamevalue = res;
-            console.log("arjun========>", bulknamevalue)
-            this.setState({ bulknamevalue: bulknamevalue })
-
-
-            // const bulkusername = bulknamevalue.map(bname => {
-            //     // console.log(tst.name);
-
-            //     return val = bname.patientData.NAME + "\n"
-
-            // });
-            // this, setstate({bulkusername: bulkusername })
-            // {
-            //     this.state.res.map((listValue, index) => {
-            //         return (
-            //             <tr key={index}>
-            //                 <td>{listValue.submitID}</td>
-            //                 <td>{listValue.status}</td>
-            //             </tr>
-            //         );
-            //     })
-            // }
-
-            // {
-            //     const bulkusername = bulknamevalue.map(bname, index => {
-            //         console.log(bname.submitID);
-
-            //         return (
-            //             <tr key={index}>
-            //                 <td>{bname.submitID}</td>
-            //                 <td>{bname.status}</td>
-            //             </tr>
-            //         );
-            //     })
-            // }
-            // this.setState({ bulkusername: bulkusername })
-
-            // $(function () {
-            //     $.each(bulknamevalue, function (i, item) {
-            //         //${bulklist[i]}
-            //         var $tr = $('<tr>').append(
-            //             $('<td>').text(item.submitID),
-            //             $('<td>').text(item.status),
-            //             $('<td>').text(item.message)
-            //         ); //.appendTo('#records_table');
-            //         console.log($tr.wrap('<p>').html());
-            //     });
-            // });
-            // $('#bulknamevalue tr').each(function (row, tr) {
-            //     TableData = TableData
-            //         + $(tr).find('td:eq(0)').text() + ' '  // Task No.
-            //         + $(tr).find('td:eq(1)').text() + ' '  // Date
-            //         + $(tr).find('td:eq(2)').text() + ' '  // Description
-            //         + $(tr).find('td:eq(3)').text() + ' '  // Task
-            //         + '\n';
-            // });
-            console.log("output============>")
-
-            // console.log("Bulk User NAme--------->", bulkusername)
-            // this.setState({ bulkusername: bulkusername })
-
-
-            //============================Bulk Name END=============================================  
-
-            //============================Bulk submitID start=============================================    
-            const bulksubmitID = bulknamevalue.map(bsubmitid => {
-                // console.log(tst.submitID);
-                return val = bsubmitid.submitID + " " + "\n"
-            });
-            console.log("Bulk submit ID--------->", bulksubmitID)
-            this.setState({ bulksubmitID: bulksubmitID })
-            //============================Bulk subitid END=============================================  
-
-            //============================Bulk Status start=============================================   
-
-            const bulklist = bulknamevalue.map(tst => {
-                // console.log(tst.submitID);
-                return val = tst.status + " "
-            });
-            console.log("Bulk status--------->", bulklist)
-            this.setState({ bulklist: bulklist })
-            let length = bulklist.length;
-            console.log(length);
-
-            for (let i = 0; i < length; i++) {
-                // console.log(`${bulklist[i]}`);
-                // var lengthdata = {${bulklist[i]}}
-                var lengthdata = bulklist[i]
-                console.log("hi=======>", lengthdata);
-
-            }
-            // return lengthdata
-            console.log("helloooooooo=======>", lengthdata)
-
-
-            this.setState({ lengthdata: lengthdata })
-            //============================Bulk Status END=============================================   
-        })
-
-    }
-    onChangeGetWFA = () => {
-        console.log("akash")
-
-        fetch('http://localhost:8082/waitingforapproval', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-
-            }
-
-
-        }).then((result) => result.json()).then((result) => {
-
-            var res = result
-            // var result = JSON.stringify(res)
-            console.log("hiiii", res)
-            let sample = res.patients;
-            console.log("WaitingsubmitID", sample)
-            //============================Waiting for aprroval Name Start============================================= 
-            let waitbulkname
-            const wbulkname = sample.map(waitingbulkname => {
-                return waitbulkname = waitingbulkname.patientData.NAME + "\n"
-
-            })
-            console.log("waitingforapprovalname", wbulkname)
-            this.setState({ wbulkname: wbulkname })
-            //============================Waiting for aprroval Name END============================================= 
-
-            //============================Waiting for aprroval AGE Start============================================= 
-            let waitbulkAGE
-            const wbulkAGE = sample.map(waitingbulkAGE => {
-                return waitbulkAGE = waitingbulkAGE.patientData.AGE + "\n"
-
-            })
-            console.log("waitingforapprovalAGE", wbulkAGE)
-            this.setState({ wbulkAGE: wbulkAGE })
-            //============================Waiting for aprroval AGE END=============================================
-
-            //============================Waiting for aprroval SEX Start============================================= 
-            let waitbulkSEX
-            const wbulkSEX = sample.map(waitingbulkSEX => {
-                return waitbulkSEX = waitingbulkSEX.patientData.SEX + "\n"
-
-            })
-            console.log("waitingforapprovalSEX", wbulkSEX)
-            this.setState({ wbulkSEX: wbulkSEX })
-            //============================Waiting for aprroval SEX END============================================= 
-
-            //============================Waiting for aprroval Status Start============================================= 
-            let waitbulkstatus
-            const wbulkstatus = sample.map(tst => {
-                return waitbulkstatus = tst.status + "\n"
-            })
-            console.log("waitingforapprovalstatus", wbulkstatus)
-            this.setState({ wbulkstatus: wbulkstatus })
-            //============================Waiting for aprroval Status END============================================= 
-
-            //============================Waiting for aprroval Submit Start============================================= 
-            let waitbulkSubmit
-            const wbulkSubmit = sample.map(tst => {
-                return waitbulkSubmit = tst.submitID + "\n"
-            })
-            console.log("waitingforapprovalSubmit", wbulkSubmit)
-            this.setState({ wbulkSubmit: wbulkSubmit })
-            //============================Waiting for aprroval Submit END============================================= 
-
-
-        })
->>>>>>> d173e8cd17751ae74db1e4e625d2301d07436c63
-
-    }
-
-
-<<<<<<< HEAD
-    // console.log("resultrender", result)
-    render() {
-
-
-
-        return (
-
-
-=======
     componentDidMount() {
 
+    }
 
-    }
-    loopfunction() {
-        {
-            this.state.res.map((listValue, index) => {
-                return (
-                    <tr key={index}>
-                        <td>{listValue.submitID}</td>
-                        <td>{listValue.status}</td>
-                    </tr>
-                );
-            })
-        }
-        { console.log("hellodude") }
-    }
-    allFunction() {
-        this.setState({ all: true })
-        this.setState({ autoApproval: false })
-        this.setState({ tpaApproval: false })
-    }
-    autoApprovalFunction() {
-        this.setState({ all: false })
-        this.setState({ autoApproval: true })
-        this.setState({ tpaApproval: false })
-    }
-    tpaApprovalFunction() {
-        this.setState({ all: false })
-        this.setState({ autoApproval: false })
-        this.setState({ tpaApproval: true })
-    }
-    //============working for reference Start==============
-    namefun = () => ({
-        render: function () {
-            var names = this.state.bulknamevalue;
-            console.log("HEY=======>")
-            return (
-                <ul>
-                    {names.map(function (bname, index) {
-                        return <tr key={index}>
-                            <td>{bname.submitID}</td>
-                            <td>{bname.status}</td>
-                            {/* {console.log("hellodude")} */}
-                        </tr>;
-                    })}
-                </ul>
 
-            )
-            // console.log("hellodude")
-        }
-
-    });
-    createUI() {
-        return this.state.res.map((bname, i) =>
-            <div><tr key={i}>
-                <td>{bname.submitID}</td>
-                <td>{bname.status}</td>
-                {/* {console.log("hellodude")} */}
-            </tr>;
-            </div>
-        )
-    }
-    //===========working reference END==================
     render() {
 
+
+        filterdata = this.state.tparesult
+        //     .filter(
+        //         (tpaApproval) => {
+        //             // re = new RegExp(this.state.search, 'g');
+        //             //  re=/^+re
+        //             g = this.state.search
+        //             console.log("searching", g)
+
+        //             //re = ("^P")
+        //             re = `^${g}`
+
+        //             // re = "^" + g.toString
+        //             //re=re.toString    
+        //             // re = new RegExp(g, 'g');
+        //             console.log("Statedata", re)
+        //             // // re = `/^${this.state.search}/`;
+        //             // re = new RegExp(re, 'g');
+        //             // console.log("Filtereddata", re)
+        //             // match = Regex.Match(g, re);
+        //             return tpaApproval.patientData.NAME.search(g);
+
+        //         }
+        //     )
+
         return (
->>>>>>> d173e8cd17751ae74db1e4e625d2301d07436c63
+
+
             <RX.ScrollView style={styles.scroll}>
                 <RX.View style={styles.navcontainer}>
                     <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
-<<<<<<< HEAD
                         RAPID SETTLES
-    </RX.Text>
+                    </RX.Text>
                 </RX.View>
+
                 <div class="container">
                     <h1>Claim Reports</h1>
                     <RX.Button
-                    style={ [styles.button1] }
-                   
-                    onPress={this.props.onNavigateHistory}
-                >Home</RX.Button>
+                        style={[styles.button1]}
+
+                        onPress={this.props.onNavigateHistory}
+                    >Home</RX.Button>
                 </div>
                 <RX.View>
-                    <div className="container">
-                        <br />
-                        <br />
-                      
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Gender</th>
-                                    <th>Reference Doctor</th>
-                                    <th>Claim Amount</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
+                    {/* <div>
+                        <label for="inputPassword4" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Name</label>
+                        <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.search} onChangeText={this.updatesearch} />
+                    </div> */}
+                    <Grid>
+                        <div className="container">
+                            <br />
+                            <br />
 
-                            <tbody>
-                                {this.renderProducts()}
-                            </tbody>
-                        </table>
-                    </div>
+                            {/* <RX.TextInput
+                                style={styles.Form}
+                                placeholder=""
+                                value={this.state.search}
+                                onChange={this.updatesearch.bind(this)}
+                            /> */}
 
+                            <table className="table" id="myTable" style={styles.table}>
+                                <thead>
+                                    <tr class="header" id="row">
+                                        <th>ID
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListSubId} />
+                                            </tbody>
+                                        </th>
+                                        <th>Name
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterList} />
+                                            </tbody>
+                                        </th>
+                                        <th>Age
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListAge} />
+                                            </tbody>
+                                        </th>
+                                        <th>Gender
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListGender} />
+                                            </tbody>
+                                        </th>
+                                        <th>Reference Doctor
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListRefDoc} />
+                                            </tbody>
+                                        </th>
+                                        <th>Claim Amount
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListClaimAmount} />
+                                            </tbody>
+                                        </th>
+                                        <th>Status
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListStatus} />
+                                            </tbody>
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {/* //onChange={this.updatesearch.bind(this)} --input field */}
+
+
+                                    {this.renderProducts()}
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </Grid>
 
 
 
@@ -732,193 +470,5 @@ export default class History extends RX.Component {
             </RX.ScrollView>
 
         );
-
-=======
-                        RAPID SETTLE
-                    </RX.Text>
-                </RX.View>
-
-                <div class="container">
-
-                    <div class="row">
-                        <div class="col-sm-3 col-md-2 sidebar" style={styles.sidenavbar}>
-                            <ul class="nav nav-sidebar">
-                                <li class="active" onClick={() => this.statusIds()} ><a href="#" style={{ color: "orange" }}>Status<span class="sr-only">(current)</span></a></li>
-
-
-                            </ul>
-                        </div>
-                        <div>
-                            <RX.TextInput
-                                style={styles.dcform}
-                                placeholder="Search..."
-                                value={this.state.NAME}
-                                onChangeText={this.onChangeNAME}
-                                className="fa fa-search white-text"
-                            // defaultValue={ this.state.inputValue }
-                            />
-                            <i class="fa fa-search white-text" aria-hidden="true"></i>
-                            <RX.Button style={styles.but} onPress={() => this.onChangePost()}>
-                                {'Submit'}
-
-                            </RX.Button>
-                            {/* <RX.Button style={styles.all} type="radio" onPress={() => this.onChangePost()} data-toggle="tab">
-                                {'Submit'}
-
-                            </RX.Button> */}
-                            <div id="tab" class="btn-group" data-toggle="buttons-radio">
-                                <a href="#prices2" style={styles.all} onClick={() => { this.allFunction(), this.onChangeGetRBPR() }} class="btn btn-large btn-info active" data-toggle="tab">All</a>
-
-                                <a href="#features2" style={styles.Autoapprovalstyle} onClick={() => { this.autoApprovalFunction(), this.onChangeGet5() }} class="btn btn-large btn-info" data-toggle="tab">Auto APPROval</a>
-                                <a href="#requests2" style={styles.TPAapprovalstyle} onClick={() => { this.tpaApprovalFunction(), this.onChangeGetWFA() }} class="btn btn-large btn-info" data-toggle="tab">TPA Approval</a>
-
-                            </div>
-                        </div>
-
-                        {this.state.all ?
-                            <div>
-                                <div class="jumbotron" style={styles.jumbotron}>
-
-                                    <div class="container">
-                                        <div class="row">
-                                            <table class="table table-bordered">
-
-
-
-                                                {/* <tr>
-                                                    <th style={styles.tabel1}>Name</th>
-                                                    <th style={styles.tabel1}>Age</th>
-                                                    <th style={styles.tabel1}>Gender</th>
-                                                    <th style={styles.tabel1}>Approved status</th>
-                                                    <th style={styles.tabel2}>Patient submit ID</th>
-                                                </tr> */}
-
-                                                {/* <tr>
-                                                    <td>{this.state.Rbulkname}</td>
-                                                    <td>{this.state.RbulkAGE}</td>
-                                                    <td>{this.state.RbulkGender}</td>
-                                                    <td>{this.state.Rbulkstatus}</td>
-                                                    <td>{this.state.RbulksubmitID}</td>
-
-                                                </tr> */}
-                                            </table>
-                                        </div>
-                                    </div>
-                                    {/* {this.state.patients} */}
-                                    {/* {this.state.submitID} */}
-                                    {/* <table>
-                                        <tr>
-                                            <th>Submit ID</th>
-                                            <th>Lastname</th> 
-                                            <th>name</th> 
-
-                                        </tr>
-                                        <tr>
-                                            <td>{this.state.bulklist}</td>
-                                        </tr>
-                                    </table> */}
-                                </div>
-                            </div>
-                            : null}
-                        {this.state.autoApproval ?
-                            <div>
-                                <div class="jumbotron" style={styles.jumbotron}>
-
-                                    <div class="container">
-                                        <div class="row">
-
-                                            <a onClick={() => this.createUI()}>click here view details
-
-</a>
-                                            <table class="table table-bordered">
-
-                                                <thead>
-                                                    <tr>
-                                                        <th style={styles.nametabel}>Name</th>
-                                                        <th style={styles.tabel1}>Approved status</th>
-                                                        <th style={styles.tabel2}>Patient submit ID</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {/* {this.state.bulknamevalue.map(function (object, i) {
-                                                        return <ObjectRow obj={object.status} key={i} />;
-                                                    })}
-                                                    {console.log("jajajajaj")} */}
-                                                    {this.state.bulkusername}
-                                                </tbody>
-
-
-                                                {/* {this.state.bulkusername} */}
-                                                {/* <div style={styles.tabel1}> */}
-                                                {/* $(function() {
-                                                    $.each(bulknamevalue, function (i, item) {
-                                                        var $tr = $('<tr>').append(
-                                                            $('<td>').text(item.submitID),
-                                                            $('<td>').text(item.status),
-                                                            $('<td>').text(item.message)
-                                                        ); //.appendTo('#records_table');
-                                                        console.log($tr.wrap('<p>').html());
-                                                    })
-                                                }); */}
-                                                {/* {this.state.bulkusername} */}
-                                                {/* <tr>
-                                                    <td>{this.state.bulkusername}</td>
-                                                    <td>{this.state.bulklist}</td>
-                                                    <td>{this.state.bulksubmitID}</td>
-
-                                                </tr> */}
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> : null}
-                        {this.state.tpaApproval ?
-                            <div>
-                                <div class="jumbotron" style={styles.jumbotron}>
-
-                                    <div class="container">
-                                        <div class="row">
-                                            <table class="table table-bordered">
-
-                                                <tr>
-                                                    <th style={styles.nametabel}>Name</th>
-                                                    <th style={styles.tabel1}>Age</th>
-                                                    <th style={styles.tabel1}>Gender</th>
-                                                    <th style={styles.tabel1}>Approved status</th>
-                                                    <th style={styles.tabel2}>Patient submit ID</th>
-                                                </tr>
-                                                {/* <div style={styles.tabel1}> */}
-                                                <tr>
-                                                    <td>{this.state.wbulkname}</td>
-                                                    <td>{this.state.wbulkAGE}</td>
-                                                    <td>{this.state.wbulkSEX}</td>
-                                                    <td>{this.state.wbulkstatus}</td>
-                                                    <td>{this.state.wbulkSubmit}</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    {/* {this.state.patients} */}
-                                    {/* {this.state.submitID} */}
-                                    {/* <table>
-                                        <tr>
-                                        <th>Submit ID</th>
-                                        <th>Lastname</th> 
-                                        <th>name</th> 
-
-                                        </tr>
-                                        <tr>
-                                        <td>{this.state.bulklist}</td>
-                                        </tr>
-                                        </table> */}
-                                </div>
-                            </div>
-                            : null}
-
-                    </div>
-                </div>
-            </RX.ScrollView>
-        )
->>>>>>> d173e8cd17751ae74db1e4e625d2301d07436c63
     }
 }
