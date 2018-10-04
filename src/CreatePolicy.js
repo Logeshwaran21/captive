@@ -1,9 +1,8 @@
-// import React from 'react';
+import React from 'react';
+
 import RX, { Popup } from 'reactxp';
 import styling from './AppStyles';
-import { Nav, NavItem, DatePicker, NavDropdown, MenuItem, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, label, Visible, Checkbox, lg, xs } from 'react-bootstrap';
-
-
+import { Nav, NavItem, DatePicker, NavDropdown, MenuItem, FilteringState, IntegratedFiltering, Table, TableHeaderRow, TableFilterRow, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, label, Visible, Checkbox, lg, xs } from 'react-bootstrap';
 /*const {
 Welcome
 } = TodoStyles;*/
@@ -263,7 +262,7 @@ const styles = {
 
     patientDetails: RX.Styles.createViewStyle({
         width: 664,
-        height: 580,
+        height: 630,
         marginTop: 267,
         marginLeft: 192,
         color: "#1f305d",
@@ -407,7 +406,8 @@ const styles = {
         // fontWeight: 'bold',
         textAlign: 'center',
         justifyContent: 'center',
-        marginLeft: 54
+        marginLeft: 54,
+        marginTop: 11
 
     }),
     siDeTextT: RX.Styles.createTextStyle({
@@ -571,6 +571,40 @@ const styles = {
         marginTop: 0
 
     }),
+
+    bulkbutton: RX.Styles.createTextStyle({
+        fontSize: 16,
+        color: 'white',
+        fontWeight: 'bold',
+        backgroundColor: "#7460ee",
+        borderWidth: 12,
+        marginLeft: 343,
+        width: 340
+
+    }),
+
+    bulkbutton2: RX.Styles.createTextStyle({
+        fontSize: 16,
+        color: 'white',
+        fontWeight: 'bold',
+        backgroundColor: "#fc4b6c",
+        borderWidth: 12,
+        marginLeft: 343,
+        width: 342
+
+    }),
+
+    bulkbutton3: RX.Styles.createTextStyle({
+        fontSize: 16,
+        color: 'white',
+        fontWeight: 'bold',
+        backgroundColor: "#1e87e5",
+        borderWidth: 12,
+        marginLeft: 343,
+        width: 343
+
+    }),
+
     treatmentnxtbut: RX.Styles.createButtonStyle({
 
         marginLeft: 304,
@@ -621,7 +655,8 @@ const styles = {
         // fontWeight: 'bold',
         textAlign: 'center',
         justifyContent: 'center',
-        marginLeft: 31
+        marginLeft: 31,
+        marginTop: 11
 
     }),
     siDeTextPD: RX.Styles.createTextStyle({
@@ -649,6 +684,14 @@ const styles = {
         borderRadius: 8,
         borderColor: 'rgb(8, 37, 103)',
         color: 'white'
+    }),
+    picker: RX.Styles.createButtonStyle({
+        width: 120,
+        marginLeft: 23,
+        marginTop: 11,
+        color: "black",
+        height: 29
+
     }),
 
 };
@@ -709,6 +752,7 @@ const _styles = {
     }),
 
 }
+
 const pickerItems = [
     {
         label: 'Select',
@@ -728,6 +772,35 @@ const pickerItems = [
 
 ];
 
+const pickerItems1 = [
+    {
+        label: 'Select Status',
+        // value: ''
+    },
+    {
+        label: 'Initiated',
+        value: 'Initiated'
+    },
+    {
+        label: 'Not Initiated',
+        value: 'Not Initiated'
+    }
+];
+
+const pickerItems2 = [
+    {
+        label: 'Select Claim Status',
+        value: ''
+    },
+    {
+        label: 'Approved',
+        value: 'Approved'
+    },
+    {
+        label: 'Rejected',
+        value: 'Rejected'
+    }
+];
 
 var params = [];
 var value = [];
@@ -740,6 +813,7 @@ export default class CreatePolicy extends RX.Component {
         this.state = {
             name: '',
             shareholders: [{ name: '' }],
+            selectedValue: ""
 
         };
         this._translationValue = RX.Animated.createValue(-100);
@@ -832,14 +906,12 @@ export default class CreatePolicy extends RX.Component {
             body: JSON.stringify({
                 "NAME": this.state.NAME,
                 "AGE": this.state.AGE,
-
-
-                
+                "SEX": this.state.SEX,
                 "DOA": this.state.DOA,
                 "REF_DOC": this.state.REF_DOC,
                 "IPD_No": this.state.IPD_No,
                 "MLC": this.state.MLC,
-                "SEX": this.state.SEX,
+
                 "DOD": this.state.DOD,
                 "DAIGONIS": this.state.DAIGONIS,
                 "Cheif_Complaints_On_Admission": this.state.Cheif_Complaints_On_Admission,
@@ -910,6 +982,9 @@ export default class CreatePolicy extends RX.Component {
             var AGE = responseJson.result.docs[0].Records.patientData.AGE;
             var AGE = AGE
             this.setState({ AGE: AGE })
+            var SEX = responseJson.result.docs[0].Records.patientData.SEX;
+            var SEX = SEX
+            this.setState({ SEX: SEX })
 
             var DOA = responseJson.result.docs[0].Records.patientData.DOA;
             var DOA = DOA
@@ -927,9 +1002,8 @@ export default class CreatePolicy extends RX.Component {
             var MLC = MLC
             this.setState({ MLC: MLC })
 
-            var SEX = responseJson.result.docs[0].Records.patientData.SEX;
-            var SEX = SEX
-            this.setState({ SEX: SEX })
+
+
 
             var DOD = responseJson.result.docs[0].Records.patientData.DOD;
             var DOD = DOD
@@ -954,6 +1028,7 @@ export default class CreatePolicy extends RX.Component {
             var Family_History = responseJson.result.docs[0].Records.patientData.Family_History;
             var Family_History = Family_History
             this.setState({ Family_History: Family_History })
+
 
             var Menstrual_History = responseJson.result.docs[0].Records.patientData.Menstrual_History;
             var Menstrual_History = Menstrual_History
@@ -1113,6 +1188,30 @@ export default class CreatePolicy extends RX.Component {
 
     }
 
+    onChangeGetWFA = () => {
+        console.log("akash")
+
+        fetch('http://localhost:8082/waitingforapproval', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+
+            }
+
+
+        }).then((result) => result.json()).then((result) => {
+
+            var res = result.patients
+            // var result = JSON.stringify(res)
+            console.log("hiiii", res)
+            this.setState({ res: res })
+            this.props.onNavigateCreatePolicy(res)
+        })
+
+    }
+
+
 
     onChangeGet5 = () => {
 
@@ -1140,6 +1239,10 @@ export default class CreatePolicy extends RX.Component {
         })
 
     }
+
+
+
+
 
 
     onChangePost6 = () => {
@@ -1208,6 +1311,71 @@ export default class CreatePolicy extends RX.Component {
 
     //----------------------------------------------
 
+
+    onChangeGetWFA = () => {
+        console.log("akash")
+
+        fetch('http://localhost:8082/waitingforapproval', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+
+            }
+
+
+        }).then((result) => result.json()).then((result) => {
+
+            var res = result.patients
+            // var result = JSON.stringify(res)
+            console.log("hiiii", res)
+            this.props.onNavigateCreatePolicyWFTPA(res)
+
+        })
+
+    }
+    onChangeAutoapproval = () => {
+        console.log("akash")
+
+        fetch('http://localhost:8082/StatusSettlement', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+
+            }
+
+
+        }).then((result) => result.json()).then((result) => {
+            console.log("Bulk Data =======>", result)
+            var res = result.patients
+            this.props.onNavigateAutoApprovalstatus(res)
+        })
+
+    }
+
+    onChangeGetRBPR = () => {
+        console.log("Going to Retrievebulk records")
+
+        fetch('http://localhost:8082/RetrieveBulkPatientRecords', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+
+            }
+
+
+        }).then((response) => response.json()).then((responseJson) => {
+
+            var res = responseJson
+            console.log("Result policy RBR", res)
+            var bulkdata = res.message
+            console.log("Create policy RBR", bulkdata)
+            this.props.onNavigateCreatePolicyRBD(bulkdata)
+        })
+
+    }
 
 
     componentDidMount() {
@@ -1652,13 +1820,23 @@ export default class CreatePolicy extends RX.Component {
 		</div> */}
                             <div class="container" style={styles.sidenavbar}>
                                 <ul class="nav nav-list accordion">
-                                    <li class="fa fa-lg fa-globe" onClick={() => this.policyIds()} ><a style={{ color: "rgb(27, 224, 255)", font: 'ProximaNova-Semibold', fontSize: 14 }}><b>Create Policy</b><span class="sr-only">(current)</span></a></li>
-                                    <li onClick={() => this.patientDetails()}  ><a style={{ color: "rgb(27, 224, 255)", font: 'ProximaNova-Semibold', fontSize: 14 }}><b>Discharge Summary</b></a></li>
-                                    <li onClick={() => this.tpaApprove()} ><a style={{ color: "rgb(27, 224, 255)", font: 'ProximaNova-Semibold', fontSize: 14 }}><b>TPA Approval</b><span class="sr-only">(current)</span></a></li>
-                                    <li onClick={() => this.userId()} ><a style={{ color: "rgb(27, 224, 255)", font: 'ProximaNova-Semibold', fontSize: 14 }}><b>User History </b><span class="sr-only">(current)</span></a></li>
-                                    <li onClick={() => this.userId1()} ><a style={{ color: "rgb(27, 224, 255)", font: 'ProximaNova-Semibold', fontSize: 14 }}><b>Policy Details</b><span class="sr-only">(current)</span></a></li>
-                                    <li onClick={() => this.bulkdata()} ><a style={{ color: "rgb(27, 224, 255)", font: 'ProximaNova-Semibold', fontSize: 14 }}><b>All History </b><span class="sr-only">(current)</span></a></li>
-                                    <li onClick={() => this.aboutus()} ><a style={{ color: "rgb(27, 224, 255)", font: 'ProximaNova-Semibold', fontSize: 14 }}><b>About Us</b></a></li>
+                                    <li class="fa fa-lg fa-globe" onClick={() => this.policyIds()} ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>Create Policy</b><span class="sr-only">(current)</span></a></li>
+                                    <li onClick={() => this.patientDetails()}  ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>Discharge Summary</b></a></li>
+                                    <li onClick={() => this.tpaApprove()} ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>Manual Approval</b><span class="sr-only">(current)</span></a></li>
+                                    <li onClick={() => this.userId()} ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>User History </b><span class="sr-only">(current)</span></a></li>
+                                    <li onClick={() => this.userId1()} ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>Policy Details</b><span class="sr-only">(current)</span></a></li>
+                                    <li ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>Dashboard</b><span class="sr-only">(current)</span></a>
+                                        <ul class="second-level-menu" style={{ color: "white" }}>
+                                            <li onClick={() => (this.onChangeGetRBPR())}><a style={{ color: "white", font: 'ProximaNova-Regular' }} href="#">All</a></li>
+                                            <li onClick={() => (this.onChangeAutoapproval())}><a style={{ color: "white", font: 'ProximaNova-Regular' }} href="#">Approved History</a></li>
+                                            <li onClick={() => (this.onChangeGetWFA())}><a style={{ color: "white", font: 'ProximaNova-Regular' }} href="#">TPA History</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li onClick={() => this.aboutus()} ><a style={{ color: "white", font: 'ProximaNova-Regular', fontSize: 14 }}><b>About Us</b></a></li>
+
                                 </ul>
                             </div>
 
@@ -1676,13 +1854,13 @@ export default class CreatePolicy extends RX.Component {
                                                 <div style={{ backgroundColor: "#ecf0f1", height: 345, width: 987 }}>
                                                     <div>
                                                         <div style={{ marginTop: 30 }}>
-                                                            <label for="lgFormGroupInput" style={styles.policyId} style={{ fontFamily: "ProximaNova-Regular", fontSize: 14, color: "#282828" }} styles={{ marginLeft: 115 }} class="col-sm-2 col-form-label col-form-label-lg">Policy ID:</label>
+                                                            <label for="lgFormGroupInput" style={styles.policyId} style={{ fontFamily: "ProximaNova-Regular", fontSize: 14, color: "rgb(73, 73, 73)" }} styles={{ marginLeft: 115 }} class="col-sm-2 col-form-label col-form-label-lg">Policy ID:</label>
 
                                                             <RX.TextInput type="email" style={styles.policyIdTextBox} value={this.state.policyId1} onChangeText={this.onChangepolicyId} id="lgFormGroupInput" placeholder="" />
                                                         </div>
                                                         <br></br>
                                                         <div >
-                                                            <label for="lgFormGroupInput" style={styles.policyId} style={{ fontFamily: "ProximaNova-Regular", fontSize: 14, color: "#282828" }} class="col-sm-2 col-form-label col-form-label-lg">Policy Category:</label>
+                                                            <label for="lgFormGroupInput" style={styles.policyId} style={{ fontFamily: "ProximaNova-Regular", fontSize: 14, color: "rgb(73, 73, 73)" }} class="col-sm-2 col-form-label col-form-label-lg">Policy Category:</label>
 
                                                             <RX.TextInput type="email" style={styles.policyIdTextBox} id="lgFormGroupInput" placeholder="" />
                                                         </div>
@@ -1695,7 +1873,7 @@ export default class CreatePolicy extends RX.Component {
 
                                                         {/* {this.state.shareholders.map((shareholder, idx) => ( */}
                                                         <div className="shareholder">
-                                                            <label for="lgFormGroupInput" style={{ fontFamily: "ProximaNova-Regular", fontSize: 18, color: "#282828" }} class="col-sm-2 col-form-label col-form-label-lg">Rules:</label>
+                                                            <label for="lgFormGroupInput" style={{ fontFamily: "ProximaNova-Regular", fontSize: 16, color: "rgb(73, 73, 73)" }} class="col-sm-2 col-form-label col-form-label-lg">Rules:</label>
                                                             <RX.TextInput type="email" value={this.state.rules} value={this.state.expression} style={styles.rulestextbox} onChangeText={this.onChangerules} id="lgFormGroupInput" placeholder="" />
                                                             {/*  
            <RX.TextInput
@@ -1789,7 +1967,7 @@ export default class CreatePolicy extends RX.Component {
                                                 <br>
                                                 </br>
                                                 <form>
-                                                    <div>
+                                                    <div style={{ marginTop: -25 }}>
                                                         <div>
                                                             <label for="inputPassword4" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Name</label>
                                                             <RX.TextInput
@@ -1815,6 +1993,25 @@ export default class CreatePolicy extends RX.Component {
                                                                 onChangeText={this.onChangeage}
 
                                                             />
+                                                        </div>
+                                                        <div>
+                                                            <label for="" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Sex</label>
+
+
+                                                            <RX.Picker style={styles.picker}
+                                                                items={pickerItems}
+                                                                selectedValue={this.state.SEX}
+                                                                onValueChange={this.onChangeSEX}
+                                                            >
+                                                            </RX.Picker>
+                                                            {/* <RX.TextInput
+                                                                style={styles.Form}
+                                                                placeholder=""
+                                                                value={this.state.SEX}
+                                                                onChangeText={this.onChangeSEX}
+
+                                                            /> */}
+
                                                         </div>
 
 
@@ -1885,29 +2082,7 @@ export default class CreatePolicy extends RX.Component {
                                                 </form> */}
                                                         {/* <form>
                                                     <div> */}
-                                                        <div>
-                                                            <label for="" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Sex</label>
-                                                            {/* <select>
-  <option value="volvo">Male</option>
-  <option value="saab">Female</option> */}
-                                                            {/* <option value="opel">Opel</option>
-  <option value="audi">Audi</option> */}
-                                                            {/* </select> */}
-                                                            <RX.Picker
-                                                                items={pickerItems}
-                                                                selectedValue={this.state.SEX}
-                                                                onValueChange={this.onChangeSEX}
-                                                            >
-                                                            </RX.Picker>
-                                                            {/* <RX.TextInput
-                                                                style={styles.Form}
-                                                                placeholder=""
-                                                                value={this.state.SEX}
-                                                                onChangeText={this.onChangeSEX}
 
-                                                            /> */}
-
-                                                        </div>
                                                     </div>
 
                                                     <div>
@@ -2042,7 +2217,7 @@ export default class CreatePolicy extends RX.Component {
 
                                                     </div>
                                                     <div>
-                                                        <label for="" style={styles.siDeTextT}>Genral Examination</label>
+                                                        <label for="" style={styles.siDeTextT}>General Examination</label>
 
                                                         <RX.TextInput
                                                             style={styles.Form2}
@@ -2215,15 +2390,23 @@ export default class CreatePolicy extends RX.Component {
                                                     onChangeText={this.onChangeclaimAmount}
 
                                                 />
+
                                                 <label for="inputPassword4" style={styles.siDeTextCD}>Status</label>
 
-                                                <RX.TextInput
+                                                {/* <RX.TextInput
                                                     style={styles.FormCD}
                                                     placeholder=""
                                                     value={this.state.status}
                                                     onChangeText={this.onChangestatus1}
 
+                                                /> */}
+                                                <RX.Picker style={{ marginLeft: 39, width: 157, height: 25 }}
+                                                    items={pickerItems1}
+                                                    selectedValue={this.state.status}
+                                                    onValueChange={this.onChangestatus1}
+
                                                 />
+                                                <br />
                                                 <label for="inputPassword4" style={styles.siDeTextCD}>Hospital Name</label>
 
                                                 <RX.TextInput
@@ -2342,12 +2525,17 @@ export default class CreatePolicy extends RX.Component {
                                                         </div>
                                                         <div style={styles.submitid} >
 
-                                                            <RX.TextInput
-                                                                style={styles.Form1}
-                                                                placeholder=""
-                                                                value={this.state.status1}
-                                                                onChangeText={this.onChangestatus}
+                                                            {/* <RX.TextInput
+                                   style={styles.Form1}
+                                   placeholder=""
+                                   value={this.state.status1}
+                                   onChangeText={this.onChangestatus}
 
+                               /> */}
+                                                            <RX.Picker style={{ width: 235, marginLeft: 215, height: 31 }}
+                                                                items={pickerItems2}
+                                                                selectedValue={this.state.status1}
+                                                                onValueChange={this.onChangestatus}
                                                             />
 
                                                         </div>
@@ -2417,11 +2605,24 @@ export default class CreatePolicy extends RX.Component {
                                     {this.state.bulkdata ?
                                         <div class="col-xs-6 col-sm-3 placeholder">
 
-                                            <div class="container">
+                                            <div class="container" style={{ marginTop: 104 }}>
+                                                <h2 style={{ marginTop: -97, marginLeft: 336, color: "rgb(73, 73, 73)" }}> Claim reports of all Users</h2>
+                                                <br /> <br />
                                                 <div>
-                                                    <RX.Button onPress={() => (this.onChangeGet5())} ><a style={{ color: "blue" }}><b>Click here to view Entire User Details :</b><br></br><br></br><span class="sr-only">(current)</span></a></RX.Button>
+                                                    <RX.Button style={styles.bulkbutton} onPress={() => (this.onChangeGetRBPR())} ><b style={{ marginTop: 32, marginLeft: 113 }}><br />APPROVED </b><br></br><br></br> <span class="sr-only">(current)</span></RX.Button>
 
                                                 </div>
+                                                <br />
+                                                <div>
+                                                    <RX.Button style={styles.bulkbutton2} onPress={() => (this.onChangeAutoapproval())} ><b style={{ marginTop: 32, marginLeft: 91 }} >  AUTO APPROVED<br />  </b><br></br><br></br> <span class="sr-only">(current)</span></RX.Button>
+
+                                                </div>
+                                                <br />
+                                                <div>
+                                                    <RX.Button style={styles.bulkbutton3} onPress={() => (this.onChangeGetWFA())} ><b style={{ marginTop: 32, marginLeft: 101 }}> <br />  TPA APPROVED   </b><br></br><br></br> <span class="sr-only">(current)</span></RX.Button>
+
+                                                </div>
+
 
 
                                             </div>
@@ -2457,14 +2658,14 @@ export default class CreatePolicy extends RX.Component {
 
                                                 <div class="container">
                                                     <h3 style={{ marginTop: -14, color: "#1f305d", fontSize: 20 }} ><b>PATIENT DETAILS</b></h3>
-                                                    <label style={{ color: "#494949" }}>Name :   {this.state.name} </label><br></br>
+                                                    <label style={{ color: "#494949", }}>Name :   {this.state.name} </label><br></br>
                                                     <label style={{ color: "#494949" }}> Age    : {this.state.AGE} </label><br></br>
+                                                    <label style={{ color: "#494949" }}> Sex    : {this.state.SEX}  </label><br></br>
                                                     <label style={{ color: "#494949" }}> Date of Admission    :  {this.state.DOA} </label><br></br>
                                                     <label style={{ color: "#494949" }}> Reference Doctor: {this.state.REF_DOC}  </label><br></br>
                                                     <label style={{ color: "#494949" }}>In-Patient Department No  : {this.state.IPD_No}  </label><br></br>
                                                     <label style={{ color: "#494949" }}> Medico Legal Case    :  {this.state.MLC}  </label><br></br>
-                                                    <label style={{ color: "#494949" }}> Sex    : {this.state.SEX}  </label><br></br>
-                                                    <label style={{ color: "#494949" }}> Date of Admission    : {this.state.DOD}  </label><br></br>
+                                                    <label style={{ color: "#494949" }}> Date of Discharge    : {this.state.DOD}  </label><br></br>
                                                     {/* <label> NomineName    :  {this.state.NomineName}  </label><br></br> */}
                                                 </div>
                                                 <div class="container" style={styles.treat}>
@@ -2486,7 +2687,7 @@ export default class CreatePolicy extends RX.Component {
                                                     <label style={{ color: "#494949" }}> Course in Hospital And condition    :  {this.state.Course_in_Hospital_And_condition}  </label> <br></br>
                                                     <label style={{ color: "#494949" }}> Treatment Given    :  {this.state.Treatment_Given}  </label> <br></br>
                                                     <label style={{ color: "#494949" }}> Follow Up Visit    :  {this.state.Follow_Up_Visit}  </label> <br></br>
-                                                    <label style={{ color: "#494949" }}> policy Id    :  {this.state.policyId}  </label> <br></br>
+                                                    <label style={{ color: "#494949" }}> Policy Id    :  {this.state.policyId}  </label> <br></br>
                                                     <label style={{ color: "#494949" }}> Hospital Name    :  {this.state.HospitalName}  </label> <br></br>
                                                     <label style={{ color: "#494949" }}> Status    :  {this.state.status}  </label> <br></br>
                                                     <label style={{ color: "#494949" }}> Claim Amount    :  {this.state.claimAmount}  </label> <br></br>
@@ -2495,27 +2696,28 @@ export default class CreatePolicy extends RX.Component {
                                                 <div style={{ color: "#494949" }}>
                                                     <b>Claim Status:</b>{this.state.tpastatus}
                                                 </div>
-                                                </form>
-
-                                                <h4></h4>
-                                                <RX.Button style={styles.but} onPress={() => (this.updatedReport())}>
-                                                    {'Click here for Updated claim status'}
-
-                                                </RX.Button>
-                                                <br></br>
-                                                {this.state.updatedReport ?
-                                                    <div class="popup">
-                                                        <div class="content">
-                                                            <label style={{ color: "#494949" }}> SubmitID    :  {this.state.submitID}  </label> <br></br>
-                                                            <label style={{ color: "#494949" }}> Amount User have to pay :  {this.state.AmountuserHavetopay}  </label> <br></br>
-                                                            <label style={{ color: "#494949" }}> Amount Payer would pay :  {this.state.AmountPayerWouldPay}  </label> <br></br>
-                                                            <label style={{ color: "#494949" }}> Message :  {this.state.message}  </label> <br></br>
-                                                            <label style={{ color: "#494949" }}> Status    :  {this.state.statusTPA}  </label> <br></br>
-                                                        </div></div> : null}
 
 
+                                            </form>
+                                            <RX.Button style={styles.but} onPress={() => (this.updatedReport())}>
+                                                {'Click here for Updated claim status'}
 
-                                            
+                                            </RX.Button>
+                                            <br></br>
+                                            {this.state.updatedReport ?
+
+                                                <div class="content" >
+                                                    <label style={{ color: "#494949" }}> SubmitID    :  {this.state.submitID}  </label> <br></br>
+                                                    <label style={{ color: "#494949" }}> Amount User have to pay :  {this.state.AmountuserHavetopay}  </label> <br></br>
+                                                    <label style={{ color: "#494949" }}> Amount Payer would pay :  {this.state.AmountPayerWouldPay}  </label> <br></br>
+                                                    <label style={{ color: "#494949" }}> Message :  {this.state.message}  </label> <br></br>
+                                                    <label style={{ color: "#494949" }}> Status    :  {this.state.statusTPA}  </label> <br></br>
+                                                </div>
+                                                : null}
+
+
+
+
                                         </div> : null}
 
 
@@ -2654,6 +2856,7 @@ export default class CreatePolicy extends RX.Component {
             </RX.ScrollView>
 
         );
+
 
     }
 }
