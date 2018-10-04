@@ -4,10 +4,17 @@ import RX from 'reactxp';
 
 //import SideNav, { Nav , NavIcon, NavText } from 'react-sidenav';
 // import SvgIcon from 'react-icons-kit';
+<<<<<<< HEAD
 
 // import { ic_aspect_ratio } from 'react-icons-kit/md/ic_aspect_ratio';
 // import { ic_business } from 'react-icons-kit/md/ic_business';
 import { Nav, NavItem, NavDropdown, MenuItem, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, label, Visible, Checkbox, lg, xs } from 'react-bootstrap';
+=======
+ 
+// import { ic_aspect_ratio } from 'react-icons-kit/md/ic_aspect_ratio';
+// import { ic_business } from 'react-icons-kit/md/ic_business';
+import {Nav  ,NavItem,NavDropdown,MenuItem,Grid,Row,Col,Form,FormGroup,ControlLabel,FormControl,label,Visible,Checkbox,lg,xs} from 'react-bootstrap';
+>>>>>>> d5c372e28c2caf03713c99495e1952970049bacc
 /*const {
 Welcome
 } = TodoStyles;*/
@@ -24,6 +31,7 @@ const styles = {
     }),
     navcontainer: RX.Styles.createViewStyle({
         width: 1440,
+<<<<<<< HEAD
         height: 60,
         backgroundColor: '#002d62',
 
@@ -72,6 +80,56 @@ const styles = {
     button1: RX.Styles.createButtonStyle({
         backgroundColor: 'rgb(8, 37, 103)',
         borderWidth: 1,
+=======
+  height: 60,
+  backgroundColor: '#002d62',
+  
+    }),
+    
+    
+    navrqlogo:RX.Styles.createViewStyle({
+        width: 36,
+  height: 32,
+  marginBottom:'-5'
+    }),
+
+    
+
+    
+    navwelcome: RX.Styles.createTextStyle({
+        fontSize: 15,
+        marginLeft:50,
+        color: 'white',
+        marginTop:-55
+    }),
+    navsearchcontrach: RX.Styles.createTextStyle({
+        fontSize: 15,
+        marginLeft:250,
+        color: 'white',
+        
+    }),
+    pastehere: RX.Styles.createTextStyle({
+        width: 550,
+  height: 90,
+  borderRadius: 9,
+  marginTop: 20,
+  marginLeft: 480,
+//   borderColor:'black' 
+        
+    }),
+    calc: RX.Styles.createTextStyle({
+        width: 653,
+  height: 158,
+  borderRadius: 9,
+  marginTop: 20,
+  marginLeft: 357,
+//   borderColor:'black' 
+        
+    }),
+    button1: RX.Styles.createButtonStyle({
+        backgroundColor: 'rgb(8, 37, 103)',
+        borderWidth:1,
+>>>>>>> d5c372e28c2caf03713c99495e1952970049bacc
         width: 67,
         height: 30,
         // margin: 200,
@@ -79,17 +137,26 @@ const styles = {
         padding: 12,
         borderRadius: 8,
         borderColor: 'rgb(8, 37, 103)',
+<<<<<<< HEAD
         color: 'white'
+=======
+        color:'white'
+>>>>>>> d5c372e28c2caf03713c99495e1952970049bacc
     }),
 
     fieldbutton: RX.Styles.createButtonStyle({
         backgroundColor: 'rgb(8, 37, 103)',
+<<<<<<< HEAD
         borderWidth: 1,
+=======
+        borderWidth:1,
+>>>>>>> d5c372e28c2caf03713c99495e1952970049bacc
         width: 147,
         height: 30,
         // margin: 200,
         marginLeft: 50,
         padding: 12,
+<<<<<<< HEAD
 
         borderColor: 'rgb(8, 37, 103)',
         color: 'white'
@@ -161,16 +228,98 @@ const styles = {
         width: 198,
         color: 'white',
         borderColor: 'black'
+=======
+       
+        borderColor: 'rgb(8, 37, 103)',
+        color:'white'
+    }),
+
+    dropdown:RX.Styles.createTextStyle({
+        width: 220,
+    height: 32,
+    borderRadius: 4,
+    backgroundColor: '#ffffff',
+    marginLeft: 486,
+    marginTop: -55,
+        
+      
+    }),
+    dropdowndetail:RX.Styles.createTextStyle({
+        width: 220,
+    height: 32,
+    borderRadius: 4,
+    backgroundColor: '#ffffff',
+    marginLeft:730,
+        marginTop: -33
+      
+    }),
+    
+        H4:RX.Styles.createTextStyle({
+        marginLeft:350,
+        marginTop: -25,
+        marginBottom: 25
+        
+      
+    }),
+
+    insidegrid: RX.Styles.createTextStyle({
+       
+        height: 230,
+  marginTop: 14,
+  backgroundColor:'white',
+  width: 198,
+  color:'white',
+     borderColor:'black'   
+    }),
+    grid1: RX.Styles.createTextStyle({
+       
+        height: 230,
+  marginTop: -442,
+  marginLeft:352,
+  backgroundColor:'white',
+  width: 198,
+  color:'white',
+     borderColor:'black'   
+    }),
+    grid2: RX.Styles.createTextStyle({
+       
+        height: 230,
+  marginTop: -232,
+  marginLeft:579,
+  backgroundColor:'white',
+  width: 198,
+  color:'white',
+     borderColor:'black'   
+    }),
+    grid3: RX.Styles.createTextStyle({
+       
+        height: 230,
+  marginTop: -232,
+  marginLeft:804,
+  backgroundColor:'white',
+  width: 198,
+  color:'white',
+     borderColor:'black'   
+>>>>>>> d5c372e28c2caf03713c99495e1952970049bacc
     }),
 
 
     gridview: RX.Styles.createTextStyle({
+<<<<<<< HEAD
 
         height: 350,
         marginTop: -17,
         backgroundColor: 'white',
         width: 238,
         color: 'white',
+=======
+       
+  height: 350,
+  marginTop: -17,
+  backgroundColor:'white',
+  width: 238,
+  color:'white',     
+>>>>>>> d5c372e28c2caf03713c99495e1952970049bacc
     }),
 
 
@@ -178,17 +327,28 @@ const styles = {
 
 
 
+<<<<<<< HEAD
 export default class ProviderDetails extends RX.Component {
+=======
+export default class ProviderDetails extends RX.Component{
+>>>>>>> d5c372e28c2caf03713c99495e1952970049bacc
     constructor(props) {
         super(props);
         this.state = {
             todoText: '',
             todofield: '',
             secureTextEntry: true
+<<<<<<< HEAD
 
         };
 
 
+=======
+       
+        };
+        
+    
+>>>>>>> d5c372e28c2caf03713c99495e1952970049bacc
 
         this._translationValue = RX.Animated.createValue(-100);
         this._animatedStyle = RX.Styles.createAnimatedTextStyle({
@@ -199,13 +359,20 @@ export default class ProviderDetails extends RX.Component {
             ]
         });
     }
+<<<<<<< HEAD
 
 
 
+=======
+    
+
+ 
+>>>>>>> d5c372e28c2caf03713c99495e1952970049bacc
 
 
     componentDidMount() {
         let animation = RX.Animated.timing(this._translationValue, {
+<<<<<<< HEAD
             toValue: 0,
             easing: RX.Animated.Easing.OutBack(),
             duration: 500
@@ -338,5 +505,139 @@ export default class ProviderDetails extends RX.Component {
 
         );
 
+=======
+                toValue: 0,
+                easing: RX.Animated.Easing.OutBack(),
+                duration: 500
+            }
+        );
+
+        animation.start();
+        
+        
+    }
+    
+
+    render() {
+        return (
+            
+            <RX.ScrollView style={ styles.scroll }>
+                <RX.View style={ styles.navcontainer }>
+                <div>
+                <RX.Image source={ './src/img/rqlogo.png' } style={ [styles.navrqlogo] } />
+                    <RX.Text style={ styles.navwelcome }>
+                        RAPID SETTLE
+                        </RX.Text>
+                        
+                        <h4 style={styles.H4}><font Color="white">Search Contract</font></h4> 
+                                            <select class="form-control form-control-lg" id="lgFormGroupInput" style={styles.dropdown}>
+  <option value="volvo">Provider Name</option>
+  <option value="saab">Apollo</option>
+  <option value="saab">Kauvery</option>
+ 
+</select>
+<select class="form-control form-control-lg" id="lgFormGroupInput" style={styles.dropdowndetail}>
+  <option value="volvo">Contract ID</option>
+  <option value="saab">A#22214</option>
+  <option value="saab">K#20113</option>
+</select>
+                        
+                  </div>      
+                </RX.View>
+                
+                <div class="container">
+                
+                
+               
+                
+                <div class="col-sm-10">
+                <input type="email" style={styles.pastehere} class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Paste Here"/>
+      </div>
+                
+                </div>     
+                <RX.Button
+                    style={ [styles.button1] }
+                    onPress={this.props.onNavigateProviderDetails }
+                >
+                    <RX.Text style={ [styles.buttonText, this.state.button1Hover && styles.button1TextHover] }>
+                        { 'Send' }
+                    </RX.Text>
+                </RX.Button>
+                
+                
+                <Grid>
+                
+    
+
+                 <div class="jumbotron"> 
+                <div> 
+                <nav class="navigation">
+ 
+  <div class="grid-container" style={styles.gridview}>
+  <Grid>
+  <div class="grid-container" style={styles.grid}>
+  <Grid>
+ 
+      <div class="form-control form-control-lg" id="lgFormGroupInput"style={styles.insidegrid}> <br></br>
+    <li><a href="">Provider Name</a></li><br></br>
+    
+    <li><a href="">Patient-Id</a></li><br></br>
+    <li><a href="">Policy Start Date</a></li><br></br>
+      
+      <li><a href="">Policy End Date</a></li><br></br>
+    
+    <li><a href="">Claim Amount</a></li>
+
+  </div>
+  <br></br>
+  
+  </Grid>
+  </div>
+  <RX.Button style={ styles.fieldbutton }>
+                    <RX.Text>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>     { 'New field' }
+                    </RX.Text>
+                </RX.Button>
+                <br></br>
+                <RX.Button style={ styles.fieldbutton }>
+                    <RX.Text>
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>   { 'Remove field' }
+                    </RX.Text>
+                </RX.Button>
+  </Grid>
+  </div>
+</nav>
+
+       </div>
+       </div>
+       <div class="form-control form-control-lg" id="lgFormGroupInput"style={styles.grid1}>
+       <li><a href="">Apollo</a></li><br></br>
+    
+    <li><a href="">Kauvery</a></li><br></br>
+    <li><a href="">sugam</a></li><br></br>
+
+      <li><a href="">National</a></li><br></br>
+    <li><a href="">MMM</a></li>
+  </div>
+  <div class="form-control form-control-lg" id="lgFormGroupInput"style={styles.grid2}>
+  </div>
+  <div class="form-control form-control-lg" id="lgFormGroupInput"style={styles.grid3}>
+  </div>
+  
+  <div >
+      
+  <input type="text" style={styles.calc} class="form-control form-control-lg" id="lgFormGroupInput" placeholder=""/>
+ 	
+
+
+
+  </div>
+      
+       </Grid>
+            </RX.ScrollView>  
+                
+        );
+     
+>>>>>>> d5c372e28c2caf03713c99495e1952970049bacc
     }
 }
