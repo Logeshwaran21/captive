@@ -14,21 +14,13 @@ const styles = {
     navcontainer: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'center',
-<<<<<<< HEAD
         backgroundColor: 'rgb(32, 122, 142)',
-=======
-        backgroundColor: '#082567',
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
         height: 50,
         padding: 5
     }),
     navwelcome: RX.Styles.createTextStyle({
         fontSize: 15,
-<<<<<<< HEAD
         marginRight: 1010,
-=======
-        marginRight: 1050,
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
         color: 'white',
         marginTop: '5'
     }),
@@ -56,12 +48,8 @@ const styles = {
     }),
     inputtable: RX.Styles.createTextStyle({
 
-<<<<<<< HEAD
         width: 119,
         fontWeight:100
-=======
-        width: 119
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
     }),
     table: RX.Styles.createTextStyle({
@@ -175,11 +163,8 @@ let FilteredList
 let List
 var filterdata
 var updatedList1
-<<<<<<< HEAD
 var sortBy
 var desc
-=======
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 export default class History extends RX.Component {
     constructor(props) {
         super(props);
@@ -195,7 +180,6 @@ export default class History extends RX.Component {
             tparesult: tparesult
 
         };
-<<<<<<< HEAD
 this.sortBy=this.sortBy.bind(this)
         console.log("state console:", tparesult)
 
@@ -236,14 +220,6 @@ this.sortBy=this.sortBy.bind(this)
 //         tparesult:tparesult.sort((a,b)=>a<b)
 //     })
 // }
-=======
-
-        console.log("state console:", tparesult)
-
-    }
-
-
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
     // updatesearch(event) {
     //     // console.log(value)
@@ -254,7 +230,6 @@ this.sortBy=this.sortBy.bind(this)
     // }
     // function for filtering given input
 
-<<<<<<< HEAD
     // filterSearch = (event) => {
     //     var updatedList = this.state.initialItems;
     //     console.log("Filter subid console", updatedList)
@@ -267,9 +242,6 @@ this.sortBy=this.sortBy.bind(this)
     //     console.log("filter submit updated list", updatedList1)
 
     // }
-=======
-
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
     //============================SubmitID Filter Start================================
     filterListSubId = (event) => {
         var updatedList = this.state.initialItems;
@@ -283,10 +255,7 @@ this.sortBy=this.sortBy.bind(this)
         console.log("filter submit updated list", updatedList1)
 
     }
-<<<<<<< HEAD
     
-=======
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
     //=============================SubmitID filter End========================================
 
@@ -318,11 +287,7 @@ this.sortBy=this.sortBy.bind(this)
         console.log("updated list", updatedList1)
 
     }
-<<<<<<< HEAD
       //=============================AGE Filter End==============================
-=======
-    //=============================AGE Filter End==============================
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
     //=========================SEX Filter Start===========================
     filterListGender = (event) => {
@@ -337,7 +302,6 @@ this.sortBy=this.sortBy.bind(this)
         console.log("updated list", updatedList1)
 
     }
-<<<<<<< HEAD
 
     // filterListPolicyDate = (event) => {
     //     var updatedList = this.state.initialItems;
@@ -351,8 +315,6 @@ this.sortBy=this.sortBy.bind(this)
     //     console.log("updated list", updatedList1)
 
     // }
-=======
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
     //=============================SEX Filter End==============================
 
     //=========================Reference Doctor Filter Start===========================
@@ -423,20 +385,12 @@ this.sortBy=this.sortBy.bind(this)
                 <tr key={items.submitID}>
                     <td>{items.submitID}</td>
                     <td>{items.patientData.NAME}</td>
-<<<<<<< HEAD
                     {/* <td>{items.patientData.AGE}</td> */}
-=======
-                    <td>{items.patientData.AGE}</td>
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                     <td>{items.patientData.SEX}</td>
                     <td>{items.patientData.REF_DOC}</td>
                     <td>{items.claimAmount}</td>
                     <td>{items.status}</td>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                 </tr>
 
 
@@ -488,28 +442,16 @@ this.sortBy=this.sortBy.bind(this)
                 <RX.View style={styles.navcontainer}>
                     <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
-<<<<<<< HEAD
                     <b>CAPTIVE INSURANCE</b>
-=======
-                        RAPID SETTLES
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                     </RX.Text>
                 </RX.View>
 
                 <div class="container">
-<<<<<<< HEAD
                     <h1>Auto Approved Reports</h1>
                     <RX.Button
                         style={[styles.button1]}
 
                         onPress={this.props.onNavigateAutoApproval}
-=======
-                    <h1>Claim Reports</h1>
-                    <RX.Button
-                        style={[styles.button1]}
-
-                        onPress={this.props.onNavigateHistory}
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                     >Home</RX.Button>
                 </div>
                 <RX.View>
@@ -521,10 +463,7 @@ this.sortBy=this.sortBy.bind(this)
                         <div className="container">
                             <br />
                             <br />
-<<<<<<< HEAD
                             {/* <input type="text" style={styles.inputtable} placeholder="Enter Age" onChange={this.filterSearch} /> */}
-=======
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
                             {/* <RX.TextInput
                                 style={styles.Form}
@@ -538,16 +477,11 @@ this.sortBy=this.sortBy.bind(this)
                                     <tr class="header" id="row">
                                         <th>ID
                                         <tbody>
-<<<<<<< HEAD
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListSubId} />
-=======
-                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListSubId} />
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                                             </tbody>
                                         </th>
                                         <th>Name
                                         <tbody>
-<<<<<<< HEAD
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterList} />
                                             </tbody>
                                         </th>
@@ -571,42 +505,16 @@ this.sortBy=this.sortBy.bind(this)
                                         <th>Description of Damage
                                         <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListRefDoc} />
-=======
-                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterList} />
-                                            </tbody>
-                                        </th>
-                                        <th>Age
-                                        <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListAge} />
-                                            </tbody>
-                                        </th>
-                                        <th>Gender
-                                        <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListGender} />
-                                            </tbody>
-                                        </th>
-                                        <th>Reference Doctor
-                                        <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListRefDoc} />
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                                             </tbody>
                                         </th>
                                         <th>Claim Amount
                                         <tbody>
-<<<<<<< HEAD
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Amount" onChange={this.filterListClaimAmount} />
-=======
-                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListClaimAmount} />
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                                             </tbody>
                                         </th>
                                         <th>Status
                                         <tbody>
-<<<<<<< HEAD
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListStatus} />
-=======
-                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListStatus} />
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                                             </tbody>
                                         </th>
                                     </tr>
@@ -632,8 +540,4 @@ this.sortBy=this.sortBy.bind(this)
 
         );
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
