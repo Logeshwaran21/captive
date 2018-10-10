@@ -12,21 +12,13 @@ const styles = {
     navcontainer: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'center',
-<<<<<<< HEAD
         backgroundColor: 'rgb(32, 122, 142)',
-=======
-        backgroundColor: '#082567',
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
         height: 50,
         padding: 5
     }),
     navwelcome: RX.Styles.createTextStyle({
         fontSize: 15,
-<<<<<<< HEAD
         marginRight: 1010,
-=======
-        marginRight: 1050,
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
         color: 'white',
         marginTop: '5'
     }),
@@ -36,21 +28,13 @@ const styles = {
         width: 72,
         height: 5,
         marginLeft: 1035,
-<<<<<<< HEAD
         marginTop: -34,
-=======
-        marginTop:-34,
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
         marginBottom: -23,
         padding: 12,
         borderRadius: 8,
         borderColor: 'rgb(8, 37, 103)',
         color: "white",
-<<<<<<< HEAD
         textAlign: "center"
-=======
-        textAlign:"center"
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
     }),
     pack: RX.Styles.createButtonStyle({
         marginLeft: 654,
@@ -60,7 +44,6 @@ const styles = {
         marginLeft: 335,
         marginTop: -276
     }),
-<<<<<<< HEAD
     inputtable: RX.Styles.createTextStyle({
 
         width: 119
@@ -71,8 +54,6 @@ const styles = {
         marginLeft: -15
 
     }),
-=======
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
 
 
@@ -155,16 +136,12 @@ var Policyid
 var responseJson
 var result
 var products
-<<<<<<< HEAD
 var filterdata
-=======
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 export default class CreatePolicy extends RX.Component {
     constructor(props) {
         super(props);
         propsresult = this.props.navigatorRoute.bulkdata
         console.log("Props console:", propsresult)
-<<<<<<< HEAD
         // var allressult = propsresult.Record
         // console.log("sample", allressult)
         //this.setstate({ products: propsresult })
@@ -172,12 +149,6 @@ export default class CreatePolicy extends RX.Component {
             search: '',
             initialItems: propsresult,
             items: [],
-=======
-        var allressult=propsresult
-        console.log("sample",allressult)
-        //this.setstate({ products: propsresult })
-        this.state = {
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
             // products: [{ id: 1, title: 'Etherum', body: '123' }, { id: 2, title: 'Hyperledger', body: '123' },
             // { id: 3, title: 'Blockchain', body: '123' }, { id: 4, title: 'composer', body: '123' }]
             propsresult: propsresult
@@ -188,7 +159,6 @@ export default class CreatePolicy extends RX.Component {
 
     }
 
-<<<<<<< HEAD
 
     //============================SubmitID Filter Start================================
     filterListSubId = (event) => {
@@ -365,24 +335,6 @@ export default class CreatePolicy extends RX.Component {
     //         );
     //     })
     // }
-=======
-    renderProducts() {
-        console.log("hello")
-        return this.state.propsresult.map(autoApproval => {
-            return (
-                <tr key={autoApproval.submitID}>
-                 <td>{autoApproval.Record.submitID}</td>
-                    <td>{autoApproval.Record.patientData.NAME}</td>
-                    <td>{autoApproval.Record.patientData.AGE}</td>
-                    <td>{autoApproval.Record.patientData.SEX}</td>
-                    <td>{autoApproval.Record.patientData.REF_DOC}</td>
-                    <td>{autoApproval.Record.patientData.claimAmount}</td>
-                    <td>{autoApproval.Record.status}</td>
-                </tr>
-            );
-        })
-    }
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
     //   renderProducts() {
     //     return this.state.products.map(product => {
     //       return (
@@ -405,16 +357,12 @@ export default class CreatePolicy extends RX.Component {
     // console.log("resultrender", result)
     render() {
 
-<<<<<<< HEAD
         // filterdata = this.state.propsresult.filter(
         //     (autoApproval) => {
         //         return autoApproval.submitID.indexOf(this.state.search) !== -1
 
         //     }
         // )
-=======
-
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
         return (
 
@@ -423,7 +371,6 @@ export default class CreatePolicy extends RX.Component {
                 <RX.View style={styles.navcontainer}>
                     <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
-<<<<<<< HEAD
                        <b>CAPTIVE INSURANCE</b>
     </RX.Text>
                 </RX.View>
@@ -479,34 +426,6 @@ export default class CreatePolicy extends RX.Component {
                                             <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListStatus} />
                                         </tbody>
                                     </th>
-=======
-                        RAPID SETTLES
-    </RX.Text>
-                </RX.View>
-                <div class="container">
-                    <h1>Claim Reports</h1>
-                    <RX.Button
-                    style={ [styles.button1] }
-                   
-                    onPress={this.props.onNavigateStatusSettlement}
-                >Home</RX.Button>
-                </div>
-                <RX.View>
-                    <div className="container">
-                       
-                        <br />
-                        <br />
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Gender</th>
-                                    <th>Reference Doctor</th>
-                                    <th>Claim Amount</th>
-                                    <th>Status</th>
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                                 </tr>
                             </thead>
 
