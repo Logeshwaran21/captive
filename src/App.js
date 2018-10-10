@@ -17,13 +17,9 @@ import AutoApproval from './AutoApproval'
 import StatusSettlement from './StatusSettlement'
 // import Table from './Table'
 import WaitingForTPA from './WaitingForTPA'
-<<<<<<< HEAD
 import Login from './Login'
 import Notification from './Notification'
 import CaptivePolicy from './CaptivePolicy'
-=======
-
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
 let NavigationRouteId = {
 
@@ -37,15 +33,10 @@ let NavigationRouteId = {
     TPA: "TPA",
     AutoApproval: "AutoApproval",
     StatusSettlement: "StatusSettlement",
-<<<<<<< HEAD
      WaitingForTPA: "WaitingForTPA",
     Login:"Login",
     Notification:"Notification",
     CaptivePolicy:"CaptivePolicy"
-=======
-    // Table: "Table",
-    WaitingForTPA: "WaitingForTPA"
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 };
 
 const styles = {
@@ -62,21 +53,14 @@ export default class App extends RX.Component {
         super(props);
         this._onNavigatorRef = this._onNavigatorRef.bind(this);
         this._renderScene = this._renderScene.bind(this);
-<<<<<<< HEAD
         this._onPressRegisterPage = this._onPressRegisterPage.bind(this);
-=======
-        this._onPressFifth = this._onPressFifth.bind(this);
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
         this._onPressProviderDetails = this._onPressProviderDetails.bind(this);
         this._onPressDashboard = this._onPressDashboard.bind(this);
         this._onPressProviderHistory = this._onPressProviderHistory.bind(this);
         this._onPressUserdetails = this._onPressUserdetails.bind(this);
         this._onPressAutoApprovalstatus = this._onPressAutoApprovalstatus.bind(this);
-<<<<<<< HEAD
         this._onPressNotify = this._onPressNotify.bind(this);
-=======
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
         this._onPressPatientdetails = this._onPressPatientdetails.bind(this);
         this._onPressTPA = this._onPressTPA.bind(this);
         this._onPressAutoApproval = this._onPressAutoApproval.bind(this);
@@ -85,16 +69,12 @@ export default class App extends RX.Component {
         // this._onPressTable = this._onPressTable.bind(this);
         this._onPressWaitingForTPA = this._onPressWaitingForTPA.bind(this);
         this._onPressCreatePolicyWFTPA = this._onPressCreatePolicyWFTPA.bind(this);
-<<<<<<< HEAD
         this._onPressCreatePolicylogout =this._onPressCreatePolicylogout.bind(this);
         this._onPressLoginHome = this._onPressLoginHome.bind(this);
         this._onPressLogin = this._onPressLogin.bind(this);
         this._onPressNotification= this._onPressNotification.bind(this);
         this._onPressCaptivePolicy= this._onPressCaptivePolicy.bind(this);
         this._onPresspolicyDetails= this._onPresspolicyDetails.bind(this);
-=======
-
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
 
 
@@ -129,7 +109,6 @@ export default class App extends RX.Component {
         switch (navigatorRoute.routeId) {
 
             case NavigationRouteId.RegisterPage:
-<<<<<<< HEAD
                 return <RegisterPage onNavigateRegisterPage={this._onPressRegisterPage} navigatorRoute={navigatorRoute} />;
 
 
@@ -172,46 +151,6 @@ export default class App extends RX.Component {
 
                 case NavigationRouteId.CaptivePolicy:
                 return <CaptivePolicy onNavigateCaptivePolicy={this._onPressCaptivePolicy} navigatorRoute={navigatorRoute} />
-=======
-                return <RegisterPage onNavigateFifth={this._onPressFifth} navigatorRoute={navigatorRoute} />;
-
-
-            case NavigationRouteId.ProviderDetails:
-                return <ProviderDetails onNavigateProviderDetails={this._onPressProviderDetails} navigatorRoute={navigatorRoute} />
-
-            case NavigationRouteId.ProviderHistory:
-                return <ProviderHistory onNavigateProviderHistory={this._onPressProviderHistory} navigatorRoute={navigatorRoute} />
-
-            case NavigationRouteId.Dashboard1:
-                return <Dashboard onNavigateDashboard={this._onPressDashboard} navigatorRoute={navigatorRoute} />
-
-            case NavigationRouteId.Userdetails:
-                return <Userdetails onNavigateUserdetails={this._onPressUserdetails} navigatorRoute={navigatorRoute} />
-
-            case NavigationRouteId.CreatePolicy:
-                return <CreatePolicy onNavigateAutoApprovalstatus={this._onPressAutoApprovalstatus} onNavigateCreatePolicyRBD={this._onPressCreatePolicyRBD} onNavigateCreatePolicyWFTPA={this._onPressCreatePolicyWFTPA} navigatorRoute={navigatorRoute} />
-               
-            case NavigationRouteId.Patientdetails:
-                return <Patientdetails onNavigatePatientdetails={this._onPressPatientdetails} navigatorRoute={navigatorRoute} />
-
-            case NavigationRouteId.TPA:
-                return <TPA onNavigateTPA={this._onPressTPA} navigatorRoute={navigatorRoute} />
-
-            case NavigationRouteId.AutoApproval:
-                return <AutoApproval onNavigateAutoApproval={this._onPressAutoApproval} navigatorRoute={navigatorRoute} />
-
-            case NavigationRouteId.StatusSettlement:
-                return <StatusSettlement onNavigateStatusSettlement={this._onPressStatusSettlement} navigatorRoute={navigatorRoute} />
-
-            // case NavigationRouteId.Table:
-            //     return <Table onNavigateTable={this._onPressTable} navigatorRoute={navigatorRoute} />
-
-
-            case NavigationRouteId.WaitingForTPA:
-                return <WaitingForTPA onNavigateWaitingForTPA={this._onPressWaitingForTPA} navigatorRoute={navigatorRoute} />
-
-
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
 
         }
@@ -219,7 +158,6 @@ export default class App extends RX.Component {
         return null;
     }
 
-<<<<<<< HEAD
     
     _onPressLogin(res) {
         // this._navigator.pop();
@@ -238,33 +176,12 @@ export default class App extends RX.Component {
         this._navigator.push({
             routeId: NavigationRouteId.RegisterPage,
             // sceneConfigType: "Fade",
-=======
-    // _onPressTable() {
-    //     // this._navigator.pop();
-    //     this._navigator.push({
-    //         routeId: NavigationRouteId.ProviderDetails,
-    //         // sceneConfigType: "Fade",
-    //         customSceneConfig: {
-    //             hideShadow: true
-    //         }
-    //     });
-    // }
-    _onPressWaitingForTPA() {
-        // this._navigator.pop();
-        this._navigator.push({
-            routeId: NavigationRouteId.CreatePolicy,
-            // sceneConfigType: "Fade",
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
             customSceneConfig: {
                 hideShadow: true
             }
         });
     }
-<<<<<<< HEAD
     _onPressWaitingForTPA() {
-=======
-    _onPressFifth() {
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
         // this._navigator.pop();
         this._navigator.push({
             routeId: NavigationRouteId.CreatePolicy,
@@ -330,7 +247,6 @@ export default class App extends RX.Component {
             routeId: NavigationRouteId.UserHistory,
             // sceneConfigType: "Fade",
             resJson1: resJson1,
-<<<<<<< HEAD
             customSceneConfig: {
                 hideShadow: true
             }
@@ -355,38 +271,17 @@ export default class App extends RX.Component {
             routeId: NavigationRouteId.Notification,
             // sceneConfigType: "Fade",
             res: res,
-=======
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
             customSceneConfig: {
                 hideShadow: true
             }
         });
     }
 
-<<<<<<< HEAD
     _onPresspolicyDetails(bulkdata) {
         console.log("bulkdata", bulkdata)
         this._navigator.push({
             routeId: NavigationRouteId.CaptivePolicy,
             // sceneConfigType: "Fade",
-=======
-    _onPressAutoApprovalstatus(res) {
-        console.log("res", res)
-        this._navigator.push({
-            routeId: NavigationRouteId.AutoApproval,
-            // sceneConfigType: "Fade",
-            res: res,
-            customSceneConfig: {
-                hideShadow: true
-            }
-        });
-    }
-    _onPressCreatePolicyRBD(bulkdata) {
-        console.log("APP bulkdata", bulkdata)
-        this._navigator.push({
-            routeId: NavigationRouteId.StatusSettlement,
-            // sceneConfigType: "Fade",
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
             bulkdata: bulkdata,
             customSceneConfig: {
                 hideShadow: true
@@ -394,7 +289,6 @@ export default class App extends RX.Component {
         });
     }
 
-<<<<<<< HEAD
     _onPressCreatePolicyRBD(bulkdata) {
         console.log("APP bulkdata", bulkdata)
         this._navigator.push({
@@ -417,8 +311,6 @@ export default class App extends RX.Component {
             }
         });
     }
-=======
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
     _onPressCreatePolicyWFTPA(res) {
         console.log("res", res)
         this._navigator.push({
@@ -487,20 +379,6 @@ export default class App extends RX.Component {
         this._navigator.push({
             routeId: NavigationRouteId.CreatePolicy,
             token: token,
-<<<<<<< HEAD
-=======
-            customSceneConfig: {
-                hideShadow: true
-            }
-        });
-    }
-
-    _onPressStatusSettlement(token) {
-        console.log("token", token)
-        this._navigator.push({
-            routeId: NavigationRouteId.CreatePolicy,
-            token: token,
->>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
             customSceneConfig: {
                 hideShadow: true
             }
