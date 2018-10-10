@@ -14,13 +14,21 @@ const styles = {
     navcontainer: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'center',
+<<<<<<< HEAD
         backgroundColor: 'rgb(32, 122, 142)',
+=======
+        backgroundColor: '#082567',
+>>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
         height: 50,
         padding: 5
     }),
     navwelcome: RX.Styles.createTextStyle({
         fontSize: 15,
+<<<<<<< HEAD
         marginRight: 1010,
+=======
+        marginRight: 1050,
+>>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
         color: 'white',
         marginTop: '5'
     }),
@@ -162,7 +170,10 @@ let FilteredList
 let List
 var filterdata
 var updatedList1
+<<<<<<< HEAD
 var cellDataKey
+=======
+>>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 export default class WaitingForTPA extends RX.Component {
     constructor(props) {
         super(props);
@@ -175,9 +186,13 @@ export default class WaitingForTPA extends RX.Component {
             items: [],
             // products: [{ id: 1, title: 'Etherum', body: '123' }, { id: 2, title: 'Hyperledger', body: '123' },
             // { id: 3, title: 'Blockchain', body: '123' }, { id: 4, title: 'composer', body: '123' }]
+<<<<<<< HEAD
             tparesult: tparesult,
             sortBy: 'id',
     sortDir: null
+=======
+            tparesult: tparesult
+>>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
 
         };
 
@@ -341,7 +356,11 @@ export default class WaitingForTPA extends RX.Component {
                 <tr key={items.submitID}>
                     <td>{items.submitID}</td>
                     <td>{items.patientData.NAME}</td>
+<<<<<<< HEAD
                     {/* <td>{items.patientData.AGE}</td> */}
+=======
+                    <td>{items.patientData.AGE}</td>
+>>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                     <td>{items.patientData.SEX}</td>
                     <td>{items.patientData.REF_DOC}</td>
                     <td>{items.claimAmount}</td>
@@ -359,6 +378,7 @@ export default class WaitingForTPA extends RX.Component {
 
     }
     //============================================Maping Table End================================
+<<<<<<< HEAD
     _sortRowsBy(cellDataKey) {
         var sortDir = this.state.sortDir;
         var sortBy = cellDataKey;
@@ -385,6 +405,9 @@ export default class WaitingForTPA extends RX.Component {
        
         this.setState({sortBy, sortDir, filterList : rows});
       }
+=======
+
+>>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
     componentDidMount() {
 
     }
@@ -424,16 +447,28 @@ export default class WaitingForTPA extends RX.Component {
                 <RX.View style={styles.navcontainer}>
                     <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
+<<<<<<< HEAD
                     <b>CAPTIVE INSURANCE</b>
+=======
+                        RAPID SETTLES
+>>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                     </RX.Text>
                 </RX.View>
 
                 <div class="container">
+<<<<<<< HEAD
                     <h1>TPA Reports</h1>
                     <RX.Button
                         style={[styles.button1]}
 
                         onPress={this.props.onNavigateWaitingForTPA}
+=======
+                    <h1>Claim Reports</h1>
+                    <RX.Button
+                        style={[styles.button1]}
+
+                        onPress={this.props.onNavigateHistory}
+>>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                     >Home</RX.Button>
                 </div>
                 <RX.View>
@@ -461,6 +496,7 @@ export default class WaitingForTPA extends RX.Component {
                                                 <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListSubId} />
                                             </tbody>
                                         </th>
+<<<<<<< HEAD
                                         <th onClick={this._sortRowsBy.bind(this, cellDataKey)}>Name
                                         <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterList} onChange={this.filterList.bind(this, cellDataKey)} />
@@ -472,11 +508,28 @@ export default class WaitingForTPA extends RX.Component {
                                             </tbody>
                                         </th> */}
                                         <th>Category
+=======
+                                        <th>Name
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterList} />
+                                            </tbody>
+                                        </th>
+                                        <th>Age
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListAge} />
+                                            </tbody>
+                                        </th>
+                                        <th>Gender
+>>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                                         <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListGender} />
                                             </tbody>
                                         </th>
+<<<<<<< HEAD
                                         <th>Description of Damage
+=======
+                                        <th>Reference Doctor
+>>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                                         <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListRefDoc} />
                                             </tbody>
@@ -491,11 +544,19 @@ export default class WaitingForTPA extends RX.Component {
                                                 <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListStatus} />
                                             </tbody>
                                         </th>
+<<<<<<< HEAD
                                         {/* <th>Status(Approved/Reject)
                                         <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListApprovedOrReject} />
                                             </tbody>
                                         </th> */}
+=======
+                                        <th>Status(Approved/Reject)
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListApprovedOrReject} />
+                                            </tbody>
+                                        </th>
+>>>>>>> 09b397a7f9c0c15c99af0526071bbdeccc582ed6
                                     </tr>
                                 </thead>
 
