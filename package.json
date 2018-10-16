@@ -29,7 +29,7 @@
     "react-bootstrap": "^0.31.5",
     "react-bootstrap-dialog": "^0.9.4",
     "react-bootstrap-sweetalert": "^4.2.3",
-    "react-datepicker": "^1.2.2",
+    "react-datepicker": "file:node_modules/react-datepicker",
     "react-dom": "^16.2.0",
     "react-native": "^0.50.3",
     "react-native-calendar-component": "^0.1.2",

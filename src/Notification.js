@@ -24,16 +24,11 @@ const styles = {
         color: 'white',
         marginTop: '5'
     }),
-    navwelcome3: RX.Styles.createTextStyle({
+    navwelcome2: RX.Styles.createTextStyle({
         fontSize: 15,
-        marginLeft: 982,
-        backgroundColor: 'rgb(8, 37, 103)',
-        // marginTop: -22,
+        marginLeft: 1182,
+        marginTop: -22,
         color: 'white',
-        borderWidth: 1,
-        borderRadius: 8,
-        width:64,
-        textAlign:"center"
 
     }),
     button1: RX.Styles.createButtonStyle({
@@ -77,7 +72,7 @@ const styles = {
     inputtable: RX.Styles.createTextStyle({
 
         width: 119,
-        fontWeight: 100
+        fontWeight:100
 
     }),
     table: RX.Styles.createTextStyle({
@@ -197,39 +192,38 @@ export default class History extends RX.Component {
     constructor(props) {
         super(props);
         tparesult = this.props.navigatorRoute.res
-        //tparesult = capres.captivepolicydata
         console.log("Props console:", tparesult)
-
+       
         this.state = {
             search: '',
             initialItems: tparesult,
             items: [],
-
+           
             tparesult: tparesult
 
         };
-        this.sortBy = this.sortBy.bind(this)
+this.sortBy=this.sortBy.bind(this)
         console.log("state console:", tparesult)
 
     }
-
-    sortBy(key) {
-        console.log("test key", key)
+   
+    sortBy(key){
+        console.log("test key",key)
         this.setState({
-
-            tparesult: tparesult.sort()
-
-        })
-        console.log("hiiiii", tparesult)
+            
+        tparesult:tparesult.sort()
+       
+    })
+    console.log("hiiiii",tparesult)
     }
-
-
-    updateSearch(event) {
-
-        this.setState({ search: event.target.value.substr(0, 20) });
-    }
-
-
+    
+    
+        updateSearch(event){
+           
+            this.setState({search:event.target.value.substr(0,20)});
+        }
+    
+    
     //============================SubmitID Filter Start================================
     filterListpolicyid = (event) => {
         var updatedList = this.state.initialItems;
@@ -243,7 +237,7 @@ export default class History extends RX.Component {
         console.log("filter submit updated list", updatedList1)
 
     }
-
+    
 
     //=============================SubmitID filter End========================================
 
@@ -275,7 +269,7 @@ export default class History extends RX.Component {
         console.log("updated list", updatedList1)
 
     }
-    //=============================AGE Filter End==============================
+      //=============================AGE Filter End==============================
 
     //=========================SEX Filter Start===========================
     filterListPremium = (event) => {
@@ -291,7 +285,7 @@ export default class History extends RX.Component {
 
     }
 
-
+    
 
     // filterListPolicyDate = (event) => {
     //     var updatedList = this.state.initialItems;
@@ -358,39 +352,44 @@ export default class History extends RX.Component {
         this.setState({ items: this.state.initialItems })
 
     }
-    handleChange1 = (data, event) => {
+    handleChange1 =   (data, event) => {
         if (event.target.checked == true) {
 
 
-            var policyid = JSON.stringify(data.policyid)
+            var policyid = JSON.stringify(data.Key)
             this.setState({ policyid: policyid })
             console.log("policyid console", policyid)
 
-            var policyName = JSON.stringify(data.policyName)
+            var policyName = JSON.stringify(data.Record.policyName)
             this.setState({ policyName: policyName })
             console.log("policyName console", policyName)
 
-            var policycatagory = JSON.stringify(data.policycatagory)
+            var policycatagory = JSON.stringify(data.Record.policycatagory)
             this.setState({ policycatagory: policycatagory })
             console.log("policycatagory console", policycatagory)
 
-            var rules = JSON.stringify(data.rules)
+            var rules = JSON.stringify(data.Record.rules)
             this.setState({ rules: rules })
             console.log("rules console", rules)
 
-            var policypercentage = JSON.stringify(data.policypercentage)
+            var policypercentage = JSON.stringify(data.Record.policypercentage)
             this.setState({ policypercentage: policypercentage })
             console.log("policypercentage console", policypercentage)
 
-            var inputradio = JSON.stringify(data.inputradio)
+            var inputradio = JSON.stringify(data.Record.inputradio)
             this.setState({ inputradio: inputradio })
             console.log("inputradio console", inputradio)
+
+            // var status = JSON.stringify(data.Record.status)
+            // this.setState({ status: status })
+            // console.log("status console", status)
+
         } else {
             return alert("Please select atleast one Rule")
         }
 
 
-
+      
     }
 
 
@@ -406,26 +405,25 @@ export default class History extends RX.Component {
             //console.log("Map console", items)
             return (
 
-                <tr key={items.Record.policyid}>
-                    {/* <td><input type="Checkbox" ref="check_me"
-                        onChange={(event) => this.handleChange1(items, event)} /></td> */}
+                <tr key={items.policyid}>
+                   <td><input type="Checkbox" ref="check_me"
+                        onChange={(event) => this.handleChange1(items, event)} /></td>
                     <td>{items.Key}</td>
                     <td>{items.Record.policyName}</td>
-
+                   
                     <td>{items.Record.policycatagory}</td>
                     <td>{items.Record.policypercentage}</td>
                     <td>{items.Record.rules}</td>
-                   
                     <td>{items.Record.inputradio}</td>
-                    <td>{items.Record.status}</td>
-                    {/* <td>
+                    <td>{items.status}</td>
+                   <td>
                         <RX.Button
                        
                        style={[styles.button2]}
                         
                         onPress={() => this.onChangeNotifyApprove()}
                     >Approve</RX.Button></td>
-                     <td>
+                     {/* <td>
                         <RX.Button
                        
                        style={[styles.button2]}
@@ -441,51 +439,47 @@ export default class History extends RX.Component {
         })
 
     }
-    onChangePost6 = () => {
+
+    onChangeNotifyApprove = () => {
 
 
 
-        console.log("Enter Into the notify create policy")
+        console.log("Enter Into the notify approved status")
         return fetch('http://localhost:8082/notifyApprove', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-
+ 
             },
-
+ 
             body: JSON.stringify({
-
+ 
                 "policyid": this.state.policyid,
                 "policyName": this.state.policyName,
                 "policycatagory": this.state.policycatagory,
-                "rules": this.state.rules,
                 "policypercentage": this.state.policypercentage,
+                "rules": this.state.rules,
                 "inputradio": this.state.inputradio,
-
-
+                // "status": this.state.status
+ 
             }),
         }).then((res) => res.json()).then((responseJson) => {
-
+ 
             var res = responseJson;
             console.log("response", res)
-            var res1 = res.result.message;
-
+            var res1 = res.message;
             // var responseJson = JSON.stringify(res)
-            console.log("Message console", res1)
+            console.log("response", res1)
             swal(res1)
-            // var rescount = res.result.result.count
-            // console.log("Count console notification", rescount)
-            // this.props.onNavigateCaptivePolicy(rescount)
             // console.log("response", res)
-            // this.props.onNavigateCaptivePolicy(res)
-
+             this.props.onNavigateCaptivePolicy(res)
+ 
         }).catch(function () {
             console.log("error");
         });
-
+ 
     }
-
     //============================================Maping Table End================================
 
     componentDidMount() {
@@ -497,7 +491,7 @@ export default class History extends RX.Component {
 
 
         filterdata = this.state.tparesult
-
+        
         return (
 
 
@@ -505,31 +499,30 @@ export default class History extends RX.Component {
                 <RX.View style={styles.navcontainer}>
                     <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
-                        <b>CAPTIVE INSURANCE</b>
+                    <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
+                    <RX.Button style={styles.navwelcome2} onPress={this.props.onNavigateadminnotifylogout}>
+                        <b>Logout</b>
+                    </RX.Button>
                 </RX.View>
 
                 <div class="container">
-                    <h1>User Notification</h1>
-                    <RX.Button
-                       style={styles.navwelcome3}
-
-                       onPress={this.props.onNavigateuserhome}
-                    >Home</RX.Button>
+                    <h1>Received Requests</h1>
+                   
                 </div>
                 <RX.View>
-
+                
                     <Grid>
                         <div className="container">
                             <br />
                             <br />
-
+                          
                             <table className="table" id="myTable" style={styles.table}>
                                 <thead>
                                     <tr class="header" id="row">
-                                        {/* <th>Checkbox:
+                                    <th>Checkbox:
                                       
-                                    </th> */}
+                                    </th>
                                         <th>Policy ID
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListpolicyid} />
@@ -540,8 +533,8 @@ export default class History extends RX.Component {
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListPolicyName} />
                                             </tbody> */}
                                         </th>
-
-                                        <th>Policy Category
+                                        
+                                          <th>Policy Category
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Gender" onChange={this.filterListPolicyCategory} />
                                             </tbody> */}
@@ -556,7 +549,7 @@ export default class History extends RX.Component {
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListPaymentRule} />
                                             </tbody> */}
                                         </th>
-
+                                      
                                         <th>Collateral
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListCollateral} />

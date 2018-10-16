@@ -24,18 +24,6 @@ const styles = {
         color: 'white',
         marginTop: '5'
     }),
-    navwelcome3: RX.Styles.createTextStyle({
-        fontSize: 15,
-        marginLeft: 982,
-        backgroundColor: 'rgb(8, 37, 103)',
-        // marginTop: -22,
-        color: 'white',
-        borderWidth: 1,
-        borderRadius: 8,
-        width:64,
-        textAlign:"center"
-
-    }),
     button1: RX.Styles.createButtonStyle({
         backgroundColor: 'rgb(8, 37, 103)',
         borderWidth: 1,
@@ -50,22 +38,6 @@ const styles = {
         marginTop: -40,
         textAlign: "center"
     }),
-
-    button2: RX.Styles.createButtonStyle({
-        backgroundColor: 'rgb(8, 37, 103)',
-        borderWidth: 1,
-        width: 72,
-        height: 5,
-        // marginLeft: 1035,
-        marginBottom: -23,
-        padding: 12,
-        borderRadius: 8,
-        borderColor: 'rgb(8, 37, 103)',
-        color: "white",
-        // marginTop: -40,
-        textAlign: "center"
-    }),
-
     pack: RX.Styles.createButtonStyle({
         marginLeft: 654,
         marginTop: -295
@@ -77,7 +49,7 @@ const styles = {
     inputtable: RX.Styles.createTextStyle({
 
         width: 119,
-        fontWeight: 100
+        fontWeight:100
 
     }),
     table: RX.Styles.createTextStyle({
@@ -181,7 +153,7 @@ const styles = {
 
 var resJson1
 var res
-var policyid
+var Policyid
 var responseJson
 var result
 var products
@@ -197,45 +169,85 @@ export default class History extends RX.Component {
     constructor(props) {
         super(props);
         tparesult = this.props.navigatorRoute.res
-        //tparesult = capres.captivepolicydata
         console.log("Props console:", tparesult)
-
+        //this.setstate({ products: tparesult })
         this.state = {
             search: '',
             initialItems: tparesult,
             items: [],
-
+            // products: [{ id: 1, title: 'Etherum', body: '123' }, { id: 2, title: 'Hyperledger', body: '123' },
+            // { id: 3, title: 'Blockchain', body: '123' }, { id: 4, title: 'composer', body: '123' }]
             tparesult: tparesult
 
         };
-        this.sortBy = this.sortBy.bind(this)
+this.sortBy=this.sortBy.bind(this)
         console.log("state console:", tparesult)
 
     }
-
-    sortBy(key) {
-        console.log("test key", key)
+   
+    sortBy(key){
+        console.log("test key",key)
         this.setState({
-
-            tparesult: tparesult.sort()
-
-        })
-        console.log("hiiiii", tparesult)
+            
+        tparesult:tparesult.sort()
+       
+    })
+    console.log("hiiiii",tparesult)
     }
+    
+    
+        updateSearch(event){
+           
+            this.setState({search:event.target.value.substr(0,20)});
+        }
+    
+    // sortBy = (key) => {
+    //     var updatedList = this.state.initialItems;
+    //     console.log("Filter subid console", key)
+    //     updatedList1 = updatedList.sort(function (item) {
+    //          item.patientData.AGE.sort(
+    //             key.sort()
+    //         ) !== -1;
+    //     });
+    //     this.setState({ items: updatedList.sortBy(desc) });
 
+    //     console.log("filter submit updated list", updatedList)
 
-    updateSearch(event) {
+    // }
+// sortBy(key){
+//     console.log("key test",key)
+//     this.setState({
+//         tparesult:tparesult.sort((a,b)=>a<b)
+//     })
+// }
 
-        this.setState({ search: event.target.value.substr(0, 20) });
-    }
+    // updatesearch(event) {
+    //     // console.log(value)
+    //     // var stable=this.state.search;
+    //     // console.log("Update function console",stable)
+    //     this.setState({ search: event.target.value });
+    //     // console.log(this.state.search, "search")
+    // }
+    // function for filtering given input
 
+    // filterSearch = (event) => {
+    //     var updatedList = this.state.initialItems;
+    //     console.log("Filter subid console", updatedList)
+    //     updatedList1 = updatedList.filter(function (item) {
+    //         return item.toLowerCase().search(
+    //             event.target.value.toLowerCase()) !== -1;
+    //     });
+    //     this.setState({ items: updatedList1 });
 
+    //     console.log("filter submit updated list", updatedList1)
+
+    // }
     //============================SubmitID Filter Start================================
-    filterListpolicyid = (event) => {
+    filterListSubId = (event) => {
         var updatedList = this.state.initialItems;
         console.log("Filter subid console", updatedList)
         updatedList1 = updatedList.filter(function (item) {
-            return item.policyid.toLowerCase().search(
+            return item.submitID.toLowerCase().search(
                 event.target.value.toLowerCase()) !== -1;
         });
         this.setState({ items: updatedList1 });
@@ -243,16 +255,16 @@ export default class History extends RX.Component {
         console.log("filter submit updated list", updatedList1)
 
     }
-
+    
 
     //=============================SubmitID filter End========================================
 
     //=========================Name Filter Start===========================
-    filterListPolicyName = (event) => {
+    filterList = (event) => {
         var updatedList = this.state.initialItems;
         console.log("filterconsole", updatedList)
         updatedList1 = updatedList.filter(function (item) {
-            return item.policyName.toLowerCase().search(
+            return item.patientData.NAME.toLowerCase().search(
                 event.target.value.toLowerCase()) !== -1;
         });
         this.setState({ items: updatedList1 });
@@ -263,11 +275,11 @@ export default class History extends RX.Component {
     //=============================Name Filter End==============================
 
     //=========================AGE Filter Start===========================
-    filterListPolicyCategory = (event) => {
+    filterListAge = (event) => {
         var updatedList = this.state.initialItems;
         console.log("filterconsole", updatedList)
         updatedList1 = updatedList.filter(function (item) {
-            return item.policycatagory.toLowerCase().search(
+            return item.patientData.AGE.toLowerCase().search(
                 event.target.value.toLowerCase()) !== -1;
         });
         this.setState({ items: updatedList1 });
@@ -275,14 +287,14 @@ export default class History extends RX.Component {
         console.log("updated list", updatedList1)
 
     }
-    //=============================AGE Filter End==============================
+      //=============================AGE Filter End==============================
 
     //=========================SEX Filter Start===========================
-    filterListPremium = (event) => {
+    filterListGender = (event) => {
         var updatedList = this.state.initialItems;
         console.log("filterconsole", updatedList)
         updatedList1 = updatedList.filter(function (item) {
-            return item.policypercentage.toLowerCase().search(
+            return item.patientData.SEX.toLowerCase().search(
                 event.target.value.toLowerCase()) !== -1;
         });
         this.setState({ items: updatedList1 });
@@ -290,8 +302,6 @@ export default class History extends RX.Component {
         console.log("updated list", updatedList1)
 
     }
-
-
 
     // filterListPolicyDate = (event) => {
     //     var updatedList = this.state.initialItems;
@@ -308,11 +318,11 @@ export default class History extends RX.Component {
     //=============================SEX Filter End==============================
 
     //=========================Reference Doctor Filter Start===========================
-    filterListPaymentRule = (event) => {
+    filterListRefDoc = (event) => {
         var updatedList = this.state.initialItems;
         console.log("filterconsole", updatedList)
         updatedList1 = updatedList.filter(function (item) {
-            return item.rules.toLowerCase().search(
+            return item.patientData.REF_DOC.toLowerCase().search(
                 event.target.value.toLowerCase()) !== -1;
         });
         this.setState({ items: updatedList1 });
@@ -323,11 +333,11 @@ export default class History extends RX.Component {
     //=============================Reference Doctor Filter End==============================
 
     //=========================claimAmount Filter Start===========================
-    filterListCollateral = (event) => {
+    filterListClaimAmount = (event) => {
         var updatedList = this.state.initialItems;
         console.log("filterconsole", updatedList)
         updatedList1 = updatedList.filter(function (item) {
-            return item.inputradio.toLowerCase().search(
+            return item.patientData.claimAmount.toLowerCase().search(
                 event.target.value.toLowerCase()) !== -1;
         });
         this.setState({ items: updatedList1 });
@@ -358,40 +368,6 @@ export default class History extends RX.Component {
         this.setState({ items: this.state.initialItems })
 
     }
-    handleChange1 = (data, event) => {
-        if (event.target.checked == true) {
-
-
-            var policyid = JSON.stringify(data.policyid)
-            this.setState({ policyid: policyid })
-            console.log("policyid console", policyid)
-
-            var policyName = JSON.stringify(data.policyName)
-            this.setState({ policyName: policyName })
-            console.log("policyName console", policyName)
-
-            var policycatagory = JSON.stringify(data.policycatagory)
-            this.setState({ policycatagory: policycatagory })
-            console.log("policycatagory console", policycatagory)
-
-            var rules = JSON.stringify(data.rules)
-            this.setState({ rules: rules })
-            console.log("rules console", rules)
-
-            var policypercentage = JSON.stringify(data.policypercentage)
-            this.setState({ policypercentage: policypercentage })
-            console.log("policypercentage console", policypercentage)
-
-            var inputradio = JSON.stringify(data.inputradio)
-            this.setState({ inputradio: inputradio })
-            console.log("inputradio console", inputradio)
-        } else {
-            return alert("Please select atleast one Rule")
-        }
-
-
-
-    }
 
 
 
@@ -406,31 +382,15 @@ export default class History extends RX.Component {
             //console.log("Map console", items)
             return (
 
-                <tr key={items.Record.policyid}>
-                    {/* <td><input type="Checkbox" ref="check_me"
-                        onChange={(event) => this.handleChange1(items, event)} /></td> */}
-                    <td>{items.Key}</td>
-                    <td>{items.Record.policyName}</td>
+                <tr key={items.submitID}>
+                    <td>{items.submitID}</td>
+                    <td>{items.patientData.NAME}</td>
+                    {/* <td>{items.patientData.AGE}</td> */}
+                    <td>{items.patientData.SEX}</td>
+                    <td>{items.patientData.REF_DOC}</td>
+                    <td>{items.claimAmount}</td>
+                    <td>{items.status}</td>
 
-                    <td>{items.Record.policycatagory}</td>
-                    <td>{items.Record.policypercentage}</td>
-                    <td>{items.Record.rules}</td>
-                   
-                    <td>{items.Record.inputradio}</td>
-                    <td>{items.Record.status}</td>
-                    {/* <td>
-                        <RX.Button
-                       
-                       style={[styles.button2]}
-                        
-                        onPress={() => this.onChangeNotifyApprove()}
-                    >Approve</RX.Button></td>
-                     <td>
-                        <RX.Button
-                       
-                       style={[styles.button2]}
-                        onPress={this.props.onNavigateNotification}
-                    >Reject</RX.Button></td> */}
                 </tr>
 
 
@@ -441,51 +401,6 @@ export default class History extends RX.Component {
         })
 
     }
-    onChangePost6 = () => {
-
-
-
-        console.log("Enter Into the notify create policy")
-        return fetch('http://localhost:8082/notifyApprove', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-
-            },
-
-            body: JSON.stringify({
-
-                "policyid": this.state.policyid,
-                "policyName": this.state.policyName,
-                "policycatagory": this.state.policycatagory,
-                "rules": this.state.rules,
-                "policypercentage": this.state.policypercentage,
-                "inputradio": this.state.inputradio,
-
-
-            }),
-        }).then((res) => res.json()).then((responseJson) => {
-
-            var res = responseJson;
-            console.log("response", res)
-            var res1 = res.result.message;
-
-            // var responseJson = JSON.stringify(res)
-            console.log("Message console", res1)
-            swal(res1)
-            // var rescount = res.result.result.count
-            // console.log("Count console notification", rescount)
-            // this.props.onNavigateCaptivePolicy(rescount)
-            // console.log("response", res)
-            // this.props.onNavigateCaptivePolicy(res)
-
-        }).catch(function () {
-            console.log("error");
-        });
-
-    }
-
     //============================================Maping Table End================================
 
     componentDidMount() {
@@ -497,6 +412,28 @@ export default class History extends RX.Component {
 
 
         filterdata = this.state.tparesult
+        //     .filter(
+        //         (tpaApproval) => {
+        //             // re = new RegExp(this.state.search, 'g');
+        //             //  re=/^+re
+        //             g = this.state.search
+        //             console.log("searching", g)
+
+        //             //re = ("^P")
+        //             re = `^${g}`
+
+        //             // re = "^" + g.toString
+        //             //re=re.toString    
+        //             // re = new RegExp(g, 'g');
+        //             console.log("Statedata", re)
+        //             // // re = `/^${this.state.search}/`;
+        //             // re = new RegExp(re, 'g');
+        //             // console.log("Filtereddata", re)
+        //             // match = Regex.Match(g, re);
+        //             return tpaApproval.patientData.NAME.search(g);
+
+        //         }
+        //     )
 
         return (
 
@@ -505,68 +442,81 @@ export default class History extends RX.Component {
                 <RX.View style={styles.navcontainer}>
                     <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
-                        <b>CAPTIVE INSURANCE</b>
+                    <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
                 </RX.View>
 
                 <div class="container">
-                    <h1>User Notification</h1>
+                    <h1>Auto Approved Reports</h1>
                     <RX.Button
-                       style={styles.navwelcome3}
+                        style={[styles.button1]}
 
-                       onPress={this.props.onNavigateuserhome}
+                        onPress={this.props.onNavigateAutoApproval}
                     >Home</RX.Button>
                 </div>
                 <RX.View>
-
+                    {/* <div>
+                        <label for="inputPassword4" style={{ color: "#494949", fontFamily: "ProximaNova-Regular", fontSize: "14" }} style={styles.siDeText}>Name</label>
+                        <RX.TextInput style={styles.InputSelectorCopy} placeholder="" value={this.state.search} onChangeText={this.updatesearch} />
+                    </div> */}
                     <Grid>
                         <div className="container">
                             <br />
                             <br />
+                            {/* <input type="text" style={styles.inputtable} placeholder="Enter Age" onChange={this.filterSearch} /> */}
+
+                            {/* <RX.TextInput
+                                style={styles.Form}
+                                placeholder=""
+                                value={this.state.search}
+                                onChange={this.updatesearch.bind(this)}
+                            /> */}
 
                             <table className="table" id="myTable" style={styles.table}>
                                 <thead>
                                     <tr class="header" id="row">
-                                        {/* <th>Checkbox:
-                                      
-                                    </th> */}
-                                        <th>Policy ID
-                                        {/* <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListpolicyid} />
-                                            </tbody> */}
+                                        <th>ID
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListSubId} />
+                                            </tbody>
                                         </th>
-                                        <th>Policy Name
-                                        {/* <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListPolicyName} />
-                                            </tbody> */}
+                                        <th>Name
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterList} />
+                                            </tbody>
                                         </th>
-
-                                        <th>Policy Category
-                                        {/* <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Gender" onChange={this.filterListPolicyCategory} />
-                                            </tbody> */}
+                                        {/* <th>
+                                       
+                                            <RX.Button onPress={()=> (this.sortBy())} onChange={this.state.tparesult} sortBy={this.sortBy.bind(this)}>Age</RX.Button>
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Age" onChange={this.filterListAge} />
+                                            </tbody>
+                                        </th> */}
+                                        {/* <th>Gender
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Gender" onChange={this.filterListGender} />
+                                            </tbody>
+                                        </th> */}
+                                          <th>Category
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Gender" onChange={this.filterListPolicyDate} />
+                                            </tbody>
                                         </th>
-                                        <th>Premium %
-                                        {/* <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Amount" onChange={this.filterListPremium} />
-                                            </tbody> */}
+                                        <th>Description of Damage
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListRefDoc} />
+                                            </tbody>
                                         </th>
-                                        <th>Payment Rule
-                                        {/* <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListPaymentRule} />
-                                            </tbody> */}
+                                        <th>Claim Amount
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Amount" onChange={this.filterListClaimAmount} />
+                                            </tbody>
                                         </th>
-
-                                        <th>Collateral
-                                        {/* <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListCollateral} />
-                                            </tbody> */}
-                                        </th>
-                                        {/* <th>Status
+                                        <th>Status
                                         <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListStatus} />
                                             </tbody>
-                                        </th> */}
+                                        </th>
                                     </tr>
                                 </thead>
 

@@ -24,18 +24,6 @@ const styles = {
         color: 'white',
         marginTop: '5'
     }),
-    navwelcome3: RX.Styles.createTextStyle({
-        fontSize: 15,
-        marginLeft: 982,
-        backgroundColor: 'rgb(8, 37, 103)',
-        // marginTop: -22,
-        color: 'white',
-        borderWidth: 1,
-        borderRadius: 8,
-        width:64,
-        textAlign:"center"
-
-    }),
     button1: RX.Styles.createButtonStyle({
         backgroundColor: 'rgb(8, 37, 103)',
         borderWidth: 1,
@@ -77,7 +65,7 @@ const styles = {
     inputtable: RX.Styles.createTextStyle({
 
         width: 119,
-        fontWeight: 100
+        fontWeight:100
 
     }),
     table: RX.Styles.createTextStyle({
@@ -181,7 +169,7 @@ const styles = {
 
 var resJson1
 var res
-var policyid
+var Policyid
 var responseJson
 var result
 var products
@@ -193,45 +181,44 @@ var filterdata
 var updatedList1
 var sortBy
 var desc
-export default class History extends RX.Component {
+export default class UserNotification extends RX.Component {
     constructor(props) {
         super(props);
         tparesult = this.props.navigatorRoute.res
-        //tparesult = capres.captivepolicydata
         console.log("Props console:", tparesult)
-
+       
         this.state = {
             search: '',
             initialItems: tparesult,
             items: [],
-
+           
             tparesult: tparesult
 
         };
-        this.sortBy = this.sortBy.bind(this)
+this.sortBy=this.sortBy.bind(this)
         console.log("state console:", tparesult)
 
     }
-
-    sortBy(key) {
-        console.log("test key", key)
+   
+    sortBy(key){
+        console.log("test key",key)
         this.setState({
-
-            tparesult: tparesult.sort()
-
-        })
-        console.log("hiiiii", tparesult)
+            
+        tparesult:tparesult.sort()
+       
+    })
+    console.log("hiiiii",tparesult)
     }
-
-
-    updateSearch(event) {
-
-        this.setState({ search: event.target.value.substr(0, 20) });
-    }
-
-
+    
+    
+        updateSearch(event){
+           
+            this.setState({search:event.target.value.substr(0,20)});
+        }
+    
+    
     //============================SubmitID Filter Start================================
-    filterListpolicyid = (event) => {
+    filterListPolicyId = (event) => {
         var updatedList = this.state.initialItems;
         console.log("Filter subid console", updatedList)
         updatedList1 = updatedList.filter(function (item) {
@@ -243,7 +230,7 @@ export default class History extends RX.Component {
         console.log("filter submit updated list", updatedList1)
 
     }
-
+    
 
     //=============================SubmitID filter End========================================
 
@@ -275,7 +262,7 @@ export default class History extends RX.Component {
         console.log("updated list", updatedList1)
 
     }
-    //=============================AGE Filter End==============================
+      //=============================AGE Filter End==============================
 
     //=========================SEX Filter Start===========================
     filterListPremium = (event) => {
@@ -291,7 +278,7 @@ export default class History extends RX.Component {
 
     }
 
-
+    
 
     // filterListPolicyDate = (event) => {
     //     var updatedList = this.state.initialItems;
@@ -358,7 +345,7 @@ export default class History extends RX.Component {
         this.setState({ items: this.state.initialItems })
 
     }
-    handleChange1 = (data, event) => {
+    handleChange1 =   (data, event) => {
         if (event.target.checked == true) {
 
 
@@ -390,7 +377,7 @@ export default class History extends RX.Component {
         }
 
 
-
+      
     }
 
 
@@ -406,19 +393,18 @@ export default class History extends RX.Component {
             //console.log("Map console", items)
             return (
 
-                <tr key={items.Record.policyid}>
-                    {/* <td><input type="Checkbox" ref="check_me"
+                <tr key={items.policyid}>
+                   {/* <td><input type="Checkbox" ref="check_me"
                         onChange={(event) => this.handleChange1(items, event)} /></td> */}
-                    <td>{items.Key}</td>
-                    <td>{items.Record.policyName}</td>
-
-                    <td>{items.Record.policycatagory}</td>
-                    <td>{items.Record.policypercentage}</td>
-                    <td>{items.Record.rules}</td>
+                    <td>{items.policyid}</td>
+                    <td>{items.policyName}</td>
                    
-                    <td>{items.Record.inputradio}</td>
-                    <td>{items.Record.status}</td>
-                    {/* <td>
+                    <td>{items.policycatagory}</td>
+                    <td>{items.policypercentage}</td>
+                    <td>{items.rules}</td>
+                    <td>{items.inputradio}</td>
+                    <td>{items.status}</td>
+                   {/* <td>
                         <RX.Button
                        
                        style={[styles.button2]}
@@ -441,51 +427,8 @@ export default class History extends RX.Component {
         })
 
     }
-    onChangePost6 = () => {
 
-
-
-        console.log("Enter Into the notify create policy")
-        return fetch('http://localhost:8082/notifyApprove', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-
-            },
-
-            body: JSON.stringify({
-
-                "policyid": this.state.policyid,
-                "policyName": this.state.policyName,
-                "policycatagory": this.state.policycatagory,
-                "rules": this.state.rules,
-                "policypercentage": this.state.policypercentage,
-                "inputradio": this.state.inputradio,
-
-
-            }),
-        }).then((res) => res.json()).then((responseJson) => {
-
-            var res = responseJson;
-            console.log("response", res)
-            var res1 = res.result.message;
-
-            // var responseJson = JSON.stringify(res)
-            console.log("Message console", res1)
-            swal(res1)
-            // var rescount = res.result.result.count
-            // console.log("Count console notification", rescount)
-            // this.props.onNavigateCaptivePolicy(rescount)
-            // console.log("response", res)
-            // this.props.onNavigateCaptivePolicy(res)
-
-        }).catch(function () {
-            console.log("error");
-        });
-
-    }
-
+    
     //============================================Maping Table End================================
 
     componentDidMount() {
@@ -497,7 +440,7 @@ export default class History extends RX.Component {
 
 
         filterdata = this.state.tparesult
-
+        
         return (
 
 
@@ -505,68 +448,68 @@ export default class History extends RX.Component {
                 <RX.View style={styles.navcontainer}>
                     <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
-                        <b>CAPTIVE INSURANCE</b>
+                    <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
                 </RX.View>
 
                 <div class="container">
                     <h1>User Notification</h1>
                     <RX.Button
-                       style={styles.navwelcome3}
+                        style={[styles.button1]}
 
-                       onPress={this.props.onNavigateuserhome}
+                        onPress={this.props.onNavigateNotification}
                     >Home</RX.Button>
                 </div>
                 <RX.View>
-
+                
                     <Grid>
                         <div className="container">
                             <br />
                             <br />
-
+                          
                             <table className="table" id="myTable" style={styles.table}>
                                 <thead>
                                     <tr class="header" id="row">
-                                        {/* <th>Checkbox:
+                                    {/* <th>Checkbox:
                                       
                                     </th> */}
                                         <th>Policy ID
-                                        {/* <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListpolicyid} />
-                                            </tbody> */}
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListPolicyId} />
+                                            </tbody>
                                         </th>
                                         <th>Policy Name
-                                        {/* <tbody>
+                                        <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListPolicyName} />
-                                            </tbody> */}
+                                            </tbody>
                                         </th>
-
-                                        <th>Policy Category
-                                        {/* <tbody>
+                                        
+                                          <th>Policy Category
+                                        <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Gender" onChange={this.filterListPolicyCategory} />
-                                            </tbody> */}
+                                            </tbody>
                                         </th>
                                         <th>Premium %
-                                        {/* <tbody>
+                                        <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Amount" onChange={this.filterListPremium} />
-                                            </tbody> */}
+                                            </tbody>
                                         </th>
                                         <th>Payment Rule
-                                        {/* <tbody>
+                                        <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListPaymentRule} />
-                                            </tbody> */}
+                                            </tbody>
                                         </th>
-
+                                      
                                         <th>Collateral
-                                        {/* <tbody>
+                                        <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListCollateral} />
-                                            </tbody> */}
+                                            </tbody>
                                         </th>
-                                        {/* <th>Status
+                                        <th>Status
                                         <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListStatus} />
                                             </tbody>
-                                        </th> */}
+                                        </th>
                                     </tr>
                                 </thead>
 
