@@ -22,6 +22,7 @@ const styles = {
         color: 'white',
         marginTop: '5'
     }),
+<<<<<<< HEAD
     navwelcome2: RX.Styles.createTextStyle({
         fontSize: 15,
         marginLeft: 1182,
@@ -41,6 +42,8 @@ const styles = {
         textAlign:"center"
 
     }),
+=======
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
     button1: RX.Styles.createButtonStyle({
         backgroundColor: 'rgb(8, 37, 103)',
         borderWidth: 1,
@@ -60,8 +63,13 @@ const styles = {
         borderWidth: 1,
         width: 72,
         height: 5,
+<<<<<<< HEAD
         marginLeft: 921,
         marginTop: -25,
+=======
+        marginLeft: 850,
+        marginTop: -34,
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
         marginBottom: -23,
         padding: 12,
         borderRadius: 8,
@@ -170,7 +178,11 @@ const styles = {
 
 var resJson1
 var res
+<<<<<<< HEAD
 var policyid
+=======
+var Policyid
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
 var responseJson
 var result
 var products
@@ -178,8 +190,13 @@ var filterdata
 export default class CreatePolicy extends RX.Component {
     constructor(props) {
         super(props);
+<<<<<<< HEAD
         gettingresult = this.props.navigatorRoute.res
          propsresult = gettingresult.message
+=======
+        gettingresult = this.props.navigatorRoute.bulkdata
+        propsresult = gettingresult.captivepolicy
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
 
         console.log("Props console:", propsresult)
 
@@ -202,6 +219,7 @@ export default class CreatePolicy extends RX.Component {
     }
 
 
+<<<<<<< HEAD
     //============================policyid Filter Start================================
     filterListcappolicyid = (event) => {
         var updatedList = this.state.propsresult;
@@ -210,15 +228,33 @@ export default class CreatePolicy extends RX.Component {
 
         updatedList = updatedList.filter(function (item) {
             return item.policyid.toLowerCase().search(
+=======
+    //============================policyId Filter Start================================
+    filterListcappolicyId = (event) => {
+        var updatedList = this.state.propsresult;
+
+        console.log("Filter policyId console", updatedList)
+
+        updatedList = updatedList.filter(function (item) {
+            return item.policyId.toLowerCase().search(
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                 event.target.value.toLowerCase()) !== -1;
         });
         this.setState({ items: updatedList });
 
+<<<<<<< HEAD
         console.log("filter policyid updated list", updatedList)
 
     }
 
     //=============================policyid filter End========================================
+=======
+        console.log("filter policyId updated list", updatedList)
+
+    }
+
+    //=============================policyId filter End========================================
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
 
     //=========================Policy Name Filter Start===========================
     filterListPolicyName = (event) => {
@@ -313,6 +349,7 @@ export default class CreatePolicy extends RX.Component {
         if (event.target.checked == true) {
 
 
+<<<<<<< HEAD
             var policyid = JSON.stringify(data.Key)
             this.setState({ policyid: policyid })
             console.log("policyid console", policyid)
@@ -334,6 +371,29 @@ export default class CreatePolicy extends RX.Component {
             console.log("policypercentage console", policypercentage)
 
             var inputradio = JSON.stringify(data.Record.inputradio)
+=======
+            var policyid = JSON.stringify(data.policyId)
+            this.setState({ policyid: policyid })
+            console.log("policyid console", policyid)
+
+            var policyName = JSON.stringify(data.policyName)
+            this.setState({ policyName: policyName })
+            console.log("policyName console", policyName)
+
+            var policycatagory = JSON.stringify(data.policycatagory)
+            this.setState({ policycatagory: policycatagory })
+            console.log("policycatagory console", policycatagory)
+
+            var rules = JSON.stringify(data.rules)
+            this.setState({ rules: rules })
+            console.log("rules console", rules)
+
+            var policypercentage = JSON.stringify(data.policypercentage)
+            this.setState({ policypercentage: policypercentage })
+            console.log("policypercentage console", policypercentage)
+
+            var inputradio = JSON.stringify(data.inputradio)
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
             this.setState({ inputradio: inputradio })
             console.log("inputradio console", inputradio)
         } else {
@@ -341,9 +401,15 @@ export default class CreatePolicy extends RX.Component {
         }
 
 
+<<<<<<< HEAD
         //console.log("i ambeing called" + JSON.stringify(data.policyid) + event.target.checked)
 
         //  alert(items.policyid)
+=======
+        //console.log("i ambeing called" + JSON.stringify(data.policyId) + event.target.checked)
+
+        //  alert(items.policyId)
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
         // if (this.refs.check_me.checked == true) {
         //     this.setState({ value: event.target.value });
         //     console.log("condition console", this.refs.check_me.checked)
@@ -370,6 +436,7 @@ export default class CreatePolicy extends RX.Component {
             //console.log("Map console", items)
             return (
 
+<<<<<<< HEAD
                 <tr key={items.policyid}>
                     <td><input type="Checkbox" ref="check_me"
                         onChange={(event) => this.handleChange(items, event)} /></td>
@@ -380,6 +447,17 @@ export default class CreatePolicy extends RX.Component {
                     <td>{items.Record.policypercentage}</td>
                     <td>{items.Record.inputradio}</td>
                   
+=======
+                <tr key={items.policyId}>
+                    <td><input type="Checkbox" ref="check_me"
+                        onChange={(event) => this.handleChange(items, event)} /></td>
+                    <td>{items.policyId}</td>
+                    <td>{items.policyName}</td>
+                    <td>{items.policycatagory}</td>
+                    <td>{items.rules}</td>
+                    <td>{items.policypercentage}</td>
+                    <td>{items.inputradio}</td>
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                 </tr>
 
 
@@ -435,22 +513,35 @@ export default class CreatePolicy extends RX.Component {
 
 
         console.log("Enter Into the notify create policy")
+<<<<<<< HEAD
         return fetch('http://localhost:8082/selectPolicy', {
+=======
+        return fetch('http://localhost:8082/notifyCreatePolicy', {
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
+<<<<<<< HEAD
  
             },
  
             body: JSON.stringify({
  
+=======
+
+            },
+
+            body: JSON.stringify({
+
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                 "policyid": this.state.policyid,
                 "policyName": this.state.policyName,
                 "policycatagory": this.state.policycatagory,
                 "rules": this.state.rules,
                 "policypercentage": this.state.policypercentage,
                 "inputradio": this.state.inputradio,
+<<<<<<< HEAD
  
  
             }),
@@ -473,6 +564,26 @@ export default class CreatePolicy extends RX.Component {
             console.log("error");
         });
  
+=======
+
+
+            }),
+        }).then((res) => res.json()).then((responseJson) => {
+
+            var res = responseJson;
+            console.log("response", res)
+            var res1 = res.result.message;
+            // var responseJson = JSON.stringify(res)
+            console.log("response", res1)
+            swal(res1)
+            // console.log("response", res)
+            // this.props.onNavigateCaptivePolicy(res)
+
+        }).catch(function () {
+            console.log("error");
+        });
+
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
     }
 
 
@@ -498,6 +609,7 @@ export default class CreatePolicy extends RX.Component {
                 <RX.View style={styles.navcontainer}>
                     <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
+<<<<<<< HEAD
                         <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
                     <RX.Button style={styles.navwelcome2} onPress={this.props.onNavigateusernotifylogout}>
@@ -516,6 +628,20 @@ export default class CreatePolicy extends RX.Component {
                     </RX.Button> */}
                     <RX.Button
                        style={styles.navwelcome3}
+=======
+                       <b>CAPTIVE INSURANCE</b>
+    </RX.Text>
+                </RX.View>
+                <div class="container">
+                    <h1>Available Policies</h1>
+                    <RX.Button
+                        style={[styles.button1]}
+
+                        onPress={this.props.onNavigateCaptivePolicy}
+                    >Home</RX.Button>
+                    <RX.Button
+                        style={[styles.button2]}
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
 
                         onPress={() => this.onChangePost6()}
                     >Submit</RX.Button>
@@ -532,6 +658,7 @@ export default class CreatePolicy extends RX.Component {
                                 <tr class="header" id="row">
                                     <th>Checkbox:
                                         {/* <tbody>
+<<<<<<< HEAD
                                             <input type="Checkbox" placeholder="Search" onChange={this.filterListcappolicyid} />
                                         </tbody> */}
                                     </th>
@@ -564,6 +691,40 @@ export default class CreatePolicy extends RX.Component {
                                         {/* <tbody>
                                             <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListinputradio} />
                                         </tbody> */}
+=======
+                                            <input type="Checkbox" placeholder="Search" onChange={this.filterListcappolicyId} />
+                                        </tbody> */}
+                                    </th>
+                                    <th>Policy ID:
+                                        <tbody>
+                                            <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListcappolicyId} />
+                                        </tbody>
+                                    </th>
+                                    <th>Policy Name:
+                                        <tbody>
+                                            <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListPolicyName} />
+                                        </tbody>
+                                    </th>
+                                    <th>Policy Category:
+                                        <tbody>
+                                            <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListpolicycatagory} />
+                                        </tbody>
+                                    </th>
+                                    <th>Payment Rule:
+                                        <tbody>
+                                            <input type="text" style={styles.inputtablerule} placeholder="Search" onChange={this.filterListrules} />
+                                        </tbody>
+                                    </th>
+                                    <th>Premium Percentage:
+                                        <tbody>
+                                            <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListpolicypercentage} />
+                                        </tbody>
+                                    </th>
+                                    <th>Collateral:
+                                        <tbody>
+                                            <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListinputradio} />
+                                        </tbody>
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                                     </th>
                                 </tr>
                             </thead>
@@ -573,7 +734,11 @@ export default class CreatePolicy extends RX.Component {
                             </tbody>
                         </table>
                     </div>
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
 
 
 

@@ -46,8 +46,8 @@ const styles = {
         borderColor: 'rgb(8, 37, 103)',
         color: 'white',
         justifyContent: 'center',
-        textAlign:'CENTER',
-        alignSelf:'center',
+        textAlign: 'CENTER',
+        alignSelf: 'center',
     }),
 
     nxtbut: RX.Styles.createButtonStyle({
@@ -56,8 +56,8 @@ const styles = {
         width: 92,
         height: 30,
         justifyContent: 'center',
-        textAlign:'CENTER',
-        alignSelf:'center',
+        textAlign: 'CENTER',
+        alignSelf: 'center',
         // margin: 200,
         marginLeft: 524,
         marginTop: -31,
@@ -907,8 +907,8 @@ export default class Patientdetails extends RX.Component {
                                     {'Submit'}
 
                                 </RX.Button>
-                               
-                                <RX.Button style={styles.nxtbut}   onPress={this.props.onNavigatePatientdetails }>
+
+                                <RX.Button style={styles.nxtbut} onPress={this.props.onNavigatePatientdetails}>
                                     {'Next'}
 
                                 </RX.Button>

@@ -24,6 +24,7 @@ const styles = {
         color: 'white',
         marginTop: '5'
     }),
+<<<<<<< HEAD
     navwelcome2: RX.Styles.createTextStyle({
         fontSize: 15,
         marginLeft: 1182,
@@ -31,6 +32,8 @@ const styles = {
         color: 'white',
 
     }),
+=======
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
     button1: RX.Styles.createButtonStyle({
         backgroundColor: 'rgb(8, 37, 103)',
         borderWidth: 1,
@@ -176,7 +179,11 @@ const styles = {
 
 var resJson1
 var res
+<<<<<<< HEAD
 var policyid
+=======
+var Policyid
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
 var responseJson
 var result
 var products
@@ -225,7 +232,11 @@ this.sortBy=this.sortBy.bind(this)
     
     
     //============================SubmitID Filter Start================================
+<<<<<<< HEAD
     filterListpolicyid = (event) => {
+=======
+    filterListPolicyId = (event) => {
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
         var updatedList = this.state.initialItems;
         console.log("Filter subid console", updatedList)
         updatedList1 = updatedList.filter(function (item) {
@@ -356,6 +367,7 @@ this.sortBy=this.sortBy.bind(this)
         if (event.target.checked == true) {
 
 
+<<<<<<< HEAD
             var policyid = JSON.stringify(data.Key)
             this.setState({ policyid: policyid })
             console.log("policyid console", policyid)
@@ -384,6 +396,31 @@ this.sortBy=this.sortBy.bind(this)
             // this.setState({ status: status })
             // console.log("status console", status)
 
+=======
+            var policyid = JSON.stringify(data.policyid)
+            this.setState({ policyid: policyid })
+            console.log("policyid console", policyid)
+
+            var policyName = JSON.stringify(data.policyName)
+            this.setState({ policyName: policyName })
+            console.log("policyName console", policyName)
+
+            var policycatagory = JSON.stringify(data.policycatagory)
+            this.setState({ policycatagory: policycatagory })
+            console.log("policycatagory console", policycatagory)
+
+            var rules = JSON.stringify(data.rules)
+            this.setState({ rules: rules })
+            console.log("rules console", rules)
+
+            var policypercentage = JSON.stringify(data.policypercentage)
+            this.setState({ policypercentage: policypercentage })
+            console.log("policypercentage console", policypercentage)
+
+            var inputradio = JSON.stringify(data.inputradio)
+            this.setState({ inputradio: inputradio })
+            console.log("inputradio console", inputradio)
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
         } else {
             return alert("Please select atleast one Rule")
         }
@@ -408,6 +445,7 @@ this.sortBy=this.sortBy.bind(this)
                 <tr key={items.policyid}>
                    <td><input type="Checkbox" ref="check_me"
                         onChange={(event) => this.handleChange1(items, event)} /></td>
+<<<<<<< HEAD
                     <td>{items.Key}</td>
                     <td>{items.Record.policyName}</td>
                    
@@ -415,6 +453,15 @@ this.sortBy=this.sortBy.bind(this)
                     <td>{items.Record.policypercentage}</td>
                     <td>{items.Record.rules}</td>
                     <td>{items.Record.inputradio}</td>
+=======
+                    <td>{items.policyid}</td>
+                    <td>{items.policyName}</td>
+                   
+                    <td>{items.policycatagory}</td>
+                    <td>{items.policypercentage}</td>
+                    <td>{items.rules}</td>
+                    <td>{items.inputradio}</td>
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                     <td>{items.status}</td>
                    <td>
                         <RX.Button
@@ -423,12 +470,20 @@ this.sortBy=this.sortBy.bind(this)
                         
                         onPress={() => this.onChangeNotifyApprove()}
                     >Approve</RX.Button></td>
+<<<<<<< HEAD
                      {/* <td>
+=======
+                     <td>
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                         <RX.Button
                        
                        style={[styles.button2]}
                         onPress={this.props.onNavigateNotification}
+<<<<<<< HEAD
                     >Reject</RX.Button></td> */}
+=======
+                    >Reject</RX.Button></td>
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                 </tr>
 
 
@@ -450,17 +505,26 @@ this.sortBy=this.sortBy.bind(this)
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
+<<<<<<< HEAD
  
             },
  
             body: JSON.stringify({
  
+=======
+
+            },
+
+            body: JSON.stringify({
+
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                 "policyid": this.state.policyid,
                 "policyName": this.state.policyName,
                 "policycatagory": this.state.policycatagory,
                 "policypercentage": this.state.policypercentage,
                 "rules": this.state.rules,
                 "inputradio": this.state.inputradio,
+<<<<<<< HEAD
                 // "status": this.state.status
  
             }),
@@ -469,10 +533,21 @@ this.sortBy=this.sortBy.bind(this)
             var res = responseJson;
             console.log("response", res)
             var res1 = res.message;
+=======
+                "status": this.state.status
+
+            }),
+        }).then((res) => res.json()).then((responseJson) => {
+
+            var res = responseJson;
+            console.log("response", res)
+            var res1 = res.result.message;
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
             // var responseJson = JSON.stringify(res)
             console.log("response", res1)
             swal(res1)
             // console.log("response", res)
+<<<<<<< HEAD
              this.props.onNavigateCaptivePolicy(res)
  
         }).catch(function () {
@@ -480,6 +555,16 @@ this.sortBy=this.sortBy.bind(this)
         });
  
     }
+=======
+            // this.props.onNavigateCaptivePolicy(res)
+
+        }).catch(function () {
+            console.log("error");
+        });
+
+    }
+
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
     //============================================Maping Table End================================
 
     componentDidMount() {
@@ -501,14 +586,25 @@ this.sortBy=this.sortBy.bind(this)
                     <RX.Text style={styles.navwelcome}>
                     <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
+<<<<<<< HEAD
                     <RX.Button style={styles.navwelcome2} onPress={this.props.onNavigateadminnotifylogout}>
                         <b>Logout</b>
                     </RX.Button>
+=======
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                 </RX.View>
 
                 <div class="container">
                     <h1>Received Requests</h1>
+<<<<<<< HEAD
                    
+=======
+                    <RX.Button
+                        style={[styles.button1]}
+
+                        onPress={this.props.onNavigateNotification}
+                    >Home</RX.Button>
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                 </div>
                 <RX.View>
                 
@@ -524,6 +620,7 @@ this.sortBy=this.sortBy.bind(this)
                                       
                                     </th>
                                         <th>Policy ID
+<<<<<<< HEAD
                                         {/* <tbody>
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListpolicyid} />
                                             </tbody> */}
@@ -560,6 +657,44 @@ this.sortBy=this.sortBy.bind(this)
                                                 <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListStatus} />
                                             </tbody>
                                         </th> */}
+=======
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListPolicyId} />
+                                            </tbody>
+                                        </th>
+                                        <th>Policy Name
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListPolicyName} />
+                                            </tbody>
+                                        </th>
+                                        
+                                          <th>Policy Category
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Gender" onChange={this.filterListPolicyCategory} />
+                                            </tbody>
+                                        </th>
+                                        <th>Premium %
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Amount" onChange={this.filterListPremium} />
+                                            </tbody>
+                                        </th>
+                                        <th>Payment Rule
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListPaymentRule} />
+                                            </tbody>
+                                        </th>
+                                      
+                                        <th>Collateral
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListCollateral} />
+                                            </tbody>
+                                        </th>
+                                        <th>Status
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListStatus} />
+                                            </tbody>
+                                        </th>
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                                     </tr>
                                 </thead>
 

@@ -14,13 +14,13 @@ const styles = {
     navcontainer: RX.Styles.createViewStyle({
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgb(32, 122, 142)',
+        backgroundColor: '#082567',
         height: 50,
         padding: 5
     }),
     navwelcome: RX.Styles.createTextStyle({
         fontSize: 15,
-        marginRight: 1010,
+        marginRight: 1050,
         color: 'white',
         marginTop: '5'
     }),
@@ -48,8 +48,7 @@ const styles = {
     }),
     inputtable: RX.Styles.createTextStyle({
 
-        width: 119,
-        fontWeight:100
+        width: 119
 
     }),
     table: RX.Styles.createTextStyle({
@@ -163,8 +162,6 @@ let FilteredList
 let List
 var filterdata
 var updatedList1
-var sortBy
-var desc
 export default class History extends RX.Component {
     constructor(props) {
         super(props);
@@ -180,46 +177,12 @@ export default class History extends RX.Component {
             tparesult: tparesult
 
         };
-this.sortBy=this.sortBy.bind(this)
+
         console.log("state console:", tparesult)
 
     }
-   
-    sortBy(key){
-        console.log("test key",key)
-        this.setState({
-            
-        tparesult:tparesult.sort()
-       
-    })
-    console.log("hiiiii",tparesult)
-    }
-    
-    
-        updateSearch(event){
-           
-            this.setState({search:event.target.value.substr(0,20)});
-        }
-    
-    // sortBy = (key) => {
-    //     var updatedList = this.state.initialItems;
-    //     console.log("Filter subid console", key)
-    //     updatedList1 = updatedList.sort(function (item) {
-    //          item.patientData.AGE.sort(
-    //             key.sort()
-    //         ) !== -1;
-    //     });
-    //     this.setState({ items: updatedList.sortBy(desc) });
 
-    //     console.log("filter submit updated list", updatedList)
 
-    // }
-// sortBy(key){
-//     console.log("key test",key)
-//     this.setState({
-//         tparesult:tparesult.sort((a,b)=>a<b)
-//     })
-// }
 
     // updatesearch(event) {
     //     // console.log(value)
@@ -230,18 +193,7 @@ this.sortBy=this.sortBy.bind(this)
     // }
     // function for filtering given input
 
-    // filterSearch = (event) => {
-    //     var updatedList = this.state.initialItems;
-    //     console.log("Filter subid console", updatedList)
-    //     updatedList1 = updatedList.filter(function (item) {
-    //         return item.toLowerCase().search(
-    //             event.target.value.toLowerCase()) !== -1;
-    //     });
-    //     this.setState({ items: updatedList1 });
 
-    //     console.log("filter submit updated list", updatedList1)
-
-    // }
     //============================SubmitID Filter Start================================
     filterListSubId = (event) => {
         var updatedList = this.state.initialItems;
@@ -255,7 +207,6 @@ this.sortBy=this.sortBy.bind(this)
         console.log("filter submit updated list", updatedList1)
 
     }
-    
 
     //=============================SubmitID filter End========================================
 
@@ -287,7 +238,7 @@ this.sortBy=this.sortBy.bind(this)
         console.log("updated list", updatedList1)
 
     }
-      //=============================AGE Filter End==============================
+    //=============================AGE Filter End==============================
 
     //=========================SEX Filter Start===========================
     filterListGender = (event) => {
@@ -302,19 +253,6 @@ this.sortBy=this.sortBy.bind(this)
         console.log("updated list", updatedList1)
 
     }
-
-    // filterListPolicyDate = (event) => {
-    //     var updatedList = this.state.initialItems;
-    //     console.log("filter policy date", updatedList)
-    //     updatedList1 = updatedList.filter(function (item) {
-    //         return item.created_at.toLowerCase().search(
-    //             event.target.value.toLowerCase()) !== -1;
-    //     });
-    //     this.setState({ items: updatedList1 });
-
-    //     console.log("updated list", updatedList1)
-
-    // }
     //=============================SEX Filter End==============================
 
     //=========================Reference Doctor Filter Start===========================
@@ -385,11 +323,12 @@ this.sortBy=this.sortBy.bind(this)
                 <tr key={items.submitID}>
                     <td>{items.submitID}</td>
                     <td>{items.patientData.NAME}</td>
-                    {/* <td>{items.patientData.AGE}</td> */}
+                    <td>{items.patientData.AGE}</td>
                     <td>{items.patientData.SEX}</td>
                     <td>{items.patientData.REF_DOC}</td>
                     <td>{items.claimAmount}</td>
                     <td>{items.status}</td>
+
 
                 </tr>
 
@@ -442,16 +381,16 @@ this.sortBy=this.sortBy.bind(this)
                 <RX.View style={styles.navcontainer}>
                     <RX.Image source={'./src/img/rqlogo.png'} style={[styles.navrqlogo]} />
                     <RX.Text style={styles.navwelcome}>
-                    <b>CAPTIVE INSURANCE</b>
+                        RAPID SETTLES
                     </RX.Text>
                 </RX.View>
 
                 <div class="container">
-                    <h1>Auto Approved Reports</h1>
+                    <h1>Claim Reports</h1>
                     <RX.Button
                         style={[styles.button1]}
 
-                        onPress={this.props.onNavigateAutoApproval}
+                        onPress={this.props.onNavigateHistory}
                     >Home</RX.Button>
                 </div>
                 <RX.View>
@@ -463,7 +402,6 @@ this.sortBy=this.sortBy.bind(this)
                         <div className="container">
                             <br />
                             <br />
-                            {/* <input type="text" style={styles.inputtable} placeholder="Enter Age" onChange={this.filterSearch} /> */}
 
                             {/* <RX.TextInput
                                 style={styles.Form}
@@ -477,44 +415,37 @@ this.sortBy=this.sortBy.bind(this)
                                     <tr class="header" id="row">
                                         <th>ID
                                         <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Id" onChange={this.filterListSubId} />
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListSubId} />
                                             </tbody>
                                         </th>
                                         <th>Name
                                         <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterList} />
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterList} />
                                             </tbody>
                                         </th>
-                                        {/* <th>
-                                       
-                                            <RX.Button onPress={()=> (this.sortBy())} onChange={this.state.tparesult} sortBy={this.sortBy.bind(this)}>Age</RX.Button>
+                                        <th>Age
                                         <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Age" onChange={this.filterListAge} />
-                                            </tbody>
-                                        </th> */}
-                                        {/* <th>Gender
-                                        <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Gender" onChange={this.filterListGender} />
-                                            </tbody>
-                                        </th> */}
-                                          <th>Category
-                                        <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Gender" onChange={this.filterListPolicyDate} />
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListAge} />
                                             </tbody>
                                         </th>
-                                        <th>Description of Damage
+                                        <th>Gender
                                         <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Name" onChange={this.filterListRefDoc} />
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListGender} />
+                                            </tbody>
+                                        </th>
+                                        <th>Reference Doctor
+                                        <tbody>
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListRefDoc} />
                                             </tbody>
                                         </th>
                                         <th>Claim Amount
                                         <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Amount" onChange={this.filterListClaimAmount} />
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListClaimAmount} />
                                             </tbody>
                                         </th>
                                         <th>Status
                                         <tbody>
-                                                <input type="text" style={styles.inputtable} placeholder="Enter Status" onChange={this.filterListStatus} />
+                                                <input type="text" style={styles.inputtable} placeholder="Search" onChange={this.filterListStatus} />
                                             </tbody>
                                         </th>
                                     </tr>
@@ -540,8 +471,4 @@ this.sortBy=this.sortBy.bind(this)
 
         );
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474

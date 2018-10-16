@@ -1489,6 +1489,10 @@ onChangeGetCaptivePolicy = () => {
                                                     
                                                     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                                                     onChangeGetRBPR = () => {
                                                         console.log("Going to Retrievebulk records")
                                                 
@@ -1747,6 +1751,7 @@ onChangeuserId1 = (value) => {
         this.setState({ bulkdata:false})
         this.setState({ policyandrules:false})
         this.setState({ policyandrules1:false})
+<<<<<<< HEAD
         this.setState({ aboutus:false})
         
        }
@@ -1766,6 +1771,27 @@ onChangeuserId1 = (value) => {
         this.setState({ aboutus:false})
         
        }
+=======
+        this.setState({ aboutus:false})
+        
+       }
+       treatment=()=>{
+     
+        this.setState({ policyIds:false})
+        this.setState({ patientDetails:false})
+        this.setState({ treatment:true})
+        this.setState({ packageDetails:false})
+        this.setState({ claimDetails:false})
+        this.setState({ tpaApprove:false})
+        this.setState({ userId:false})
+        this.setState({ userId1:false})
+        this.setState({ bulkdata:false})
+        this.setState({ policyandrules:false})
+        this.setState({ policyandrules1:false})
+        this.setState({ aboutus:false})
+        
+       }
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
        packageDetails=()=>{
      
         this.setState({ policyIds:false})
@@ -1926,10 +1952,17 @@ onChangeuserId1 = (value) => {
                 <RX.Image source={ './src/img/rqlogo.png' } style={ [styles.navrqlogo] } />
                     <RX.Text style={ styles.navwelcome }>
                        <b>CAPTIVE INSURANCE</b>
+<<<<<<< HEAD
                     </RX.Text>
                     <RX.Text style={ styles.navwelcome1 }>
                    <b> {this.state.registeredname}</b>
                     </RX.Text>
+=======
+                    </RX.Text>
+                    <RX.Text style={ styles.navwelcome1 }>
+                   <b> {this.state.registeredname}</b>
+                    </RX.Text>
+>>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                     <RX.Button style={ styles.navwelcome2 } onPress={this.props.onNavigateCreatePolicylogout }>
                    <b>Logout</b>
                     </RX.Button>
