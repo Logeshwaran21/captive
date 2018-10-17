@@ -446,7 +446,7 @@ export default class History extends RX.Component {
 
 
         console.log("Enter Into the notify create policy")
-        return fetch('http://localhost:8082/notifyApprove', {
+        return fetch('http://159.65.148.82:8082/notifyApprove', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

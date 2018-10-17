@@ -865,7 +865,7 @@ export default class CreatePolicy extends RX.Component {
     onChangeNotify = () => {
         console.log("notification")
 
-      return  fetch('http://localhost:8082/Notification', {
+      return  fetch('http://159.65.148.82:8082/Notification', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -912,7 +912,7 @@ export default class CreatePolicy extends RX.Component {
 
 
         console.log("hiiiiii")
-        return fetch('http://localhost:8082/createpolicycaptive', {
+        return fetch('http://159.65.148.82:8082/createpolicycaptive', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -950,7 +950,7 @@ console.log("testing",responseJson)
 
         
         console.log("hiiiiii")
-                  return  fetch('http://localhost:8082/autoapproveclaim', {
+                  return  fetch('http://159.65.148.82:8082/autoapproveclaim', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -1139,7 +1139,7 @@ console.log("testing",responseJson)
 
                                                         <div class="well well-sm well-primary" style={styles.useit}>
                                                             <h4><b>Use these values only</b></h4>
-                                                            <li>ClaimAmount</li>
+                                                            <li>claimAmount</li>
                                                             <li>TotalClaim</li>
                                                             <li>AmountPaid</li>
                                                             <li>Suminsured</li>

@@ -164,7 +164,7 @@ export default class TPA extends RX.Component {
 
         
         console.log("hiiiiii")
-                  return  fetch('http://localhost:8082/autoapproveclaim', {
+                  return  fetch('http://159.65.148.82:8082/autoapproveclaim', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -356,8 +356,4 @@ export default class TPA extends RX.Component {
 
     };
    
-<<<<<<< HEAD
 } 
-=======
-} 
->>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474

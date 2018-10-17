@@ -838,7 +838,7 @@ export default class CreatePolicy extends RX.Component{
 
         
         console.log("hiiiiii")
-                  return  fetch('http://localhost:8082/createpolicy', {
+                  return  fetch('http://159.65.148.82:8082/createpolicy', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -873,7 +873,7 @@ export default class CreatePolicy extends RX.Component{
 
 
 //         console.log("hiiiiii")
-//         return fetch('http://localhost:8082/createpolicycaptive', {
+//         return fetch('http://159.65.148.82:8082/createpolicycaptive', {
 //             method: 'POST',
 //             headers: {
 //                 'Accept': 'application/json',
@@ -910,7 +910,7 @@ export default class CreatePolicy extends RX.Component{
         
 
         
-         return  fetch('http://localhost:8082/validateExpression', {
+         return  fetch('http://159.65.148.82:8082/validateExpression', {
                                         method: 'POST',
                                         headers: {
                                             'Accept': 'application/json',
@@ -939,7 +939,7 @@ export default class CreatePolicy extends RX.Component{
                             
                                                        onChangePost1 = () => {
                                                         console.log("arjun")
-                                                        return fetch('http://localhost:8082/submitClaim', {
+                                                        return fetch('http://159.65.148.82:8082/submitClaim', {
                                                             method: 'POST',
                                                             headers: {
                                                                 'Accept': 'application/json',
@@ -1001,7 +1001,7 @@ export default class CreatePolicy extends RX.Component{
                                                     onChangePost3 = () => {
                                                         console.log("welcome")
                                                 
-                                                        return fetch('http://localhost:8082/retrieveClaim', {
+                                                        return fetch('http://159.65.148.82:8082/retrieveClaim', {
                                                             method: 'POST',
                                                             headers: {
                                                                 'Accept': 'application/json',
@@ -1181,7 +1181,7 @@ export default class CreatePolicy extends RX.Component{
 onChangeGetCaptivePolicy = () => {
     console.log("Going to Captive policy records")
 
-    fetch('http://localhost:8082/getcaptivepolicy', {
+    fetch('http://159.65.148.82:8082/getcaptivepolicy', {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -1205,7 +1205,7 @@ onChangeGetCaptivePolicy = () => {
                                                     onChangePost4 = () => {
 
 
-                                                        return fetch('http://localhost:8082/retrieveClaim', {
+                                                        return fetch('http://159.65.148.82:8082/retrieveClaim', {
                                                             method: 'POST',
                                                             headers: {
                                                                 'Accept': 'application/json',
@@ -1261,7 +1261,7 @@ onChangeGetCaptivePolicy = () => {
                                                     onChangeGetWFA = () => {
                                                         console.log("akash")
                                                 
-                                                        fetch('http://localhost:8082/waitingforapproval', {
+                                                        fetch('http://159.65.148.82:8082/waitingforapproval', {
                                                             method: 'GET',
                                                             headers: {
                                                                 'Accept': 'application/json',
@@ -1286,7 +1286,7 @@ onChangeGetCaptivePolicy = () => {
                                                     onChangeGet5 = () => {
                                                 
                                                 
-                                                        fetch('http://localhost:8082/RetrieveBulkPatientRecords', {
+                                                        fetch('http://159.65.148.82:8082/RetrieveBulkPatientRecords', {
                                                             method: 'GET',
                                                             headers: {
                                                                 'Accept': 'application/json',
@@ -1316,7 +1316,7 @@ onChangeGetCaptivePolicy = () => {
 
         
         console.log("hiiiiii")
-                  return  fetch('http://localhost:8082/autoapproveclaim', {
+                  return  fetch('http://159.65.148.82:8082/autoapproveclaim', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -1430,7 +1430,7 @@ onChangeGetCaptivePolicy = () => {
                                                       onChangeGetWFA = () => {
                                                         console.log("akash")
                                                 
-                                                        fetch('http://localhost:8082/waitingforapproval', {
+                                                        fetch('http://159.65.148.82:8082/waitingforapproval', {
                                                             method: 'GET',
                                                             headers: {
                                                                 'Accept': 'application/json',
@@ -1452,7 +1452,7 @@ onChangeGetCaptivePolicy = () => {
                                                     onChangeAutoapproval = () => {
                                                         console.log("akash")
                                                     
-                                                        fetch('http://localhost:8082/StatusSettlement', {
+                                                        fetch('http://159.65.148.82:8082/StatusSettlement', {
                                                             method: 'GET',
                                                             headers: {
                                                                 'Accept': 'application/json',
@@ -1472,7 +1472,7 @@ onChangeGetCaptivePolicy = () => {
                                                     onChangeNotify = () => {
                                                         console.log("notification")
                                                     
-                                                        fetch('http://localhost:8082/Notification', {
+                                                        fetch('http://159.65.148.82:8082/Notification', {
                                                             method: 'GET',
                                                             headers: {
                                                                 'Accept': 'application/json',
@@ -1489,14 +1489,10 @@ onChangeGetCaptivePolicy = () => {
                                                     
                                                     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                                                     onChangeGetRBPR = () => {
                                                         console.log("Going to Retrievebulk records")
                                                 
-                                                        fetch('http://localhost:8082/RetrieveBulkPatientRecords', {
+                                                        fetch('http://159.65.148.82:8082/RetrieveBulkPatientRecords', {
                                                             method: 'GET',
                                                             headers: {
                                                                 'Accept': 'application/json',
@@ -1751,7 +1747,6 @@ onChangeuserId1 = (value) => {
         this.setState({ bulkdata:false})
         this.setState({ policyandrules:false})
         this.setState({ policyandrules1:false})
-<<<<<<< HEAD
         this.setState({ aboutus:false})
         
        }
@@ -1771,27 +1766,6 @@ onChangeuserId1 = (value) => {
         this.setState({ aboutus:false})
         
        }
-=======
-        this.setState({ aboutus:false})
-        
-       }
-       treatment=()=>{
-     
-        this.setState({ policyIds:false})
-        this.setState({ patientDetails:false})
-        this.setState({ treatment:true})
-        this.setState({ packageDetails:false})
-        this.setState({ claimDetails:false})
-        this.setState({ tpaApprove:false})
-        this.setState({ userId:false})
-        this.setState({ userId1:false})
-        this.setState({ bulkdata:false})
-        this.setState({ policyandrules:false})
-        this.setState({ policyandrules1:false})
-        this.setState({ aboutus:false})
-        
-       }
->>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
        packageDetails=()=>{
      
         this.setState({ policyIds:false})
@@ -1952,17 +1926,10 @@ onChangeuserId1 = (value) => {
                 <RX.Image source={ './src/img/rqlogo.png' } style={ [styles.navrqlogo] } />
                     <RX.Text style={ styles.navwelcome }>
                        <b>CAPTIVE INSURANCE</b>
-<<<<<<< HEAD
                     </RX.Text>
                     <RX.Text style={ styles.navwelcome1 }>
                    <b> {this.state.registeredname}</b>
                     </RX.Text>
-=======
-                    </RX.Text>
-                    <RX.Text style={ styles.navwelcome1 }>
-                   <b> {this.state.registeredname}</b>
-                    </RX.Text>
->>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474
                     <RX.Button style={ styles.navwelcome2 } onPress={this.props.onNavigateCreatePolicylogout }>
                    <b>Logout</b>
                     </RX.Button>

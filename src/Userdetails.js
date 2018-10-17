@@ -143,7 +143,7 @@ export default class Userdetails extends RX.Component {
     onChangePost1 = () => {
         console.log("welcome")
 
-        return fetch('http://localhost:8082/retrieveClaim', {
+        return fetch('http://159.65.148.82:8082/retrieveClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -297,7 +297,7 @@ export default class Userdetails extends RX.Component {
     onChangePost = () => {
 
 
-        return fetch('http://localhost:8082/retrieveClaim', {
+        return fetch('http://159.65.148.82:8082/retrieveClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -333,7 +333,7 @@ export default class Userdetails extends RX.Component {
     onChangeGet = () => {
 
 
-        fetch('http://localhost:8082/RetrieveBulkPatientRecords', {
+        fetch('http://159.65.148.82:8082/RetrieveBulkPatientRecords', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

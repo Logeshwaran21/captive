@@ -891,7 +891,7 @@ export default class CreatePolicy extends RX.Component {
        }
     onChangePost1 = () => {
         console.log("arjun")
-        return fetch('http://localhost:8082/submitClaim', {
+        return fetch('http://159.65.148.82:8082/submitClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -930,7 +930,7 @@ export default class CreatePolicy extends RX.Component {
     onChangePost3 = () => {
         console.log("welcome")
 
-        return fetch('http://localhost:8082/retrieveClaim', {
+        return fetch('http://159.65.148.82:8082/retrieveClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -989,19 +989,19 @@ export default class CreatePolicy extends RX.Component {
             var submitID = submitID
             this.setState({ submitID: submitID })
 
-            var AmountuserHavetopay = responseJson.result.docs[2].Records.AmountuserHavetopay;
+            var AmountuserHavetopay = responseJson.result.docs[1].Records.AmountuserHavetopay;
             var AmountuserHavetopay = AmountuserHavetopay
             this.setState({ AmountuserHavetopay: AmountuserHavetopay })
 
-            var AmountPayerWouldPay = responseJson.result.docs[2].Records.AmountPayerWouldPay;
+            var AmountPayerWouldPay = responseJson.result.docs[1].Records.AmountPayerWouldPay;
             var AmountPayerWouldPay = AmountPayerWouldPay
             this.setState({ AmountPayerWouldPay: AmountPayerWouldPay })
 
-            var message = responseJson.result.docs[2].Records.message;
+            var message = responseJson.result.docs[1].Records.message;
             var message = message
             this.setState({ message: message })
 
-            var statusTPA = responseJson.result.docs[2].Records.status;
+            var statusTPA = responseJson.result.docs[1].Records.status;
             var statusTPA = statusTPA
             this.setState({ statusTPA: statusTPA })
 console.log("update status",statusTPA)
@@ -1020,7 +1020,7 @@ console.log("update status",statusTPA)
     onChangeGetCaptivePolicy = () => {
         console.log("Going to Captive policy records")
 
-        fetch('http://localhost:8082/getcaptivepolicy', {
+        fetch('http://159.65.148.82:8082/getcaptivepolicy', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -1046,7 +1046,7 @@ console.log("update status",statusTPA)
     onChangeNotify = () => {
         console.log("notification")
 
-        fetch('http://localhost:8082/getusernotification', {
+        fetch('http://159.65.148.82:8082/getusernotification', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

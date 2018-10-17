@@ -540,8 +540,4 @@ this.sortBy=this.sortBy.bind(this)
 
         );
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c9a09b4f75c287b7c87816e25543a5d4ef03f474

@@ -477,7 +477,7 @@ export default class RegisterPage extends RX.Component{
     }
     onChangeregister = () => {
         console.log("arjun")
-        return fetch('http://localhost:8082/registerUser', {
+        return fetch('http://159.65.148.82:8082/registerUser', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -608,7 +608,7 @@ export default class RegisterPage extends RX.Component{
                     <RX.Text style={ styles.navwelcome }>
                        <b>CAPTIVE INSURANCE</b>
                     </RX.Text>
-                    <RX.Button style={ styles.regbtn } style={{color:"white",marginTop:-15,marginLeft:934}}  onPress={()=> this.basicDetails()} ><b>Registeration</b></RX.Button>
+                    <RX.Button style={ styles.regbtn } style={{color:"white",marginTop:-15,marginLeft:934}}  onPress={()=> this.basicDetails()} ><b>Registration</b></RX.Button>
                     <RX.Button  style={ styles.loginbtn } onPress={this.props.onNavigateRegisterPage }><b>Login</b></RX.Button>
                 </RX.View>
                

@@ -258,7 +258,7 @@ export default class Patientdetails extends RX.Component {
 
     onChangePost = () => {
         console.log("arjun")
-        return fetch('http://localhost:8082/submitClaim', {
+        return fetch('http://159.65.148.82:8082/submitClaim', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
